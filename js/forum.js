@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const topicsList = document.getElementById("topics-list");
+    const topicsList = document.getElementById("topics-list")
     const addTopicBtn = document.getElementById("add-topic-btn");
     const chatSection = document.getElementById("chat-section");
     const chatTitle = document.getElementById("chat-title");

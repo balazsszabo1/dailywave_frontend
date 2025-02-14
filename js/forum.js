@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
 
-    const BASE_URL = "http://localhost:3000"; // Backend base URL
+    const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 
     async function fetchTopics() {
         try {
-            const response = await fetch('http://127.0.0.1:3000/api/topics/getAlltopics', {
+            const response = await fetch(`${BASE_URL}/api/topics/getAlltopics`, {
                 method: 'GET',
                 credentials: 'include', // Sütik küldése
             });

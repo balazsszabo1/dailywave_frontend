@@ -1,4 +1,4 @@
-const btnReg = document.getElementById('btnReg');
+const btnReg = document.getElementById('btnReg')
 
 btnReg.addEventListener('click', register);
 

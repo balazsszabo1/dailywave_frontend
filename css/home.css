@@ -1,0 +1,563 @@
+/* Menü */
+.navbar-logo img {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.navbar.bg-body-tertiary {
+    background-color: rgba(49, 81, 143, 0.8) !important;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px; /* Távolság az elemek között */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 0;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    line-height: 1.5; /* Egységes magasság */
+    padding: 8px 10px; /* Tér a szöveg körül */
+    font-size: 16px; /* Betűméret */
+    text-align: center;
+}
+
+.navbar-nav .nav-link.active {
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    background-color: white !important;
+}
+
+/* Magyarország és zászló stílus */
+.navbar-magyarorszag {
+    display: flex;
+    align-items: center; /* Függőleges középre igazítás */
+    gap: 8px; /* Távolság a zászló és szöveg között */
+    white-space: nowrap; /* Ne törjön el a sor */
+}
+
+.navbar-magyarorszag img {
+    width: 24px; /* Zászló mérete */
+    height: 24px;
+    object-fit: cover;
+    border-radius: 4px;
+    min-width: 24px; /* Minimum szélesség a zászló képének */
+    min-height: 24px; /* Minimum magasság */
+}
+
+.navbar-magyarorszag span {
+    font-size: 16px; /* Betűméret */
+    line-height: 1.5; /* Egységes magasság */
+    color: white !important;
+    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+}
+
+/* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
+.navbar-magyarorszag img {
+    content: url('path/to/magyar.png');
+}
+
+
+/* Reszponzív stílusok navbarra*/
+/* Hamburger menüben a menüpontok vízszintes elrendezése */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: row; /* Menüpontok vízszintesen */
+        justify-content: space-between; /* Távolság a menüpontok között */
+        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 5px 10px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 12px;
+        padding: 5px 8px;
+        line-height: 1.3;
+    }
+}
+
+
+/* Kiemelt szürke szakasz stílusa */
+.kiemelt-szurke-section {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+
+/* Kiemelt szürke szakasz stílusa */
+.kiemelt-szurke-section {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kiemelt-szurke-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Kiemelt hírek rácsos elrendezése */
+.kiemelt-szurke-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Alapértelmezett három oszlop */
+    gap: 40px;
+    justify-items: center;
+}
+
+/* Kiemelt kártyák stílusa */
+.kiemelt-kártya {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.kiemelt-kártya img {
+    width: 260px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.kiemelt-kártya p {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: red;
+}
+
+.kiemelt-kártya p:hover {
+    color: darkred;
+    cursor: pointer;
+}
+
+/* Hover hatás */
+.kiemelt-kártya:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Általános szakasz stílus */
+section {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Általános hírek rácsos elrendezés */
+.hír-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Alapértelmezett három oszlop */
+    gap: 40px;
+    justify-items: center;
+}
+
+/* Kártyák stílusa */
+.hír-kártya {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.hír-kártya img {
+    width: 260px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.hír-kártya p {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Hover hatás */
+.hír-kártya:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sport szakasz színe */
+.sport-section {
+    background-color: #BBDEFB;
+}
+
+/* Politika szakasz színe */
+.politika-section {
+    background-color: #BBDEFB;
+}
+
+/* Magyarország szakasz színe */
+.magyarorszag-section {
+    background-color: #BBDEFB;
+}
+
+/* Általános hírek színe */
+.altalanos-section {
+    background-color: #BBDEFB;
+}
+
+/* Kiemelt kártyák címei és képei */
+.kiemelt-kártya p,
+.kiemelt-kártya img {
+    cursor: pointer;
+}
+
+/* Kiemelt kártyák címeinek hover hatása */
+.kiemelt-kártya p:hover {
+    color: black;
+}
+
+/* Általános hírek kártyáinak címei és képei */
+.hír-kártya p,
+.hír-kártya img {
+    cursor: pointer;
+}
+
+/* Általános hírek kártyáihoz tartozó címek hover hatása */
+.hír-kártya p:hover {
+    color: black;
+}
+
+/* --- hozzáadás gomb --- */
+.fixed {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    background-color: rgba(49, 81, 143, 0.8) !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixed:hover {
+    transform: scale(1.1);
+}
+
+.fixed i {
+    font-size: 2.5rem;
+    color: #a3eeff;
+}
+
+.fixed img {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
+@media (max-width: 991px) {
+
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
+    }
+
+    /* Kiemelt szürke szakasz és hír szakaszok szélessége */
+    .kiemelt-szurke-section,
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
+        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+    }
+
+    /* Képek szélessége */
+    .kiemelt-szurke-grid img,
+    .hír-grid img {
+        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
+        height: auto; /* A képek arányosak maradnak */
+    }
+
+    /* Különböző szakaszok közötti távolság hozzáadása */
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
+    }
+    
+    /* Extra távolság a kiemelt szürke szakasz után és a magyarorszag szakasz előtt */
+    .kiemelt-szurke-section {
+        margin-bottom: 32px; /* Extra távolság a kiemelt szürke szakasz után */
+    }
+    .magyarorszag-section {
+        margin-top: 32px; /* Távolság a magyarorszag szakasz előtt */
+    }
+}
+
+@media (max-width: 768px) {
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(1, 1fr); /* Egy oszlop */
+    }
+
+    /* Kiemelt szürke szakasz és hír szakaszok szélessége */
+    .kiemelt-szurke-section,
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        width: 100%; /* A szakaszok szélessége 100%, teljes képernyő */
+        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+    }
+
+    /* A képek szélessége itt is 100% */
+    .kiemelt-szurke-grid img,
+    .hír-grid img {
+        width: 100%;
+        height: auto; /* A képek arányosak maradnak */
+    }
+
+    /* Különböző szakaszok közötti távolság hozzáadása */
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
+    }
+    
+    /* Extra távolság a kiemelt szürke szakasz után mobil nézetben */
+    .kiemelt-szurke-section {
+        margin-bottom: 32px;  /* Extra távolság mobilon */
+    }
+
+    /* Extra távolság a magyarorszag szakasz előtt mobil nézetben */
+    .magyarorszag-section {
+        margin-top: 32px;  /* Távolság a magyarorszag szakasz előtt */
+    }
+}
+
+
+
+/* Kapcsolat szakasz stílusa */
+.kapcsolat-section {
+    background-color: #F9F9F9;
+    padding: 20px 20px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-top: 1px 1px solid #ddd;
+}
+
+.kapcsolat-section h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.kapcsolat-section p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.kapcsolat-section a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.kapcsolat-section a:hover {
+    text-decoration: underline;
+}
+
+.kapcsolat-section .row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.kapcsolat-section .col-12 {
+    font-size: 16px;
+    color: #333;
+}
+
+.kapcsolat-section .col-12 p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* --- Footer --- */
+.footer {
+    display: flex;
+    flex-wrap: wrap; /* Elem a sorokban, ha szükséges */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100px; /* Minimalizált magasság */
+    background-color: rgba(49, 81, 143, 0.8);
+    padding: 20px; /* Padding a szellősséghez */
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.footer img {
+    user-select: none;
+}
+
+.footer .footerKep,
+.footer .footerKep2 {
+    margin: 0;
+}
+
+.footer .newsLetter {
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    border: none;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.footer .newsLetter:hover {
+    scale: 1.05;
+}
+
+/* Reszponzív footer stílusok */
+@media (max-width: 991px) {
+    .footer {
+        padding: 10px; /* Kevesebb padding a kisebb képernyőkön */
+        flex-direction: column; /* Függőleges elrendezés */
+        justify-content: center; /* Középre igazítás */
+        align-items: center; /* Középre igazítás */
+        min-height: 120px; /* Magasság növelése */
+    }
+
+    .footer .newsLetter {
+        width: 150px; /* Szűkebb gomb a kisebb képernyőkön */
+        height: 40px; /* Kisebb magasság */
+        font-size: 16px; /* Kisebb betűméret */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 10px; /* Kevesebb padding a kisebb képernyőkön */
+        flex-direction: column; /* Függőleges elrendezés */
+        justify-content: center;
+        align-items: center;
+        min-height: 100px; /* Kisebb magasság */
+    }
+
+    .footer .newsLetter {
+        width: 120px; /* Még szűkebb gomb */
+        height: 35px; /* Még kisebb magasság */
+        font-size: 14px; /* Még kisebb betűméret */
+    }
+}
+
+/* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
+@media (max-width: 991px) {
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
+    }
+
+    /* Kiemelt szürke szakasz és hír szakaszok szélessége */
+    .kiemelt-szurke-section,
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
+        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+    }
+
+    /* Képek szélessége */
+    .kiemelt-szurke-grid img,
+    .hír-grid img {
+        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
+        height: auto; /* A képek arányosak maradnak */
+    }
+
+    /* Különböző szakaszok közötti távolság hozzáadása */
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
+    }
+}
+
+@media (max-width: 768px) {
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(1, 1fr); /* Egy oszlop */
+    }
+}

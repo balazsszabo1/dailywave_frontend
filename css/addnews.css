@@ -1,0 +1,257 @@
+/* Menü */
+.navbar-logo img {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.navbar.bg-body-tertiary {
+    background-color: rgba(49, 81, 143, 0.8) !important;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px; /* Távolság az elemek között */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 0;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    line-height: 1.5; /* Egységes magasság */
+    padding: 8px 10px; /* Tér a szöveg körül */
+    font-size: 16px; /* Betűméret */
+    text-align: center;
+}
+
+.navbar-nav .nav-link.active {
+    color: white !important;
+}
+
+.navbar-toggler-icon {
+    background-color: white !important;
+}
+
+/* Magyarország és zászló stílus */
+.navbar-magyarorszag {
+    display: flex;
+    align-items: center; /* Függőleges középre igazítás */
+    gap: 8px; /* Távolság a zászló és szöveg között */
+    white-space: nowrap; /* Ne törjön el a sor */
+}
+
+.navbar-magyarorszag img {
+    width: 24px; /* Zászló mérete */
+    height: 24px;
+    object-fit: cover;
+    border-radius: 4px;
+    min-width: 24px; /* Minimum szélesség a zászló képének */
+    min-height: 24px; /* Minimum magasság */
+}
+
+.navbar-magyarorszag span {
+    font-size: 16px; /* Betűméret */
+    line-height: 1.5; /* Egységes magasság */
+    color: white !important;
+    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+}
+
+/* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
+.navbar-magyarorszag img {
+    content: url('path/to/magyar.png');
+}
+
+
+/* Reszponzív stílusok navbarra*/
+/* Hamburger menüben a menüpontok vízszintes elrendezése */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: row; /* Menüpontok vízszintesen */
+        justify-content: space-between; /* Távolság a menüpontok között */
+        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 5px 10px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 12px;
+        padding: 5px 8px;
+        line-height: 1.3;
+    }
+}
+
+
+.hírhozzadas {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .kephozzadas {
+    position: absolute; /* A div pozicionálása a képen belül */
+    bottom: 10px; /* A div 10px-re kerül a kép közepétől lefelé */
+  }
+
+  /* A link színének változtatása */
+.kephozzadas a {
+    color: rgba(49, 81, 143, 0.8); /* Kék szín */
+    text-decoration: none; /* Aláhúzás eltávolítása */
+}
+  
+.kephozzadas a:hover {
+    color: #102a5e; /* Vörös szín a hover (ráhúzás) hatásra */
+}
+
+.input {
+    width: 100%;
+}
+
+.input input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(49, 81, 143, 0.8);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input input:focus {
+    border-color: #31518f;
+    background-color: rgba(49, 81, 143, 0.1);
+}
+
+
+
+/* Hírleiras rész */
+.tarolo {
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+}
+
+.hírleírás textarea {
+    width: 1000px;
+    height: 400px;
+    background-color: #d3d3d3; 
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 16px; 
+    resize: none; 
+    color: #333; 
+}
+
+.hírleírás textarea::placeholder {
+    color: #888; 
+    font-style: italic;
+}
+
+.profileImg:hover{
+    scale: 1.1;
+}
+
+/* Reszponzív: Kisebb képernyők */
+@media (max-width: 768px) {
+    .tarolo {
+        padding: 10px; /* Kisebb margó */
+    }
+
+    .hírleírás textarea {
+        width: 400px; /* A textarea szélessége 100%-ra változik */
+        height: 40vh; /* A magasság a képernyő magasságának 40%-a lesz */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+    .tarolo {
+        padding: 10px !important; /* Kisebb margó, fontos, hogy felülírja más szabályokat */
+    }
+
+    .hírleírás textarea {
+        width: 550px !important; /* A textarea szélessége 400px lesz */
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1080px) {
+    .tarolo {
+        padding: 10px !important; /* Kisebb margó, fontos, hogy felülírja más szabályokat */
+    }
+
+    .hírleírás textarea {
+        width: 600px !important; /* A textarea szélessége 400px lesz */
+    }
+}
+
+/* Reszponzív: Nagyon kicsi képernyők (pl. mobiltelefonok) */
+@media (max-width: 480px) {
+    .tarolo {
+        padding: 8px; /* Még kisebb margó a kisebb képernyőkhöz */
+    }
+
+    .hírleírás textarea {
+        width: 350px !important; /* A textarea szélessége 100%-ra változik */
+        height: 35vh; /* A magasság kicsit csökkentve */
+    }
+}
+
+/*Mentés gomb*/
+.mentes-gomb-container {
+    text-align: center;
+    width: 100%;
+}
+
+
+.mentes-gomb {
+    background-color: rgba(49, 81, 143, 0.8);
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 200px;
+}
+
+.mentes-gomb:hover {
+    background-color: #102a5e;
+    transform: scale(1.05);
+}
+
+.mentes-gomb:active {
+    background-color: #0a1d3e;
+    transform: scale(0.98);
+}
+
+
+

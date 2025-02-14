@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fantasztikus meme gyűjtemény">
+    <meta name="author" content="XYZ">
+    <meta name="keywords" content="meme, invázió, fórum">
+    <title>Jelszó módosítása</title>
+    <link rel="stylesheet" href="./css/pswedit.css">
+    <link rel="shortcut icon" href="./img/Daniel Gallego.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-logo" href="home.html"><img src="./img/Daniel Gallego.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html#magyarorszag"><img src="img/magyar.png"
+                    alt="">#Magyarország</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#altalanos">#Hírek</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#sport">#Sport</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#politika">#Politika</a>
+              </li>
+              <a href="forum2.html"><img src="img/fórumgomb.png" alt=""></a>
+            </ul>
+            <form class="d-flex align-items-center" role="Keresés" style="display: flex; align-items: center;">
+              <i class="bi bi-search me-2" style="display: inline-flex; align-items: center;">
+                <img src="img/keresés.png" alt="KeresésIkon" style="width: 25px; height: 25px;">
+              </i>
+              <input class="form-control me-2" type="Keresés" placeholder="Keresés" aria-label="Keresés"
+                style="display: inline-flex; align-items: center;">
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">
+                <img src="img/facebook.png" alt="" style="width: 40px; height: 40px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">
+                <img src="img/twitterx.png" alt="" style="width: 40px; height: 40px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 6px;">
+                <img src="img/instagram.png" alt="" style="width: 43px; height: 43px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 0px;">
+                <a href="profile.html" class="profileImg"><img src="img/profile.png" alt=""
+                    style="width: 40px; height: 40px;"></a>
+              </i>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      
+    <div class="tarolo">
+        <h1 class="login-title">Jelszó módosítása</h1>
+        <div class="input">
+            <input type="password" id="psw" placeholder="Új jelszó">
+        </div>
+        <div class="input">
+            <input type="password" id="psw2" placeholder="Új jelszó megerősítése">
+        </div>
+    
+        <div class="login">
+            <button type="button" id="btnChangePassword">Mentés</button>
+        </div>
+    
+        <p class="existing-account">
+            Mégsem szeretné módosítani a jelszavát? <a href="profile.html" class="login-link">Vissza a profilhoz</a>.
+        </p>
+    </div>
+
+    <script src="./js/pswedit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

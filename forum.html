@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyWave Forum</title>
+    <link rel="shortcut icon" href="../img/Daniel Gallego.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/forum.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-logo" href="home.html"><img src="./img/Daniel Gallego.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html#magyarorszag"><img src="img/magyar.png"
+                    alt="">#Magyarország</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#altalanos">#Hírek</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#sport">#Sport</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html#politika">#Politika</a>
+              </li>
+              <a href="forum2.html"><img src="img/fórumgomb.png" alt=""></a>
+            </ul>
+            <form class="d-flex align-items-center" role="Keresés" style="display: flex; align-items: center;">
+              <i class="bi bi-search me-2" style="display: inline-flex; align-items: center;">
+                <img src="img/keresés.png" alt="KeresésIkon" style="width: 25px; height: 25px;">
+              </i>
+              <input class="form-control me-2" type="Keresés" placeholder="Keresés" aria-label="Keresés"
+                style="display: inline-flex; align-items: center;">
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">
+                <img src="img/facebook.png" alt="" style="width: 40px; height: 40px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">
+                <img src="img/twitterx.png" alt="" style="width: 40px; height: 40px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 6px;">
+                <img src="img/instagram.png" alt="" style="width: 43px; height: 43px;">
+              </i>
+              <i class="bi bi-person-circle ms-2"
+                style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 0px;">
+                <a href="profile.html" class="profileImg"><img src="img/profile.png" alt=""
+                    style="width: 40px; height: 40px;"></a>
+              </i>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container mt-4">
+
+        <div class="forum-header d-flex justify-content-between align-items-center mb-4">
+            <div class="dropdown">
+                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                    Témák Szűrése
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Politika</a></li>
+                    <li><a class="dropdown-item" href="#">Valuta</a></li>
+                    <li><a class="dropdown-item" href="#">Lakás</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-info" id="add-topic-btn">Új téma hozzáadása</button>
+            <input type="text" class="form-control" placeholder="Keresés a Fórumban" style="max-width: 300px;">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Téma</th>
+                            <th scope="col">db</th>
+                            <th scope="col">Utolsó Hozzászólás</th>
+                        </tr>
+                    </thead>
+                    <section id="topics-section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Created By</th>
+                                    <th>Last Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody id="topics-list">
+                                <!-- Topics will be populated here dynamically -->
+                            </tbody>
+                        </table>
+                    </section>
+                    <section id="chat-section" style="display: none;">
+                        <h2 id="chat-title"></h2>
+                        <div id="chat-messages"></div>
+                        <form id="chat-form">
+                            <input type="text" id="chat-input" placeholder="Write a comment..." required>
+                            <button type="submit">Send</button>
+                        </form>
+                    </section>
+                </table>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="forum2.html">2</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Friss Hírek
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>11:39</strong> Sikeres tőkeemelés az Épdufernél</li>
+                        <li class="list-group-item"><strong>11:35</strong> Lejjebb húzta a GDP-növekedési előrejelzését
+                            az MBH Bank</li>
+                        <li class="list-group-item"><strong>11:32</strong> Harmadik ország katonái szállhattak be a
+                            háborúba, látszódnak az ukrán mélységi csapások eredményei - Híreink az ukrajnai háborúról
+                            kedden</li>
+                        <li class="list-group-item"><strong>11:32</strong> Brazíliába látogatna Putyin, de akad egy
+                            bökkenő</li>
+                        <li class="list-group-item"><strong>11:15</strong> Látványos élénkülés a lakáspiacon - Jövőre is
+                            folytatódhat a szárnyalás?</li>
+                        <li class="list-group-item"><strong>11:15</strong> Teljesen elszállt az államadósság–állomány,
+                            nagy a baj a világon</li>
+                        <li class="list-group-item"><strong>10:38</strong> Mi történik ma a tőzsdéken?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/forum.js"></script>
+</body>
+
+</html>

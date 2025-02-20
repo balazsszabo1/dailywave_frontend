@@ -6,7 +6,7 @@ async function checkLoginStatus() {
         // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
         const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
             method: 'GET',
-            credentials: 'include', // Az authentikációs süti elküldése
+            credentials: 'include', // Küldi a cookie-kat
         });
 
         // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
@@ -24,13 +24,12 @@ async function checkLoginStatus() {
 // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
 document.addEventListener('DOMContentLoaded', checkLoginStatus);
 
-
 // Profil név lekérése
 async function getProfileName() {
     try {
         const res = await fetch(`${BASE_URL}/api/profile/getProfileName`, {
             method: 'GET',
-            credentials: 'include',
+            credentials: 'include', // Küldi a cookie-kat
         });
 
         if (res.ok) {
@@ -38,7 +37,7 @@ async function getProfileName() {
             console.log('Aktuális név:', data.name);
 
             const userNameElement = document.getElementById('user-name');
-            userNameElement.textContent = data.name;  // Ez a 'username' lesz most
+            userNameElement.textContent = data.name;
         } else {
             const data = await res.json();
             console.error('Hiba a név lekérésekor:', data.error);
@@ -55,7 +54,7 @@ async function getProfilPic() {
     try {
         const res = await fetch(`${BASE_URL}/api/profile/getProfilePic`, {
             method: 'GET',
-            credentials: 'include',
+            credentials: 'include', // Küldi a cookie-kat
         });
 
         if (res.ok) {
@@ -81,7 +80,7 @@ async function logout() {
     try {
         const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
-            credentials: 'include', // Küldi a cookie-kat a szervernek
+            credentials: 'include', // Küldi a cookie-kat
         });
 
         const data = await res.json();

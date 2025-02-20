@@ -17,7 +17,10 @@ async function login() {
         credentials: 'include' // Küldjük a sütit
     });
 
-    const data = await res.json()
+    const data = await res.json();
+
+    // Logolás a válasz ellenőrzéséhez
+    console.log('Backend válasz:', data);
 
     if (res.ok) {
         resetInputs();
@@ -45,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
                 method: 'GET',
-                credentials: 'include', // Küldje a sütit az azonosításhoz
+                credentials: 'include', // Küldi a sütit az azonosításhoz
             });
 
             if (res.ok) {

@@ -11,6 +11,7 @@ async function checkLoginStatus() {
 
         // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
         if (!res.ok) {
+            console.log('Failed to authenticate. Response status:', res.status);  // Itt jön a log
             alert('Kérlek, jelentkezz be!');
             window.location.href = 'login.html'; // Átirányítás a login oldalra
         }

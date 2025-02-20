@@ -2,11 +2,13 @@ const btnLogin = document.getElementById('btnLogin');
 
 btnLogin.addEventListener('click', login);
 
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
+
 async function login() {
     const email = document.getElementById('email').value;
     const psw = document.getElementById('psw').value;
 
-    const res = await fetch('http://127.0.0.1:3000/api/auth/login', {
+    const res = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Ne engedje az alapértelmezett kattintást
 
         try {
-            const res = await fetch('http://127.0.0.1:3000/api/auth/checkAuth', {
+            const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
                 method: 'GET',
                 credentials: 'include', // Küldje a sütit az azonosításhoz
             });

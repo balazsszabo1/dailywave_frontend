@@ -1,4 +1,5 @@
 const btnReg = document.getElementById('btnReg');
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 
 btnReg.addEventListener('click', register);
 
@@ -14,7 +15,7 @@ async function register() {
     }
 
     try {
-        const res = await fetch('https://nodejs315.dszcbaross.edu.hu/api/auth/register', {
+        const res = await fetch(`${BASE_URL}/api/auth/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

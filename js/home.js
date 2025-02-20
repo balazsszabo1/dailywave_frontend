@@ -1,4 +1,6 @@
-fetch('/api/user/check-admin')
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
+
+fetch(`${BASE_URL}/api/user/check-admin`)
     .then(response => {
         if (response.ok) {
             return response.json();

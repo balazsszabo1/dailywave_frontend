@@ -1,3 +1,5 @@
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
+
 // Jelszó módosító gomb eseménykezelője
 document.getElementById('btnChangePassword').addEventListener('click', async () => {
     const psw = document.getElementById('psw').value.trim();
@@ -15,7 +17,7 @@ document.getElementById('btnChangePassword').addEventListener('click', async () 
 
     // Frissítjük a jelszót az API-n keresztül
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/profile/editProfilePsw', {
+        const res = await fetch(`${BASE_URL}/api/profile/editProfilePsw`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,3 +1,5 @@
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
+
 let currentName = '';
 async function editProfileName() {
     const name = document.getElementById('new-name').value.trim();
@@ -11,7 +13,7 @@ async function editProfileName() {
     }
 
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/profile/editProfileName', {
+        const res = await fetch(`${BASE_URL}/api/profile/editProfileName`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

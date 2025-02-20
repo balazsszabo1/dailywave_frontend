@@ -1,8 +1,10 @@
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
+
 // Bejelentkezési ellenőrzés minden oldalon
 async function checkLoginStatus() {
     try {
         // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-        const res = await fetch('http://127.0.0.1:3000/api/auth/checkAuth', {
+        const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
             method: 'GET',
             credentials: 'include', // Az authentikációs süti elküldése
         });
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', checkLoginStatus);
 // Profil név lekérése
 async function getProfileName() {
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/profile/getProfileName', {
+        const res = await fetch(`${BASE_URL}/api/profile/getProfileName`, {
             method: 'GET',
             credentials: 'include',
         });
@@ -51,7 +53,7 @@ async function getProfileName() {
 // Profilkép lekérése
 async function getProfilPic() {
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/profile/getProfilePic', {
+        const res = await fetch(`${BASE_URL}/api/profile/getProfilePic`, {
             method: 'GET',
             credentials: 'include',
         });
@@ -62,7 +64,7 @@ async function getProfilPic() {
 
             if (data.profilePicUrl) {
                 const editPic = document.getElementById('profilePic');
-                editPic.style.backgroundImage = `url('http://127.0.0.1:3000${data.profilePicUrl}')`;
+                editPic.style.backgroundImage = `url(${BASE_URL}${data.profilePicUrl}')`;
             } else {
                 console.log('Profile picture is not set.');
             }
@@ -77,7 +79,7 @@ async function getProfilPic() {
 // Kijelentkezés funkció
 async function logout() {
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/auth/logout', {
+        const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
             credentials: 'include', // Küldi a cookie-kat a szervernek
         });

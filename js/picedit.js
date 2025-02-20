@@ -9,6 +9,7 @@ function previewImage(event) {
         reader.readAsDataURL(file);
     }
 }
+const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 
 // Frontend: Profilkép mentése
 async function saveProfilePic() {
@@ -25,7 +26,7 @@ async function saveProfilePic() {
     document.getElementById('loading').style.display = 'block';
 
     try {
-        const res = await fetch('http://127.0.0.1:3000/api/profile/editProfilePic', {
+        const res = await fetch(`${BASE_URL}/api/profile/editProfilePic`, {
             method: 'PUT',
             body: formData,
             credentials: 'include'

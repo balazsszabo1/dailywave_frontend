@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function checkLoginStatus() {
         try {
             // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-            const res = await fetch('http://127.0.0.1:3000/api/auth/checkAuth', {
+            const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
                 method: 'GET',
                 credentials: 'include', // Az authentikációs süti elküldése
             });
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const title = prompt("Enter the topic title:");
         if (title) {
             try {
-                const response = await fetch('http://localhost:3000/api/topics/uploadTopic', {
+                const response = await fetch(`${BASE_URL}/api/topics/uploadTopic`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

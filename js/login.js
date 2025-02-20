@@ -17,7 +17,7 @@ async function login() {
         credentials: 'include'
     });
 
-    const data = await res.json();
+    const data = await res.json()
 
     if (res.ok) {
         resetInputs();

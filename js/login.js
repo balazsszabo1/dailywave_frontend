@@ -14,7 +14,7 @@ async function login() {
             'content-type': 'application/json'
         },
         body: JSON.stringify({ email, password: psw }),
-        credentials: 'include'
+        credentials: 'include' // Küldjük a sütit
     });
 
     const data = await res.json()
@@ -35,11 +35,12 @@ async function login() {
         alert('Ismeretlen hiba');
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     const profileLink = document.getElementById('profileLink');
 
     profileLink.addEventListener('click', async (event) => {
-        event.preventDefault(); // Ne engedje az alapértelmezett kattintást
+        event.preventDefault();
 
         try {
             const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
@@ -48,10 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (res.ok) {
-                // Ha a bejelentkezés érvényes, engedje tovább
                 window.location.href = 'profile.html';
             } else {
-                // Bejelentkezés sikertelen
                 alert('Kérlek, jelentkezz be, hogy elérhesd a profiloldalt!');
             }
         } catch (error) {
@@ -60,9 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-
 
 function resetInputs() {
     document.getElementById('email').value = '';

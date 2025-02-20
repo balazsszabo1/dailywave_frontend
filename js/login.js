@@ -14,24 +14,15 @@ async function login() {
             'content-type': 'application/json'
         },
         body: JSON.stringify({ email, password: psw }),
-        credentials: 'include' // Küldjük a sütit
+        credentials: 'include' // Küldi a sütit a szervernek
     });
 
     const data = await res.json();
-
-    // Logolás a válasz ellenőrzéséhez
-    console.log('Backend válasz:', data);
 
     if (res.ok) {
         resetInputs();
         alert(data.message);
         window.location.href = '../home.html';
-    } else if (data.errors) {
-        let errorMessage = '';
-        for (let i = 0; i < data.errors.length; i++) {
-            errorMessage += `${data.errors[i].error}\n`
-        }
-        alert(errorMessage);
     } else if (data.error) {
         alert(data.error);
     } else {
@@ -39,31 +30,8 @@ async function login() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const profileLink = document.getElementById('profileLink');
-
-    profileLink.addEventListener('click', async (event) => {
-        event.preventDefault();
-
-        try {
-            const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
-                method: 'GET',
-                credentials: 'include', // Küldi a sütit az azonosításhoz
-            });
-
-            if (res.ok) {
-                window.location.href = 'profile.html';
-            } else {
-                alert('Kérlek, jelentkezz be, hogy elérhesd a profiloldalt!');
-            }
-        } catch (error) {
-            console.error('Hiba történt az ellenőrzés során:', error);
-            alert('Nem sikerült ellenőrizni a bejelentkezést. Próbáld újra később!');
-        }
-    });
-});
-
 function resetInputs() {
     document.getElementById('email').value = '';
     document.getElementById('psw').value = '';
 }
+

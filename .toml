@@ -1,5 +1,6 @@
 [[redirects]]
-from = "/*"
+from = "http://deft-moonbeam-90e218.netlify.app/*"
 to = "/legacy/:splat"
 status = 200
+force = true
 conditions = { Cookie = ["auth_token"] }

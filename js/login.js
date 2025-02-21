@@ -8,7 +8,7 @@ async function login() {
     const email = document.getElementById('email').value;
     const psw = document.getElementById('psw').value;
 
-    const res = await fetch(`${BASE_URL}/api/auth/login`, {
+    const res = await fetch('https://nodejs315.dszcbaross.edu.hu/api/auth/login', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         try {
-            const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
+            const res = await fetch('https://nodejs315.dszcbaross.edu.hu/api/auth/checkAuth', {
                 method: 'GET',
                 credentials: 'include', // Küldje a sütit az azonosításhoz
             });

@@ -28,5 +28,5 @@ headers = { X-Forwarded-Cookies = "true", X-Forwarded-For = "true" }
 
 # 🔄 Pre-renderelés (ha statikus oldalakat Netlify cache-elt, akkor ezt érdemes tiltani)
 [build]
-  publish = "public"
+  publish = "/"
   command = "echo 'Skipping prerendering'"

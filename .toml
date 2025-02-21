@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/*"
+to = "/legacy/:splat"
+status = 200
+conditions = { Cookie = ["auth_token"] }

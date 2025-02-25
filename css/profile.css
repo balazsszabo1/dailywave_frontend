@@ -141,9 +141,21 @@ body {
     width: 120px;            /* Rögzített szélesség */
     height: 120px;           /* Rögzített magasság */
     border-radius: 50%;      /* Kör alakú */
+}
+
+/* Kép beállítása, hogy kitöltse a div-et */
+.profile-image img {
+    width: 120px;             /* A kép kitölti a div szélességét */
+    height: 120px;            /* A kép kitölti a div magasságát */
     object-fit: cover;       /* A kép kitölti a tárolót, miközben megtartja az arányokat */
 }
 
+#profilePic {
+    width: 120px;          /* A kép szélessége pontosan 120px */
+    height: 120px;         /* A kép magassága pontosan 120px */
+    object-fit: cover;     /* A kép kitölti a tárolót, miközben megtartja az arányokat */
+    border-radius: 50%;    /* Kör alakú kép */
+}
 
 /* Név */
 .profile-info .name {
@@ -152,16 +164,6 @@ body {
     margin: 0;
     text-align: center; /* Középre igazítás */
 }
-
-#profilePic img {
-    width: 120px;          /* A kép szélessége pontosan 120px */
-    height: 120px;         /* A kép magassága pontosan 120px */
-    object-fit: cover;     /* A kép kitölti a tárolót, miközben megtartja az arányokat */
-    border-radius: 50%;    /* Kör alakú kép */
-}
-
-
-
 
 /* Gombok */
 .edit-button,

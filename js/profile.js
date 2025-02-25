@@ -80,28 +80,43 @@ async function logout() {
     try {
         const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
-            credentials: 'include', // Küldi a cookie-kat
+            credentials: 'include', // Küldi a hitelesítési sütiket
         });
 
-        const data = await res.json();
-
-        if (res.ok) {
-            alert(data.message); // Sikeres kijelentkezési üzenet
-            window.location.href = '../login.html'; // Átirányítás a bejelentkezési oldalra
-        } else if (data.errors) {
-            // Több hiba megjelenítése, ha van
-            alert(data.errors.map(e => e.error).join('\n'));
-        } else if (data.error) {
-            // Egyedi hiba megjelenítése
-            alert(data.error);
-        } else {
-            alert('Ismeretlen hiba történt');
+        if (!res.ok) {
+            console.error('Sikertelen kijelentkezés:', res.status);
+            try {
+                const errorData = await res.json();
+                alert(errorData.error || 'Ismeretlen hiba történt kijelentkezéskor.');
+            } catch {
+                alert('Nem sikerült feldolgozni a szerver válaszát.');
+            }
+            return;
         }
+
+        let data;
+        try {
+            data = await res.json(); // Ellenőrizzük, hogy a válasz valóban JSON-e
+        } catch (jsonError) {
+            console.error('Hibás válaszformátum:', jsonError);
+            alert('A szerver nem adott vissza megfelelő választ.');
+            return;
+        }
+
+        // Extra biztosíték: helyi sütik törlése
+        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.dszcbaross.edu.hu";
+        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+        alert(data.message || 'Sikeresen kijelentkeztél!');
+
+        // Netlify login URL-re átirányítás
+        window.location.href = 'https://deft-moonbeam-90e218.netlify.app/login';
     } catch (error) {
         console.error('Hiba történt a kijelentkezés során:', error);
         alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getProfileName();

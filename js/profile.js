@@ -80,46 +80,32 @@ async function logout() {
     try {
         const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
-            credentials: 'include', // Küldi a cookie-kat
+            credentials: 'include',
         });
 
-        if (!res.ok) {
-            console.error('Sikertelen kijelentkezés:', res.status);
-            try {
-                const errorData = await res.json();
-                alert(errorData.error || 'Ismeretlen hiba történt kijelentkezéskor.');
-            } catch {
-                alert('Nem sikerült feldolgozni a szerver válaszát.');
-            }
-            return;
-        }
+        const data = await res.json();
 
         if (res.ok) {
-            alert(data.message); // Sikeres kijelentkezési üzenet
-            window.location.href = '../login.html'; // Átirányítás a bejelentkezési oldalra
+            // Frontend oldali süti törlés (ha HttpOnly NINCS beállítva)
+            document.cookie = "auth_token=; path=/; domain=nodejs315.dszcbaross.edu.hu; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+            alert(data.message);
+            setTimeout(() => {
+                window.location.href = '../login.html';
+            }, 1000); // Késleltetett átirányítás
         } else if (data.errors) {
-            // Több hiba megjelenítése, ha van
             alert(data.errors.map(e => e.error).join('\n'));
         } else if (data.error) {
-            // Egyedi hiba megjelenítése
             alert(data.error);
         } else {
             alert('Ismeretlen hiba történt');
         }
-
-        // Extra biztosíték: helyi sütik törlése
-        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.dszcbaross.edu.hu";
-        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
-        alert(data.message || 'Sikeresen kijelentkeztél!');
-
-        // Netlify login URL-re átirányítás
-        window.location.href = 'https://deft-moonbeam-90e218.netlify.app/login';
     } catch (error) {
         console.error('Hiba történt a kijelentkezés során:', error);
         alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getProfileName();

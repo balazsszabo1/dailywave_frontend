@@ -119,7 +119,7 @@ body {
     border: 2px solid rgba(49, 81, 143, 0.8);
     /* Kék színű keret */
     width: 100%;
-    max-width: 120px;
+    max-width: 400%;
     /* Maximális szélesség a kényelem érdekében */
     display: flex;
     flex-direction: column;

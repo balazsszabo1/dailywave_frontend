@@ -44,7 +44,7 @@ body {
 .preview-img {
     width: 100%;             /* Kép szélessége mindig a tároló szélességéhez igazodik */
     height: 100%;            /* Kép magassága mindig a tároló magasságához igazodik */
-    object-fit: cover;       /* Kép arányainak megtartása és kitöltése a területet */
+    object-fit: contain;       
     border-radius: 50%;      /* Kör alakú kép */
 }
 

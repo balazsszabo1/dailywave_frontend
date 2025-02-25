@@ -80,19 +80,22 @@ async function logout() {
     try {
         const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
-            credentials: 'include', // Küldi a cookie-kat
+            credentials: 'include',
         });
 
         const data = await res.json();
 
         if (res.ok) {
-            alert(data.message); // Sikeres kijelentkezési üzenet
-            window.location.href = '../login.html'; // Átirányítás a bejelentkezési oldalra
+            // Frontend oldali süti törlés (ha HttpOnly NINCS beállítva)
+            document.cookie = "auth_token=; path=/; domain=nodejs315.dszcbaross.edu.hu; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+            alert(data.message);
+            setTimeout(() => {
+                window.location.href = '../login.html';
+            }, 1000); // Késleltetett átirányítás
         } else if (data.errors) {
-            // Több hiba megjelenítése, ha van
             alert(data.errors.map(e => e.error).join('\n'));
         } else if (data.error) {
-            // Egyedi hiba megjelenítése
             alert(data.error);
         } else {
             alert('Ismeretlen hiba történt');
@@ -102,6 +105,9 @@ async function logout() {
         alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');
     }
 }
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getProfileName();

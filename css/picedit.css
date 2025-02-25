@@ -42,14 +42,11 @@ body {
 
 /* Előnézeti kép */
 .preview-img {
-    width: 100%;             /* Kép szélessége mindig a tároló szélességéhez igazodik */
-    height: 100%;            /* Kép magassága mindig a tároló magasságához igazodik */
-    object-fit: contain;     /* Kép arányainak megtartása, ha nem illeszkedik tökéletesen */
-    border-radius: 50%;      /* Kör alakú kép */
+    width: 356px;  /* Fix szélesség */
+    height: 190px; /* Fix magasság */
+    object-fit: cover; /* A kép arányos kitöltése a tárolóba */
+    border-radius: 50%; /* Kör alakú kép */
 }
-
-
-
 
 .input {
     width: 100%;

@@ -14,10 +14,15 @@ function previewImage(event) {
                 const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
                 const containerAspectRatio = container.offsetWidth / container.offsetHeight;
 
-                // Ha a kép szélesebb, mint a tároló, akkor a szélességet állítjuk be
+                // Kép beállítása fix 356px x 190px méretre
+                preview.style.width = "356px";  // Fix szélesség
+                preview.style.height = "190px"; // Fix magasság
+                preview.style.objectFit = "cover"; // Arányos kitöltés
+
+                // Ha a kép szélesebb, mint a tároló, akkor alkalmazzuk a megfelelő beállítást
                 if (imgAspectRatio > containerAspectRatio) {
-                    preview.style.width = "100%";
-                    preview.style.height = "auto";
+                    preview.style.width = "356px";
+                    preview.style.height = "190px";
                 } else {
                     preview.style.width = "auto";
                     preview.style.height = "100%";
@@ -27,6 +32,7 @@ function previewImage(event) {
         reader.readAsDataURL(file);
     }
 }
+
 
 const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 

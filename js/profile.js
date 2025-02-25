@@ -80,37 +80,26 @@ async function logout() {
     try {
         const res = await fetch(`${BASE_URL}/api/auth/logout`, {
             method: 'POST',
-            credentials: 'include', // Küldi a hitelesítési sütiket
+            credentials: 'include',
         });
 
-        if (!res.ok) {
-            console.error('Sikertelen kijelentkezés:', res.status);
-            try {
-                const errorData = await res.json();
-                alert(errorData.error || 'Ismeretlen hiba történt kijelentkezéskor.');
-            } catch {
-                alert('Nem sikerült feldolgozni a szerver válaszát.');
-            }
-            return;
+        const data = await res.json();
+
+        if (res.ok) {
+            // Frontend oldali süti törlés (ha HttpOnly NINCS beállítva)
+            document.cookie = "auth_token=; path=/; domain=nodejs315.dszcbaross.edu.hu; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+            alert(data.message);
+            setTimeout(() => {
+                window.location.href = '../login.html';
+            }, 1000); // Késleltetett átirányítás
+        } else if (data.errors) {
+            alert(data.errors.map(e => e.error).join('\n'));
+        } else if (data.error) {
+            alert(data.error);
+        } else {
+            alert('Ismeretlen hiba történt');
         }
-
-        let data;
-        try {
-            data = await res.json(); // Ellenőrizzük, hogy a válasz valóban JSON-e
-        } catch (jsonError) {
-            console.error('Hibás válaszformátum:', jsonError);
-            alert('A szerver nem adott vissza megfelelő választ.');
-            return;
-        }
-
-        // Extra biztosíték: helyi sütik törlése
-        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.dszcbaross.edu.hu";
-        document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-
-        alert(data.message || 'Sikeresen kijelentkeztél!');
-
-        // Netlify login URL-re átirányítás
-        window.location.href = 'https://deft-moonbeam-90e218.netlify.app/login';
     } catch (error) {
         console.error('Hiba történt a kijelentkezés során:', error);
         alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');

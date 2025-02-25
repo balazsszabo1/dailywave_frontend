@@ -141,6 +141,7 @@ body {
     width: 120px;            /* Rögzített szélesség */
     height: 120px;           /* Rögzített magasság */
     border-radius: 50%;      /* Kör alakú */
+    object-fit: cover;
 }
 
 /* Kép beállítása, hogy kitöltse a div-et */

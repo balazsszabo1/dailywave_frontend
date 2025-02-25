@@ -5,10 +5,29 @@ function previewImage(event) {
         reader.onload = function () {
             const preview = document.getElementById("preview");
             preview.src = reader.result;
+
+            // Várjuk meg, amíg a kép betöltődik
+            preview.onload = function() {
+                const container = document.getElementById("preview-container");
+
+                // Kép és tároló arányainak kiszámítása
+                const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
+                const containerAspectRatio = container.offsetWidth / container.offsetHeight;
+
+                // Ha a kép szélesebb, mint a tároló, akkor a szélességet állítjuk be
+                if (imgAspectRatio > containerAspectRatio) {
+                    preview.style.width = "100%";
+                    preview.style.height = "auto";
+                } else {
+                    preview.style.width = "auto";
+                    preview.style.height = "100%";
+                }
+            };
         };
         reader.readAsDataURL(file);
     }
 }
+
 const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 
 // Frontend: Profilkép mentése

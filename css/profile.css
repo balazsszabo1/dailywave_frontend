@@ -132,25 +132,27 @@ body {
 
 
 /* Profilkép */
+.profile-image {
+    display: flex;
+    justify-content: center; /* Kép középre igazítása vízszintesen */
+    align-items: center;     /* Kép középre igazítása függőlegesen */
+    margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
+}
+
 .profile-image img {
     width: 120px;
-    /* A kép mérete */
     height: 120px;
-    border-radius: 50%;
-    /* Kör alakú */
-    margin-bottom: 15px;
-    /* Kép és név közötti távolság */
+    border-radius: 50%; /* Kör alakú */
 }
 
 /* Név */
 .profile-info .name {
     font-size: 22px;
-    color: rgba(49, 81, 143, 0.8);
-    /* Kék szín */
+    color: rgba(49, 81, 143, 0.8); /* Kék szín */
     margin: 0;
-    text-align: center;
-    /* Középre igazítás */
+    text-align: center; /* Középre igazítás */
 }
+
 
 /* Gombok */
 .edit-button,

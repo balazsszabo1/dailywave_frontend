@@ -141,6 +141,20 @@ body {
     width: 120px;            /* Rögzített szélesség */
     height: 120px;           /* Rögzített magasság */
     border-radius: 50%;      /* Kör alakú */
+    object-fit: cover;
+}
+
+/* Profilkép */
+.profile-image #profilePic {
+    display: flex;
+    justify-content: center; /* Kép középre igazítása vízszintesen */
+    align-items: center;     /* Kép középre igazítása függőlegesen */
+    margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
+    overflow: hidden;        /* Ha a kép túl nagy, ne lógjon ki */
+    width: 120px;            /* Rögzített szélesség */
+    height: 120px;           /* Rögzített magasság */
+    border-radius: 50%;      /* Kör alakú */
+    object-fit: cover;
 }
 
 /* Kép beállítása, hogy kitöltse a div-et */

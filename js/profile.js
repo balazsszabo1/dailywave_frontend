@@ -1,7 +1,7 @@
 const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 
 // Bejelentkezési ellenőrzés minden oldalon
-async function checkLoginStatus() {
+/* async function checkLoginStatus() {
     try {
         // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
         const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
@@ -22,7 +22,7 @@ async function checkLoginStatus() {
 }
 
 // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
-document.addEventListener('DOMContentLoaded', checkLoginStatus);
+document.addEventListener('DOMContentLoaded', checkLoginStatus); */
 
 // Profil név lekérése
 async function getProfileName() {

@@ -137,12 +137,17 @@ body {
     justify-content: center; /* Kép középre igazítása vízszintesen */
     align-items: center;     /* Kép középre igazítása függőlegesen */
     margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
+    overflow: hidden;        /* Ha a kép túl nagy, ne lógjon ki */
+    width: 120px;            /* Rögzített szélesség */
+    height: 120px;           /* Rögzített magasság */
+    border-radius: 50%;      /* Kör alakú */
 }
 
+/* Kép beállítása, hogy kitöltse a div-et */
 .profile-image img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* Kör alakú */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* A kép megtartja az arányait és kitölti a teret */
 }
 
 /* Név */
@@ -152,6 +157,7 @@ body {
     margin: 0;
     text-align: center; /* Középre igazítás */
 }
+
 
 
 /* Gombok */

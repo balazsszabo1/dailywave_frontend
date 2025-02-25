@@ -10,6 +10,7 @@ body {
     justify-content: center;
 }
 
+/* Taroló div */
 .tarolo {
     margin: auto;
     background-color: #ffffff;
@@ -25,25 +26,26 @@ body {
     align-items: center;
 }
 
+/* Előnézeti kép tároló */
 #preview-container {
-    width: 150px;
-    height: 150px;
+    width: 150px;            /* Fix szélesség */
+    height: 150px;           /* Fix magasság */
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    overflow: hidden;
+    border-radius: 50%;      /* Kör alakú */
+    overflow: hidden;        /* Ha a kép túl nagy, elvágódik */
     border: 2px solid rgba(49, 81, 143, 0.8);
     background-color: #f4f4f9;
 }
 
+/* Előnézeti kép */
 .preview-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 10px auto;
+    width: 100%;             /* Kép szélessége mindig a tároló szélességéhez igazodik */
+    height: 100%;            /* Kép magassága mindig a tároló magasságához igazodik */
+    object-fit: cover;       /* Kép arányainak megtartása és kitöltése a területet */
+    border-radius: 50%;      /* Kör alakú kép */
 }
 
 .input {

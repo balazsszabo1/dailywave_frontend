@@ -119,16 +119,36 @@ body {
     border: 2px solid rgba(49, 81, 143, 0.8);
     /* Kék színű keret */
     width: 100%;
-    max-width: 400px;
+    max-width: 120px;
     /* Maximális szélesség a kényelem érdekében */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     margin: auto auto;
+    /* Vízszintes középre igazítás és függőleges eltolás */
 }
 
+
+/* Profilkép */
+.profile-image {
+    display: flex;
+    justify-content: center; /* Kép középre igazítása vízszintesen */
+    align-items: center;     /* Kép középre igazítása függőlegesen */
+    margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
+    overflow: hidden;        /* Ha a kép túl nagy, ne lógjon ki */
+    width: 120px;            /* Rögzített szélesség */
+    height: 120px;           /* Rögzített magasság */
+    border-radius: 50%;      /* Kör alakú */
+}
+
+/* Kép beállítása, hogy kitöltse a div-et */
+.profile-image img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
 
 /* Név */
 .profile-info .name {

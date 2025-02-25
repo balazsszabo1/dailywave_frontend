@@ -145,8 +145,8 @@ body {
 
 /* Kép beállítása, hogy kitöltse a div-et */
 .profile-image img {
-    width: 100%;             /* A kép kitölti a div szélességét */
-    height: 100%;            /* A kép kitölti a div magasságát */
+    width: 120px;             /* A kép kitölti a div szélességét */
+    height: 120px;            /* A kép kitölti a div magasságát */
     object-fit: cover;       /* A kép kitölti a tárolót, miközben megtartja az arányokat */
 }
 

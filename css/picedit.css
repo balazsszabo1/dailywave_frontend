@@ -40,13 +40,13 @@ body {
     background-color: #f4f4f9;
 }
 
-/* Előnézeti kép */
 .preview-img {
-    width: 356px;  /* Fix szélesség */
-    height: 190px; /* Fix magasság */
-    object-fit: cover; /* A kép arányos kitöltése a tárolóba */
-    border-radius: 50%; /* Kör alakú kép */
+    width: 360px;           /* Fix szélesség */
+    height: 190px;          /* Fix magasság */
+    object-fit: cover;      /* A kép kitöltése arányosan */
+    border-radius: 50%;
 }
+
 
 .input {
     width: 100%;

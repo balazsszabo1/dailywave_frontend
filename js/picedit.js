@@ -24,8 +24,8 @@ function previewImage(event) {
                     preview.style.width = "356px";
                     preview.style.height = "190px";
                 } else {
-                    preview.style.width = "auto";
-                    preview.style.height = "100%";
+                    preview.style.width = "356px";
+                    preview.style.height = "190%";
                 }
             };
         };

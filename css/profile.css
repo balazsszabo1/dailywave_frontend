@@ -127,25 +127,6 @@ body {
     align-items: center;
     justify-content: center;
     margin: auto auto;
-    /* Vízszintes középre igazítás és függőleges eltolás */
-}
-
-
-.profile-image {
-    width: 120px;          /* A div szélessége 120px */
-    height: 120px;         /* A div magassága 120px */
-    display: flex;         /* Flexbox elrendezés */
-    justify-content: center; /* A kép vízszintesen középre igazítása */
-    align-items: center;   /* A kép függőlegesen középre igazítása */
-    overflow: hidden;      /* Ha a kép túl nagy, levágja a felesleget */
-    border-radius: 50%;    /* A div kör alakúra lesz formázva */
-}
-
-#profilePic {
-    width: 100%;           /* A kép szélessége 100%, hogy kitöltse a div-et */
-    height: 100%;          /* A kép magassága 100%, hogy kitöltse a div-et */
-    object-fit: cover;     /* A kép kitöltése arányosan */
-    border-radius: 50%;    /* A kép kör alakúra lesz formázva */
 }
 
 

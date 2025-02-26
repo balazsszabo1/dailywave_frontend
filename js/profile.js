@@ -75,30 +75,21 @@ async function getProfilPic() {
     }
 }
 
-// Kijelentkezés funkció
 async function logout() {
     try {
         const res = await fetch('/api/auth/logout', {
             method: 'POST',
-            credentials: 'include',
+            credentials: 'include', // Küldi a sütit a szervernek
         });
 
-        const data = await res.json();
-
         if (res.ok) {
-            // Frontend oldali süti törlés (ha HttpOnly NINCS beállítva)
-            document.cookie = "auth_token=; path=/; domain=nodejs315.dszcbaross.edu.hu; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            alert('Sikeres kijelentkezés!');
 
-            alert(data.message);
-            setTimeout(() => {
-                window.location.href = '../login.html';
-            }, 1000); // Késleltetett átirányítás
-        } else if (data.errors) {
-            alert(data.errors.map(e => e.error).join('\n'));
-        } else if (data.error) {
-            alert(data.error);
+            // Böngésző gyorsítótár ürítése (néha szükséges lehet)
+            window.location.href = '../login.html';
         } else {
-            alert('Ismeretlen hiba történt');
+            const data = await res.json();
+            alert(data.error || 'Hiba történt a kijelentkezés során.');
         }
     } catch (error) {
         console.error('Hiba történt a kijelentkezés során:', error);

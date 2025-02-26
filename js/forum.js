@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Bejelentkezési ellenőrzés minden oldalon
-    async function checkLoginStatus() {
+/*     async function checkLoginStatus() {
         try {
             // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
             const res = await fetch('/api/auth/checkAuth', {
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
-    document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    document.addEventListener('DOMContentLoaded', checkLoginStatus); */
 
 
     // Add a new topic

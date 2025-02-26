@@ -85,17 +85,26 @@ async function logout() {
         if (res.ok) {
             alert('Sikeres kijelentkezés!');
 
-            // Böngésző gyorsítótár ürítése (néha szükséges lehet)
-            window.location.href = '../login.html';
+            // Böngésző gyorsítótár ürítése és újratöltés
+            setTimeout(() => {
+                window.location.href = '../login.html';
+            }, 1000); // Késleltetett átirányítás, hogy a törlés érvényesüljön
         } else {
-            const data = await res.json();
-            alert(data.error || 'Hiba történt a kijelentkezés során.');
+            let errorMessage = 'Hiba történt a kijelentkezés során.';
+            try {
+                const data = await res.json();
+                errorMessage = data.error || errorMessage;
+            } catch (jsonError) {
+                console.error('Hibás szerver válasz:', jsonError);
+            }
+            alert(errorMessage);
         }
     } catch (error) {
         console.error('Hiba történt a kijelentkezés során:', error);
         alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');
     }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

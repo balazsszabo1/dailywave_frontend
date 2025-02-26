@@ -15,7 +15,7 @@ async function register() {
     }
 
     try {
-        const res = await fetch(`${BASE_URL}/api/auth/register`, {
+        const res = await fetch('/api/auth/register', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

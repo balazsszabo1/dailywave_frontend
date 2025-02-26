@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', checkLoginStatus); */
 // Profil név lekérése
 async function getProfileName() {
     try {
-        const res = await fetch(`${BASE_URL}/api/profile/getProfileName`, {
+        const res = await fetch('/api/profile/getProfileName', {
             method: 'GET',
             credentials: 'include', // Küldi a cookie-kat
         });
@@ -52,7 +52,7 @@ async function getProfileName() {
 // Profilkép lekérése
 async function getProfilPic() {
     try {
-        const res = await fetch(`${BASE_URL}/api/profile/getProfilePic`, {
+        const res = await fetch8('api/profile/getProfilePic', {
             method: 'GET',
             credentials: 'include', // Küldi a cookie-kat
         });
@@ -78,7 +78,7 @@ async function getProfilPic() {
 // Kijelentkezés funkció
 async function logout() {
     try {
-        const res = await fetch(`${BASE_URL}/api/auth/logout`, {
+        const res = await fetch('/api/auth/logout', {
             method: 'POST',
             credentials: 'include',
         });

@@ -13,7 +13,7 @@ async function editProfileName() {
     }
 
     try {
-        const res = await fetch(`${BASE_URL}/api/profile/editProfileName`, {
+        const res = await fetch('/api/profile/editProfileName', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

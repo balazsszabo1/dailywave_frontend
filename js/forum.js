@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchTopics() {
         try {
-            const response = await fetch(`${BASE_URL}/api/topics/getAlltopics`, {
+            const response = await fetch('/api/topics/getAlltopics', {
                 method: 'GET',
                 credentials: 'include', // Sütik küldése
             });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function checkLoginStatus() {
         try {
             // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-            const res = await fetch(`${BASE_URL}/api/auth/checkAuth`, {
+            const res = await fetch('/api/auth/checkAuth', {
                 method: 'GET',
                 credentials: 'include', // Az authentikációs süti elküldése
             });
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const title = prompt("Enter the topic title:");
         if (title) {
             try {
-                const response = await fetch(`${BASE_URL}/api/topics/uploadTopic`, {
+                const response = await fetch('/api/topics/uploadTopic', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chatTitle.textContent = event.target.textContent;
 
             // Fetch and display comments for the topic
-            const response = await fetch(`${BASE_URL}/api/topics/getComments/${topicId}`, {
+            const response = await fetch(`/api/topics/getComments/${topicId}`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const userId = 11; // Replace with the actual user ID logic
 
         try {
-            const response = await fetch(`${BASE_URL}/api/topics/addComment`, {
+            const response = await fetch('/api/topics/addComment', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

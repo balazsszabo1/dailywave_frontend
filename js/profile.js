@@ -52,7 +52,7 @@ async function getProfileName() {
 // Profilkép lekérése
 async function getProfilPic() {
     try {
-        const res = await fetch8('api/profile/getProfilePic', {
+        const res = await fetch('api/profile/getProfilePic', {
             method: 'GET',
             credentials: 'include', // Küldi a cookie-kat
         });

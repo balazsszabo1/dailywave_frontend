@@ -1,32 +1,6 @@
-# 🔄 Átirányítás, ha van auth_token cookie
 [[redirects]]
-from = "/*"
-to = "/legacy/:splat"
-status = 200
-force = true
-conditions = { Cookie = ["auth_token"] }
-
-# 🛠️ API proxy beállítása, hogy továbbítsa a cookie-kat és a fejlécet
-[[redirects]]
-from = "/api/*"
-to = "https://nodejs315.dszcbaross.edu.hu/api/:splat"
-status = 200
-force = true
-headers = { X-Forwarded-Cookies = "true", X-Forwarded-For = "true" }
-
-# 🚫 Cache és CORS beállítások
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate"
-    Pragma = "no-cache"
-    Expires = "0"
-    Access-Control-Allow-Origin = "https://deft-moonbeam-90e218.netlify.app"
-    Access-Control-Allow-Credentials = "true"
-    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
-
-# 🔄 Pre-renderelés (ha statikus oldalakat Netlify cache-elt, akkor ezt érdemes tiltani)
-[build]
-  publish = "/"
-  command = "echo 'Skipping prerendering'"
+  from = "/api/*"
+  to = "https://nodejs314.dszcbaross.edu.hu/:splat"
+  status = 200
+  force = true
+  headers = {Access-Control-Allow-Origin = "*"}

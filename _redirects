@@ -1,1 +1,1 @@
-/* /legacy/:splat 200 Cookie=auth_token
+/api/*  https://nodejs314.dszcbaross.edu.hu/api/:splat  200

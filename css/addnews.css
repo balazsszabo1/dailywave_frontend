@@ -165,6 +165,8 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 15px;
+    flex-wrap: nowrap; /* Ne törjön meg */
+    overflow-x: auto; /* Ha szükséges, görgethető legyen */
 }
 
 .kategoriavalaszto {
@@ -191,18 +193,21 @@
     transform: scale(1.1);
 }
 
-/* Reszponzív design */
+/* Reszponzív dizájn */
 @media (max-width: 768px) {
     .kategoriak {
-        flex-direction: column;
+        flex-direction: row; /* Maradjanak egymás mellett kisebb képernyőn is */
         align-items: center;
+        justify-content: flex-start; /* Balra igazítás, hogy ne legyenek középen */
+        overflow-x: auto; /* Ha túl szélesek a kategóriák, akkor görgethető legyen */
     }
 
     .kategoriavalaszto {
-        width: 80%;
+        width: auto; /* A szélességük automatikus legyen, ne 80% */
         text-align: center;
     }
 }
+
 
 
 

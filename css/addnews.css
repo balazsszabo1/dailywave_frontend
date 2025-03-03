@@ -199,7 +199,6 @@
         flex-direction: row; /* Maradjanak egymás mellett kisebb képernyőn is */
         align-items: center;
         justify-content: flex-start; /* Balra igazítás, hogy ne legyenek középen */
-        overflow-x: auto; /* Ha túl szélesek a kategóriák, akkor görgethető legyen */
     }
 
     .kategoriavalaszto {

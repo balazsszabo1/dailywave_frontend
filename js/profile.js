@@ -1,5 +1,8 @@
 const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-const logout = document.getElementById('logout');
+const logoutBtn = document.getElementById('logout');
+
+
+logoutBtn.addEventListener('click', logout);
 // Bejelentkezési ellenőrzés minden oldalon
 /*  async function checkLoginStatus() {
     try {
@@ -112,18 +115,3 @@ document.addEventListener('DOMContentLoaded', () => {
     getProfilPic();
 });
 
-logout.addEventListener('click', logout);
-
-async function logout() {
-    const res = await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include'
-    });
-
-    console.log(res);
-    if (res.ok) {
-        window.location.href = '../home.html';
-    } else {
-        alert(JSON.stringify(res));
-    }
-}

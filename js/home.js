@@ -13,3 +13,18 @@ fetch('/api/user/check-admin')
         }
     })
     .catch(error => console.error('Hiba admin ellenőrzésekor:', error));
+
+
+async function logout() {
+    const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include'
+    });
+
+    console.log(res);
+    if (res.ok) {
+        window.location.href = '../home.html';
+    } else {
+        alert(JSON.stringify(res));
+    }
+}

@@ -79,32 +79,31 @@ async function getProfilPic() {
 }
 
 async function logout() {
-    try {
-        const res = await fetch('/api/auth/logout', {
-            method: 'POST',
-            credentials: 'include', // Küldi a sütit a szervernek
-        });
+    const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include', // Küldi a sütit a szervernek
+    });
+    console.log(res);
+    
 
-        if (res.ok) {
-            alert('Sikeres kijelentkezés!');
+    if (res.ok) {
+        alert('Sikeres kijelentkezés!');
 
-            // Böngésző gyorsítótár ürítése és újratöltés
-            setTimeout(() => {
-                window.location.href = '../login.html';
-            }, 1000); // Késleltetett átirányítás, hogy a törlés érvényesüljön
-        } else {
-            let errorMessage = 'Hiba történt a kijelentkezés során.';
-            try {
-                const data = await res.json();
-                errorMessage = data.error || errorMessage;
-            } catch (jsonError) {
-                console.error('Hibás szerver válasz:', jsonError);
-            }
-            alert(errorMessage);
+        // Böngésző gyorsítótár ürítése és újratöltés
+        setTimeout(() => {
+            window.location.href = '../login.html';
+        }, 1000); // Késleltetett átirányítás, hogy a törlés érvényesüljön
+    } else {
+        let errorMessage = 'Hiba történt a kijelentkezés során.';
+        try {
+            const data = await res.json();  
+            console.log(data);
+            
+            errorMessage = data.error || errorMessage;
+        } catch (jsonError) {
+            console.error('Hibás szerver válasz:', jsonError);
         }
-    } catch (error) {
-        console.error('Hiba történt a kijelentkezés során:', error);
-        alert('Nem sikerült kapcsolódni a szerverhez. Próbáld újra később.');
+        alert(errorMessage);
     }
 }
 

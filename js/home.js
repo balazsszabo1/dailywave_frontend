@@ -1,5 +1,5 @@
 const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
+/*
 fetch('/api/user/check-admin')
     .then(response => {
         if (response.ok) {
@@ -13,7 +13,7 @@ fetch('/api/user/check-admin')
         }
     })
     .catch(error => console.error('Hiba admin ellenőrzésekor:', error));
-
+*/
 
 async function logout() {
     const res = await fetch('/api/auth/logout', {

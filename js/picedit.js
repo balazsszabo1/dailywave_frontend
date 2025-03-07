@@ -34,8 +34,6 @@ function previewImage(event) {
 }
 
 
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
 // Frontend: Profilkép mentése
 async function saveProfilePic() {
     const fileInput = document.getElementById('profilePicInput');

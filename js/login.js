@@ -2,8 +2,6 @@ const btnLogin = document.getElementById('btnLogin');
 
 btnLogin.addEventListener('click', login);
 
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
 async function login() {
     const email = document.getElementById('email').value;
     const psw = document.getElementById('psw').value;
@@ -14,7 +12,6 @@ async function login() {
             'content-type': 'application/json'
         },
         body: JSON.stringify({ email, password: psw }),
-        credentials: 'include' // Küldjük a sütit
     });
 
     const data = await res.json()
@@ -45,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch('/api/auth/checkAuth', {
                 method: 'GET',
-                credentials: 'include', // Küldje a sütit az azonosításhoz
+                credentials: 'include',
             });
 
             if (res.ok) {

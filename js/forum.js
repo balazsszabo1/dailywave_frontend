@@ -7,13 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
 
-    const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
     async function fetchTopics() {
         try {
             const response = await fetch('/api/topics/getAlltopics', {
                 method: 'GET',
-                credentials: 'include', // Sütik küldése
+                credentials: 'include',
             });
 
             if (!response.ok) {
@@ -40,28 +38,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Bejelentkezési ellenőrzés minden oldalon
-/*     async function checkLoginStatus() {
-        try {
-            // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-            const res = await fetch('/api/auth/checkAuth', {
-                method: 'GET',
-                credentials: 'include', // Az authentikációs süti elküldése
-            });
-
-            // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
-            if (!res.ok) {
-                alert('Kérlek, jelentkezz be!');
-                window.location.href = 'login.html'; // Átirányítás a login oldalra
+    /*     async function checkLoginStatus() {
+            try {
+                // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
+                const res = await fetch('/api/auth/checkAuth', {
+                    method: 'GET',
+                    credentials: 'include', // Az authentikációs süti elküldése
+                });
+    
+                // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
+                if (!res.ok) {
+                    alert('Kérlek, jelentkezz be!');
+                    window.location.href = 'login.html'; // Átirányítás a login oldalra
+                }
+            } catch (error) {
+                console.error('Hiba történt a hitelesítés ellenőrzésekor:', error);
+                alert('Nem sikerült ellenőrizni a bejelentkezési állapotot.');
+                window.location.href = 'login.html'; // Ha hiba történt, irányítás a login oldalra
             }
-        } catch (error) {
-            console.error('Hiba történt a hitelesítés ellenőrzésekor:', error);
-            alert('Nem sikerült ellenőrizni a bejelentkezési állapotot.');
-            window.location.href = 'login.html'; // Ha hiba történt, irányítás a login oldalra
         }
-    }
-
-    // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
-    document.addEventListener('DOMContentLoaded', checkLoginStatus); */
+    
+        // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', checkLoginStatus); */
 
 
     // Add a new topic
@@ -73,15 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
-                        // A cookie automatikusan elküldésre kerül, ha a credentials be van állítva
                     },
-                    credentials: 'include',  // Ez biztosítja, hogy a cookie átkerüljön
+                    credentials: 'include',
                     body: JSON.stringify({ topic_title: title })
                 });
-    
+
                 const data = await response.json();
                 console.log("Response Data:", data); // Hozzáadott naplózás
-    
+
                 if (response.ok) {
                     alert("Topic successfully added!");
                     // Frissítheted a topic listát, ha szükséges

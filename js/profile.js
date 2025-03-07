@@ -83,7 +83,7 @@ async function logout() {
         credentials: 'include', // Küldi a sütit a szervernek
     });
     console.log(res);
-    
+
 
     if (res.ok) {
         alert('Sikeres kijelentkezés!');
@@ -95,9 +95,9 @@ async function logout() {
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
-            const data = await res.json();  
+            const data = await res.json();
             console.log(data);
-            
+
             errorMessage = data.error || errorMessage;
         } catch (jsonError) {
             console.error('Hibás szerver válasz:', jsonError);

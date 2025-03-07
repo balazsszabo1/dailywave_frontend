@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', checkLoginStatus);  */
 // Profil név lekérése
 async function getProfileName() {
     try {
-        const res = await fetch('/profile/getProfileName', {
+        const res = await fetch('/api/profile/getProfileName', {
             method: 'GET',
             credentials: 'include', // Küldi a cookie-kat
         });
@@ -55,7 +55,7 @@ async function getProfileName() {
 // Profilkép lekérése
 async function getProfilPic() {
     try {
-        const res = await fetch('/profile/getProfilePic', {
+        const res = await fetch('/api/profile/getProfilePic', {
             method: 'GET',
             credentials: 'include', // Küldi a cookie-kat
         });
@@ -79,7 +79,7 @@ async function getProfilPic() {
 }
 
 async function logout() {
-    const res = await fetch('/auth/logout', {
+    const res = await fetch('/api/auth/logout', {
         method: 'POST',
         credentials: 'include', // Küldi a sütit a szervernek
     });

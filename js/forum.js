@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!Array.isArray(topics)) {
                 throw new Error('Érvénytelen válaszformátum: tömböt vártunk.');
             }
-
+            console.log(topics);
+            
             // Témák kirajzolása
             topicsList.innerHTML = topics.map(topic => `
                 <tr>

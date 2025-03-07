@@ -1,5 +1,3 @@
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
 // Jelszó módosító gomb eseménykezelője
 document.getElementById('btnChangePassword').addEventListener('click', async () => {
     const psw = document.getElementById('psw').value.trim();

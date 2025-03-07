@@ -1,1 +1,2 @@
 /api/*  https://nodejs315.dszcbaross.edu.hu/api/:splat  200
+/uploads/*  https://nodejs315.dszcbaross.edu.hu/api/:splat  200

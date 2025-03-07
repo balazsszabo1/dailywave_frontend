@@ -1,6 +1,4 @@
 const btnReg = document.getElementById('btnReg');
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
 btnReg.addEventListener('click', register);
 
 async function register() {

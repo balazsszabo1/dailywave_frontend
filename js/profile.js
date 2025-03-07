@@ -1,4 +1,3 @@
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
 const logoutBtn = document.getElementById('logout');
 
 

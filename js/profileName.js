@@ -1,5 +1,3 @@
-const BASE_URL = "https://nodejs315.dszcbaross.edu.hu"; // Backend base URL
-
 let currentName = '';
 async function editProfileName() {
     const name = document.getElementById('new-name').value.trim();

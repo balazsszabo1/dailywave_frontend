@@ -3,41 +3,61 @@ const btnLogin = document.getElementById('btnLogin');
 btnLogin.addEventListener('click', login);
 
 async function login() {
-    const email = document.getElementById('email').value;  // Email kinyerése a beviteli mezőből
-    const psw = document.getElementById('psw').value;  // Jelszó kinyerése a beviteli mezőből
+    const email = document.getElementById('email').value;
+    const psw = document.getElementById('psw').value;
 
-    // Kérés küldése a backend felé
     const res = await fetch('/api/auth/login', {
-        method: 'POST',  // POST kérés
+        method: 'POST',
         headers: {
-            'content-type': 'application/json',  // JSON típusú adat
+            'content-type': 'application/json'
         },
-        body: JSON.stringify({ email, password: psw }),  // Kérési body, ami tartalmazza az email-t és a jelszót
+        body: JSON.stringify({ email, password: psw }),
     });
 
-    const data = await res.json();  // Válasz adatainak kinyerése
+    const data = await res.json()
 
-    // Ha sikeres a bejelentkezés
     if (res.ok) {
-        resetInputs();  // Input mezők törlése
-        alert(data.message);  // Üzenet megjelenítése
-        window.location.href = '../home.html';  // Átirányítás a főoldalra
+        resetInputs();
+        alert(data.message);
+        window.location.href = '../home.html';
     } else if (data.errors) {
-        // Ha hibák vannak
         let errorMessage = '';
         for (let i = 0; i < data.errors.length; i++) {
-            errorMessage += `${data.errors[i].error}\n`;  // Hibák összesítése
+            errorMessage += `${data.errors[i].error}\n`
         }
-        alert(errorMessage);  // Hibák megjelenítése
+        alert(errorMessage);
     } else if (data.error) {
-        alert(data.error);  // Egyedi hibaüzenet megjelenítése
+        alert(data.error);
     } else {
-        alert('Ismeretlen hiba');  // Ismeretlen hiba
+        alert('Ismeretlen hiba');
     }
 }
 
-// Beviteli mezők visszaállítása
+document.addEventListener('DOMContentLoaded', () => {
+    const profileLink = document.getElementById('profileLink');
+
+    profileLink.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        try {
+            const res = await fetch('/api/auth/checkAuth', {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (res.ok) {
+                window.location.href = 'profile.html';
+            } else {
+                alert('Kérlek, jelentkezz be, hogy elérhesd a profiloldalt!');
+            }
+        } catch (error) {
+            console.error('Hiba történt az ellenőrzés során:', error);
+            alert('Nem sikerült ellenőrizni a bejelentkezést. Próbáld újra később!');
+        }
+    });
+});
+
 function resetInputs() {
-    document.getElementById('email').value = '';  // Email mező törlése
-    document.getElementById('psw').value = '';  // Jelszó mező törlése
+    document.getElementById('email').value = '';
+    document.getElementById('psw').value = '';
 }

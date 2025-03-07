@@ -19,13 +19,7 @@ async function login() {
     if (res.ok) {
         resetInputs();
         alert(data.message);
-
-        // Admin jogosultság ellenőrzése és átirányítás
-        if (data.role && data.role === 'admin') {
-            window.location.href = '../adminprofile.html'; // Admin felület
-        } else {
-            window.location.href = '../home.html'; // Normál felhasználó
-        }
+        window.location.href = '../home.html';
     } else if (data.errors) {
         let errorMessage = '';
         for (let i = 0; i < data.errors.length; i++) {
@@ -38,6 +32,30 @@ async function login() {
         alert('Ismeretlen hiba');
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const profileLink = document.getElementById('profileLink');
+
+    profileLink.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        try {
+            const res = await fetch('/api/auth/checkAuth', {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (res.ok) {
+                window.location.href = 'profile.html';
+            } else {
+                alert('Kérlek, jelentkezz be, hogy elérhesd a profiloldalt!');
+            }
+        } catch (error) {
+            console.error('Hiba történt az ellenőrzés során:', error);
+            alert('Nem sikerült ellenőrizni a bejelentkezést. Próbáld újra később!');
+        }
+    });
+});
 
 function resetInputs() {
     document.getElementById('email').value = '';

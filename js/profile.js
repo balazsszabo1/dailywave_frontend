@@ -1,6 +1,5 @@
 const logoutBtn = document.getElementById('logout');
 
-
 logoutBtn.addEventListener('click', logout);
 // Bejelentkezési ellenőrzés minden oldalon
 /*  async function checkLoginStatus() {
@@ -50,6 +49,9 @@ async function getProfileName() {
         alert('Nem sikerült lekérni a nevet');
     }
 }
+
+const BASE_URL = 'https://dailywave.netlify.app';
+
 
 // Profilkép lekérése
 async function getProfilPic() {

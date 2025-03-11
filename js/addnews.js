@@ -1,39 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const kategoriak = document.querySelectorAll(".kategoriavalaszto");
-    let selectedCategory = ""; // Tárolja a kiválasztott kategóriát
+    let selectedCategoryId = null;
 
-    kategoriak.forEach(kategoria => {
-        kategoria.addEventListener("click", () => {
-            // Minden kategóriáról levesszük az aktív jelölést
-            kategoriak.forEach(k => k.classList.remove("aktiv"));
+    // Kategóriák eseményfigyelői
+    document.querySelectorAll(".kategoriavalaszto").forEach(span => {
+        span.addEventListener("click", function () {
+            // Kijelölt kategória frissítése
+            selectedCategoryId = getCategoryID(this.getAttribute("data-kategoria"));
 
-            // Az aktuálisra rárakjuk az aktív osztályt
-            kategoria.classList.add("aktiv");
-
-            // Elmentjük a kiválasztott kategóriát
-            selectedCategory = kategoria.dataset.kategoria;
-            console.log("Kiválasztott kategória:", selectedCategory);
+            // Az aktív stílus beállítása
+            document.querySelectorAll(".kategoriavalaszto").forEach(s => s.classList.remove("active"));
+            this.classList.add("active");
         });
     });
 
+    // Hír feltöltés a "Mentés" gombra kattintva
     document.getElementById("mentesGomb").addEventListener("click", () => {
-        const headline = document.getElementById("new-name").value;
-        const fullTitle = document.getElementById("new-name").value;
-        const description = document.querySelector(".hírleírás textarea").value;
+        const newsTitle = document.querySelectorAll("#new-name")[0].value.trim();
+        const newsIndexTitle = document.querySelectorAll("#new-name")[1].value.trim();
+        const newsContent = document.querySelector(".hírleírás textarea").value.trim();
+        const indexPic = "asd23.jpg"; // Kép URL helyettesítő
 
-        if (!headline || !fullTitle || !description || !selectedCategory) {
-            alert("Minden mezőt ki kell tölteni, és ki kell választani egy kategóriát!");
+        if (!selectedCategoryId || !newsTitle || !newsIndexTitle || !newsContent) {
+            alert("Minden mezőt ki kell tölteni!");
             return;
         }
 
-        const newPost = {
-            headline,
-            fullTitle,
-            description,
-            category: selectedCategory
+        const newsData = {
+            cat_id: selectedCategoryId,
+            news_title: newsTitle,
+            news: newsContent,
+            index_pic: indexPic
         };
 
-        console.log("Elküldendő adatok:", newPost);
-        // Itt lehetne fetch-el beküldeni az adatokat a backendnek
+        // Adatok elküldése a backendnek
+        fetch("/api/news/uploadNews", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newsData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert("Hír sikeresen feltöltve!");
+                location.reload();
+            } else {
+                alert("Hiba történt a feltöltés során.");
+            }
+        })
+        .catch(error => {
+            console.error("Hálózati hiba:", error);
+            alert("Hálózati hiba történt.");
+        });
     });
+
+    // Kategória azonosítók lekérése
+    function getCategoryID(categoryName) {
+        const categories = {
+            "magyarorszag": 1,
+            "hirek": 2,
+            "sport": 3,
+            "politika": 4
+        };
+        return categories[categoryName] || null;
+    }
 });

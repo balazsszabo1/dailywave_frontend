@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hír feltöltés a "Mentés" gombra kattintva
     document.getElementById("mentesGomb").addEventListener("click", () => {
-        const newsTitle = document.querySelectorAll("#new-name")[0].value.trim();
-        //const newsIndexTitle = document.querySelectorAll("#new-name")[1].value.trim();
+        const newsTitle = document.querySelector("#new-name").value.trim();
         const newsContent = document.querySelector(".hírleírás textarea").value.trim();
         const indexPic = "asd23.jpg"; // Kép URL helyettesítő
 

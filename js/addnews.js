@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hír feltöltés a "Mentés" gombra kattintva
     document.getElementById("mentesGomb").addEventListener("click", () => {
         const newsTitle = document.querySelectorAll("#new-name")[0].value.trim();
-        const newsIndexTitle = document.querySelectorAll("#new-name")[1].value.trim();
+        //const newsIndexTitle = document.querySelectorAll("#new-name")[1].value.trim();
         const newsContent = document.querySelector(".hírleírás textarea").value.trim();
         const indexPic = "asd23.jpg"; // Kép URL helyettesítő
 
-        if (!selectedCategoryId || !newsTitle || !newsIndexTitle || !newsContent) {
+        if (!selectedCategoryId || !newsTitle || !newsContent) {
             alert("Minden mezőt ki kell tölteni!");
             return;
         }

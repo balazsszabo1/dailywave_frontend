@@ -66,7 +66,7 @@ async function getProfilPic() {
 
             if (data.profilePicUrl) {
                 const editPic = document.getElementById('profilePic');
-                editPic.style.backgroundImage = `/uploads/${result[0].profile_picture}`;
+                editPic.style.backgroundImage = `/uploads/${profilePicUrl}`;
             } else {
                 console.log('Profile picture is not set.');
             }

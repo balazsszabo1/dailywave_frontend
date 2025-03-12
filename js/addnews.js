@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     let selectedCategoryId = null;
 
     // Kategória kiválasztása
@@ -24,18 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Hír feltöltése
-    document.getElementById("uploadForm").addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        const newsTitle = document.getElementById("new-name").value.trim();
-        const newsContent = document.getElementById("news-content").value.trim();
-        const imageFile = document.getElementById("newsImage").files[0];
-
-        if (!selectedCategoryId || !newsTitle || !newsContent || !imageFile) {
-            alert("Minden mezőt ki kell tölteni!");
-            return;
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        const categoryInput = document.getElementById('category');
+        const newsTitle = document.getElementById('new-name').value.trim();
+        const newsContent = document.getElementById('news-content').value.trim();
+        const newsImage = document.getElementById('newsImage').files.length;
+      
+        if (!categoryInput.value) {
+          alert('Válassz egy kategóriát!');
+          event.preventDefault();
+          return;
         }
-
+      
+        if (!newsTitle || !newsContent || newsImage === 0) {
+          alert('Minden mezőt ki kell tölteni!');
+          event.preventDefault();
+        }
+      });
+      
         const formData = new FormData();
         formData.append("cat_id", selectedCategoryId);
         formData.append("news_title", newsTitle);
@@ -73,4 +79,4 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         return categories[categoryName] || null;
     }
-});
+

@@ -169,28 +169,22 @@
 }
 
 .kategoriavalaszto {
-    padding: 10px 15px;
-    border-radius: 8px;
-    background-color: rgba(49, 81, 143, 0.2);
-    color: #31518f;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
-    user-select: none;
-}
-
-.kategoriavalaszto:hover {
-    background-color: rgba(49, 81, 143, 0.5);
-    color: white;
-    transform: scale(1.05);
-}
-
-.kategoriavalaszto.aktiv {
-    background-color: #31518f;
-    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .kategoriavalaszto:hover {
+    background-color: #ddd;
+  }
+  .kategoriavalaszto.selected {
     font-weight: bold;
-    transform: scale(1.1);
-}
+    color: white;
+    background-color: red;
+  }
+  
 
 /* Reszponzív dizájn */
 @media (max-width: 768px) {

@@ -1,6 +1,5 @@
 const logoutBtn = document.getElementById('logout');
 
-
 logoutBtn.addEventListener('click', logout);
 // Bejelentkezési ellenőrzés minden oldalon
 /*  async function checkLoginStatus() {
@@ -51,6 +50,8 @@ async function getProfileName() {
     }
 }
 
+
+
 // Profilkép lekérése
 async function getProfilPic() {
     try {
@@ -65,7 +66,7 @@ async function getProfilPic() {
 
             if (data.profilePicUrl) {
                 const editPic = document.getElementById('profilePic');
-                editPic.style.backgroundImage = `url(${BASE_URL}${data.profilePicUrl})`;
+                editPic.style.backgroundImage = `url(/uploads/${data.profilePicUrl})`;
             } else {
                 console.log('Profile picture is not set.');
             }

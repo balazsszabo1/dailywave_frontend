@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td><a href="#" data-id="${topic.topic_id}" class="topic-link">${topic.topic_title}</a></td>
                     <td>${topic.username}</td>
-                    <td>${topic.last_comment || "No comments yet"}</td>
+                    <td>${topic.last_comment || "Nincsenek még hozzászólások."}</td>
                 </tr>
             `).join('');
         } catch (error) {

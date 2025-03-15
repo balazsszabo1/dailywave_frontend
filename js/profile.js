@@ -57,7 +57,7 @@ async function getProfilPic() {
     try {
         const res = await fetch('/api/profile/getProfilePic', {
             method: 'GET',
-            credentials: 'include',
+            credentials: 'include', // Küldi a cookie-kat
         });
 
         if (res.ok) {
@@ -65,7 +65,7 @@ async function getProfilPic() {
             console.log('Profilkép adatok:', data);
 
             if (data.profilePicUrl) {
-                // Ha a kép URL nem tartalmaz teljes elérési utat, hozzáadjuk a szerver URL-jét
+                // Ha a kapott kép URL relatív, alakítsuk teljes elérési útra
                 let imageUrl = data.profilePicUrl;
 
                 if (!imageUrl.startsWith('http')) {
@@ -73,7 +73,9 @@ async function getProfilPic() {
                 }
 
                 const editPic = document.getElementById('profilePic');
-                editPic.src = imageUrl;
+                
+                // 📌 Frissítés: gyorsítótár törlése (új paraméter hozzáadása)
+                editPic.style.backgroundImage = `url(${imageUrl}?t=${new Date().getTime()})`;
 
                 console.log('Végleges kép URL:', imageUrl);
             } else {
@@ -86,6 +88,7 @@ async function getProfilPic() {
         console.error('Hálózati hiba a profilkép lekérésekor:', error);
     }
 }
+
 
 
 async function logout() {

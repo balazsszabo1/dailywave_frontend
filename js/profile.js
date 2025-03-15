@@ -65,16 +65,19 @@ async function getProfilPic() {
             console.log('Profilkép adatok:', data);
 
             if (data.profilePicUrl) {
-                // Ha a kapott kép URL relatív, alakítsuk teljes elérési útra
-                let imageUrl = data.profilePicUrl;
+                let imageUrl = data.profilePicUrl.trim();
 
-                if (!imageUrl.startsWith('http')) {
-                    imageUrl = `https://nodejs315.dszcbaross.edu.hu/uploads/${imageUrl}`;
+                // Ha az URL `/uploads/`-szal kezdődik, akkor levágjuk az elejét
+                if (imageUrl.startsWith('/uploads/')) {
+                    imageUrl = imageUrl.replace('/uploads/', '');
                 }
+
+                // Teljes URL létrehozása
+                imageUrl = `https://nodejs315.dszcbaross.edu.hu/uploads/${imageUrl}`;
 
                 const editPic = document.getElementById('profilePic');
                 
-                // 📌 Frissítés: gyorsítótár törlése (új paraméter hozzáadása)
+                // 📌 Gyorsítótár törlése (új paraméter)
                 editPic.style.backgroundImage = `url(${imageUrl}?t=${new Date().getTime()})`;
 
                 console.log('Végleges kép URL:', imageUrl);
@@ -88,6 +91,7 @@ async function getProfilPic() {
         console.error('Hálózati hiba a profilkép lekérésekor:', error);
     }
 }
+
 
 
 

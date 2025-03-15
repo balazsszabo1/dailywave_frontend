@@ -7,7 +7,7 @@
 
 [[redirects]]
   from = "/uploads/*"
-  to = "https://nodejs315.dszcbaross.edu.hu/:splat"
+  to = "https://nodejs315.dszcbaross.edu.hu/uploads/:splat"
   status = 200
   force = true
   headers = {Access-Control-Allow-Origin = "*"}

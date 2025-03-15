@@ -57,7 +57,7 @@ async function getProfilPic() {
     try {
         const res = await fetch('/api/profile/getProfilePic', {
             method: 'GET',
-            credentials: 'include', // Küldi a cookie-kat
+            credentials: 'include',
         });
 
         if (res.ok) {
@@ -67,33 +67,24 @@ async function getProfilPic() {
             if (data.profilePicUrl) {
                 let imageUrl = data.profilePicUrl.trim();
 
-                // Ha az URL `/uploads/`-szal kezdődik, akkor levágjuk az elejét
                 if (imageUrl.startsWith('/uploads/')) {
                     imageUrl = imageUrl.replace('/uploads/', '');
                 }
 
-                // Teljes URL létrehozása
                 imageUrl = `https://nodejs315.dszcbaross.edu.hu/uploads/${imageUrl}`;
 
-                const editPic = document.getElementById('profilePic');
-                
-                // 📌 Gyorsítótár törlése (új paraméter)
-                editPic.style.backgroundImage = `url(${imageUrl}?t=${new Date().getTime()})`;
+                const profilePic = document.getElementById('profilePic');
+                profilePic.style.backgroundImage = `url('${imageUrl}?t=${new Date().getTime()}')`;
 
                 console.log('Végleges kép URL:', imageUrl);
-            } else {
-                console.log('Nincs beállítva profilkép.');
             }
         } else {
             console.error('Nem sikerült lekérni a profilképet.');
         }
     } catch (error) {
-        console.error('Hálózati hiba a profilkép lekérésekor:', error);
+        console.error('Hálózati hiba:', error);
     }
 }
-
-
-
 
 async function logout() {
     const res = await fetch('/api/auth/logout', {

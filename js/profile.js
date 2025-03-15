@@ -74,9 +74,9 @@ async function getProfilPic() {
                 imageUrl = `https://nodejs315.dszcbaross.edu.hu/uploads/${imageUrl}`;
 
                 const profilePic = document.getElementById('profilePic');
-                profilePic.style.backgroundImage = `url('${imageUrl}?t=${new Date().getTime()}')`;
+                profilePic.src = `${imageUrl}?t=${new Date().getTime()}`;
 
-                console.log('Végleges kép URL:', imageUrl);
+                console.log('Végleges kép URL:', profilePic.src);
             }
         } else {
             console.error('Nem sikerült lekérni a profilképet.');

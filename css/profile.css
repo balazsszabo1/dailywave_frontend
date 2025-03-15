@@ -212,7 +212,6 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
-    background-image: url(../img/UnknownPic.png);
     background-size: cover;
     background-position: center;
 }

@@ -62,19 +62,26 @@ async function getProfilPic() {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data);
+            console.log('Kapott profilkép URL:', data.profilePicUrl);
 
             if (data.profilePicUrl) {
+                let imageUrl = data.profilePicUrl;
+
+                // Ha már tartalmazza az "uploads/" előtagot, ne adjuk hozzá még egyszer
+                if (!imageUrl.startsWith('/uploads/')) {
+                    imageUrl = `/uploads/${imageUrl}`;
+                }
+
                 const editPic = document.getElementById('profilePic');
-                editPic.style.backgroundImage = `url(/uploads/${data.profilePicUrl})`;
+                editPic.style.backgroundImage = `url(${imageUrl})`;
             } else {
-                console.log('Profile picture is not set.');
+                console.log('A felhasználónak nincs profilképe.');
             }
         } else {
-            console.error('Failed to fetch profile picture.');
+            console.error('Nem sikerült lekérni a profilképet.');
         }
     } catch (error) {
-        console.error('Error fetching profile picture:', error);
+        console.error('Hiba a profilkép lekérésekor:', error);
     }
 }
 

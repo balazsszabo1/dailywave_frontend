@@ -27,3 +27,31 @@ async function logout() {
         alert(JSON.stringify(res));
     }
 }
+
+
+//Feliratkozás a hírlevélre
+document.addEventListener("DOMContentLoaded", () => {
+    const newsletterButton = document.querySelector(".newsLetter");
+  
+    if (newsletterButton) {
+      newsletterButton.addEventListener("click", feliratkozas);
+    }
+  });
+  
+  function feliratkozas() {
+    const email = prompt("Kérjük, adja meg az e-mail címét a feliratkozáshoz:");
+  
+    if (email && validateEmail(email)) {
+      alert("Köszönjük! Sikeresen feliratkozott a hírlevelünkre: " + email);
+      // Esetleg elmentheted localStorage-be is:
+      // localStorage.setItem('feliratkozott', email);
+    } else if (email !== null) {
+      alert("Helytelen e-mail cím! Próbálja újra.");
+    }
+  }
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  

@@ -5,10 +5,10 @@ const categoryElements = document.querySelectorAll('.kategoriavalaszto');
 categoryElements.forEach(elem => {
   elem.addEventListener('click', () => {
     if (selectedCategory) {
-      selectedCategory.classList.remove('kivalasztva'); // Előző kategória törlése
+      selectedCategory.classList.remove('kivalasztva'); // Előző kijelölés törlése
     }
 
-    elem.classList.add('kivalasztva'); // Új kategória beállítása
+    elem.classList.add('kivalasztva'); // Új kategória kijelölése
     selectedCategory = elem;
     console.log('Kiválasztott kategória:', selectedCategory.getAttribute('data-kategoria'));
   });
@@ -46,7 +46,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     } else {
       alert('Sikeres feltöltés!');
 
-      // Csak a szövegmezőket és a fájlinputot töröljük, de a kategóriát megtartjuk
+      // Csak a szövegmezőket és a fájlinputot töröljük, de a kategóriát meghagyjuk!
       titleInput.value = '';
       descriptionInput.value = '';
 
@@ -54,7 +54,8 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
       const newFileInput = fileInput.cloneNode(true);
       fileInput.replaceWith(newFileInput);
 
-      // Kategória KIJELÖLVE MARAD feltöltés után is!
+      // **A kategória kijelölve marad, nem töröljük!**
+      console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
     }
   })
   .catch(error => {

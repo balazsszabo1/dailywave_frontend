@@ -1,17 +1,16 @@
-let selectedCategoryId = null;
+let selectedCategory = null;
 const categoryElements = document.querySelectorAll('.kategoriavalaszto');
 
 // Kategória választás eseménykezelő
 categoryElements.forEach(elem => {
   elem.addEventListener('click', () => {
-    if (elem.classList.contains('kivalasztva')) {
-      return; // Ha már ki van választva, ne csináljon semmit
+    if (selectedCategory) {
+      selectedCategory.classList.remove('kivalasztva'); // Előző kategória törlése
     }
 
-    categoryElements.forEach(el => el.classList.remove('kivalasztva')); // Eltávolítja az előző kijelölést
-    elem.classList.add('kivalasztva'); // Kijelöli az új kategóriát
-    selectedCategoryId = elem.getAttribute('data-kategoria');
-    console.log('Kiválasztott kategória:', selectedCategoryId);
+    elem.classList.add('kivalasztva'); // Új kategória beállítása
+    selectedCategory = elem;
+    console.log('Kiválasztott kategória:', selectedCategory.getAttribute('data-kategoria'));
   });
 });
 
@@ -22,7 +21,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
 
   const news_title = titleInput.value.trim();
   const news = descriptionInput.value.trim();
-  const cat_id = selectedCategoryId;
+  const cat_id = selectedCategory ? selectedCategory.getAttribute('data-kategoria') : null;
   const index_pic = fileInput.files[0];
 
   if (!cat_id || !news_title || !news || !index_pic) {

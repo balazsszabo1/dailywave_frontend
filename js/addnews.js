@@ -20,25 +20,12 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
   const news = descriptionInput.value.trim();
   const cat_id = selectedCategoryId;
   const index_pic = fileInput.files[0];
-  const news_title = titleInput.value.trim();
-  const news = descriptionInput.value.trim();
-  const cat_id = selectedCategoryId;
-  const index_pic = fileInput.files[0];
 
   if (!cat_id || !news_title || !news || !index_pic) {
     alert('Minden mező kitöltése kötelező!');
     return;
   }
-  if (!cat_id || !news_title || !news || !index_pic) {
-    alert('Minden mező kitöltése kötelező!');
-    return;
-  }
 
-  const formData = new FormData();
-  formData.append('cat_id', cat_id);
-  formData.append('news_title', news_title);
-  formData.append('news', news);
-  formData.append('index_pic', index_pic);
   const formData = new FormData();
   formData.append('cat_id', cat_id);
   formData.append('news_title', news_title);

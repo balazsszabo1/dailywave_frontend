@@ -25,6 +25,7 @@ fileInput.addEventListener('change', () => {
 
     reader.onload = (e) => {
       previewImage.src = e.target.result; // Megjelenítjük az előnézeti képet
+      previewImage.style.objectFit = 'cover'; // biztos, ami biztos
     };
 
     reader.readAsDataURL(file);
@@ -89,7 +90,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
       console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
     }
   })
-  .catch(error => {
+  .catch(error => { 
     console.error('Hiba a feltöltés során:', error);
     alert('Hiba történt a feltöltés közben.');
   });

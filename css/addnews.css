@@ -101,6 +101,14 @@
     }
 }
 
+#hirkephozzaadas {
+    width: 252px;
+    height: 173px;
+    object-fit: cover; /* Fontos! Így kitölti a képet anélkül, hogy eltorzulna */
+    border: 1px solid #ccc; /* opcionális: keret a kép köré */
+    border-radius: 5px;      /* opcionális: lekerekítés */
+  }
+  
 
 .hírhozzadas {
     position: relative;

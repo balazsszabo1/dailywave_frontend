@@ -32,7 +32,7 @@ let selectedCategoryId = null;
     formData.append('news', news);
     formData.append('index_pic', index_pic);
 
-    fetch('/api/news/upload', {
+    fetch('/api/news/uploadNews', {
       method: 'POST',
       body: formData
     })

@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
     1: '#magyarorszag',
     2: '#altalanos',
     3: '#sport',
-    4: '#politika'
+    4: '#politika',
+    5: '#kiemelt'
   };
   
   document.addEventListener('DOMContentLoaded', () => {

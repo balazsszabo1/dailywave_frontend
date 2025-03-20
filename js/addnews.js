@@ -1,5 +1,7 @@
 let selectedCategory = null;
 const categoryElements = document.querySelectorAll('.kategoriavalaszto');
+const fileInput = document.getElementById('fileInput');
+const previewImage = document.getElementById('hirkephozzaadas'); // Ez az a kép, amit frissíteni fogunk
 
 // Kategória választás eseménykezelő
 categoryElements.forEach(elem => {
@@ -14,10 +16,24 @@ categoryElements.forEach(elem => {
   });
 });
 
+// 🔥 Kép kiválasztás eseménykezelő az előnézethez
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      previewImage.src = e.target.result; // Megjelenítjük az előnézeti képet
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
 document.getElementById('mentesGomb').addEventListener('click', () => {
   const titleInput = document.getElementById('new-name');
   const descriptionInput = document.getElementById('new-description');
-  const fileInput = document.getElementById('fileInput');
 
   const news_title = titleInput.value.trim();
   const news = descriptionInput.value.trim();
@@ -46,15 +62,30 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     } else {
       alert('Sikeres feltöltés!');
 
-      // Csak a szövegmezőket és a fájlinputot töröljük, de a kategóriát meghagyjuk!
+      // Űrlap mezők ürítése
       titleInput.value = '';
       descriptionInput.value = '';
 
-      // Fájl input törlése
+      // Fájl input törlése és újraalkotása
       const newFileInput = fileInput.cloneNode(true);
       fileInput.replaceWith(newFileInput);
 
-      // **A kategória kijelölve marad, nem töröljük!**
+      // Új event listener az új fileInputhoz!
+      newFileInput.addEventListener('change', () => {
+        const file = newFileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // A kép visszaállítása az alapértelmezett képre
+      previewImage.src = 'img/hirkephozzaadas.png';
+
+      // Kategóriát meghagyjuk!
       console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
     }
   })

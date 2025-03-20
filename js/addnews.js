@@ -1,67 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let selectedCategoryId = null;
+let selectedCategoryId = null;
+  const categoryElements = document.querySelectorAll('.kategoriavalaszto');
 
-    // Kategóriák eseményfigyelői
-    document.querySelectorAll(".kategoriavalaszto").forEach(span => {
-        span.addEventListener("click", function () {
-            // Kijelölt kategória frissítése
-            selectedCategoryId = getCategoryID(this.getAttribute("data-kategoria"));
-
-            // Az aktív stílus beállítása
-            document.querySelectorAll(".kategoriavalaszto").forEach(s => s.classList.remove("active"));
-            this.classList.add("active");
-        });
+  // Kategória választás eseménykezelő
+  categoryElements.forEach(elem => {
+    elem.addEventListener('click', () => {
+      categoryElements.forEach(el => el.classList.remove('kivalasztva')); // törli az előzőt
+      elem.classList.add('kivalasztva'); // kijelöli az aktuálisat
+      selectedCategoryId = elem.getAttribute('data-kategoria');
+      console.log('Kiválasztott kategória:', selectedCategoryId);
     });
+  });
 
-    // Hír feltöltés a "Mentés" gombra kattintva
-    document.getElementById("mentesGomb").addEventListener("click", () => {
-        const newsTitle = document.querySelector("#new-name").value.trim();
-        const newsContent = document.querySelector(".hírleírás textarea").value.trim();
-        const indexPic = "asd23.jpg"; // Kép URL helyettesítő
+  document.getElementById('mentesGomb').addEventListener('click', () => {
+    const titleInput = document.getElementById('new-name');
+    const descriptionInput = document.getElementById('new-description');
+    const fileInput = document.getElementById('fileInput');
 
-        if (!selectedCategoryId || !newsTitle || !newsContent) {
-            alert("Minden mezőt ki kell tölteni!");
-            return;
-        }
+    const news_title = titleInput.value.trim();
+    const news = descriptionInput.value.trim();
+    const cat_id = selectedCategoryId;
+    const index_pic = fileInput.files[0];
 
-        const newsData = {
-            cat_id: selectedCategoryId,
-            news_title: newsTitle,
-            news: newsContent,
-            index_pic: indexPic
-        };
-
-        // Adatok elküldése a backendnek
-        fetch("/api/news/uploadNews", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newsData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                alert("Hír sikeresen feltöltve!");
-                location.reload();
-            } else {
-                alert("Hiba történt a feltöltés során.");
-            }
-        })
-        .catch(error => {
-            console.error("Hálózati hiba:", error);
-            alert("Hálózati hiba történt.");
-        });
-    });
-
-    // Kategória azonosítók lekérése
-    function getCategoryID(categoryName) {
-        const categories = {
-            "magyarorszag": 1,
-            "hirek": 2,
-            "sport": 3,
-            "politika": 4
-        };
-        return categories[categoryName] || null;
+    if (!cat_id || !news_title || !news || !index_pic) {
+      alert('Minden mező kitöltése kötelező!');
+      return;
     }
-});
+
+    const formData = new FormData();
+    formData.append('cat_id', cat_id);
+    formData.append('news_title', news_title);
+    formData.append('news', news);
+    formData.append('index_pic', index_pic);
+
+    fetch('/api/news/upload', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert('Hiba: ' + data.error);
+      } else {
+        alert('Sikeres feltöltés!');
+        // Űrlap alaphelyzetbe állítása
+        titleInput.value = '';
+        descriptionInput.value = '';
+        fileInput.value = '';
+        categoryElements.forEach(el => el.classList.remove('kivalasztva'));
+        selectedCategoryId = null;
+      }
+    })
+    .catch(error => {
+      console.error('Hiba a feltöltés során:', error);
+      alert('Hiba történt a feltöltés közben.');
+    });
+  });

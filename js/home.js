@@ -54,4 +54,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }
+
+
+
+
+
+
+  //hírek megjelenítése
+  const categoryIdToSection = {
+    1: '#magyarorszag',
+    2: '#altalanos',
+    3: '#sport',
+    4: '#politika'
+  };
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/news/getAllNews') // ez az endpoint, amit a backend ad vissza
+      .then(res => res.json())
+      .then(newsList => {
+        newsList.forEach(news => {
+          const sectionSelector = categoryIdToSection[news.cat_id];
+          const section = document.querySelector(sectionSelector);
+  
+          if (!section) {
+            console.error('Nem található a kategória szekció!', sectionSelector);
+            return;
+          }
+  
+          const hirGrid = section.querySelector('.hír-grid');
+  
+          const newCard = document.createElement('div');
+          newCard.classList.add('hír-kártya');
+  
+          const img = document.createElement('img');
+          img.src = `/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
+          img.alt = news.news_title;
+  
+          const title = document.createElement('p');
+          title.textContent = news.news_title;
+  
+          newCard.appendChild(img);
+          newCard.appendChild(title);
+  
+          hirGrid.appendChild(newCard);
+        });
+      })
+      .catch(err => console.error('Hiba a hírek lekérésekor:', err));
+  });
   

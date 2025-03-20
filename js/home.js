@@ -60,13 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  //hírek megjelenítése
   const categoryIdToSection = {
     1: '#magyarorszag',
     2: '#altalanos',
     3: '#sport',
     4: '#politika',
-    5: '#kiemelt'
+    5: '#kiemelt' // Kiemelt hírek hozzáadása
   };
   
   document.addEventListener('DOMContentLoaded', () => {
@@ -82,7 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
   
-          const hirGrid = section.querySelector('.hír-grid');
+          let hirGrid;
+          // Ha a kategória #kiemelt, akkor az 'kiemelt-szurke-grid' kell
+          if (news.cat_id === 5) {
+            hirGrid = section.querySelector('.kiemelt-szurke-grid');
+          } else {
+            hirGrid = section.querySelector('.hír-grid');
+          }
   
           const newCard = document.createElement('div');
           newCard.classList.add('hír-kártya');

@@ -60,94 +60,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// 🌐 Állítsd be az API és a képek elérési útját!
-const API_BASE_URL = 'https://dailywave.netlify.app/api'; // API endpointok alap URL-je
-const IMAGE_BASE_URL = 'https://dailywave.netlify.app/api/uploads'; // Kép URL alapja
-
-// 🔗 Kategória ID -> Szekció
-const categoryIdToSection = {
-  1: '#magyarorszag',
-  2: '#altalanos',
-  3: '#sport',
-  4: '#politika',
-  5: '#kiemelt'
-};
-
-// 🎨 Hírkártya generátor
-function createNewsCard(news) {
-  const card = document.createElement('div');
-  card.classList.add('hír-kártya');
-
-  // 📷 Kép elem
-  const img = document.createElement('img');
-  img.src = `${IMAGE_BASE_URL}/${news.index_pic}`;
-  img.alt = news.news_title || 'Hír képe';
-  
-  // 🔧 Hiba esetén alapértelmezett kép
-  img.onerror = () => {
-    console.warn(`Nem található a kép: ${img.src}`);
-    img.src = 'img/hirkephozzaadas.png'; // vagy bármilyen default placeholder képed
+  const categoryIdToSection = {
+    1: '#magyarorszag',
+    2: '#altalanos',
+    3: '#sport',
+    4: '#politika',
+    5: '#kiemelt' // Kiemelt hírek hozzáadása
   };
-
-  // 📝 Cím elem
-  const title = document.createElement('p');
-  title.textContent = news.news_title || 'Cím nélkül';
-
-  // ➕ Összeállítás
-  card.appendChild(img);
-  card.appendChild(title);
-
-  return card;
-}
-
-// 🚀 Hírek lekérése és megjelenítése
-async function fetchAndDisplayNews() {
-  try {
-    const response = await fetch(`${API_BASE_URL}/news/getAllNews`);
-
-    if (!response.ok) {
-      throw new Error(`Hiba a hírek lekérésekor: ${response.status} ${response.statusText}`);
-    }
-
-    const newsList = await response.json();
-
-    if (!Array.isArray(newsList)) {
-      throw new Error('Nem tömböt kaptunk vissza az API-tól!');
-    }
-
-    newsList.forEach(news => {
-      const sectionSelector = categoryIdToSection[news.cat_id];
-
-      if (!sectionSelector) {
-        console.warn(`Ismeretlen kategória ID (${news.cat_id})`);
-        return;
-      }
-
-      const section = document.querySelector(sectionSelector);
-
-      if (!section) {
-        console.warn(`Nem található szekció: ${sectionSelector}`);
-        return;
-      }
-
-      // Grid kiválasztása
-      const grid = section.querySelector('.kiemelt-szurke-grid') || section.querySelector('.hír-grid');
-
-      if (!grid) {
-        console.warn(`Nem található grid a szekcióban: ${sectionSelector}`);
-        return;
-      }
-
-      const newsCard = createNewsCard(news);
-      grid.appendChild(newsCard);
-    });
-
-  } catch (error) {
-    console.error('Hiba történt a hírek betöltése közben:', error.message);
-  }
-}
-
-// ✅ Indítás a DOM betöltése után
-document.addEventListener('DOMContentLoaded', fetchAndDisplayNews);
-
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/news/getAllNews') // ez az endpoint, amit a backend ad vissza
+      .then(res => res.json())
+      .then(newsList => {
+        newsList.forEach(news => {
+          const sectionSelector = categoryIdToSection[news.cat_id];
+          const section = document.querySelector(sectionSelector);
+  
+          if (!section) {
+            console.error('Nem található a kategória szekció!', sectionSelector);
+            return;
+          }
+  
+          let hirGrid;
+          // Ha a kategória #kiemelt, akkor az 'kiemelt-szurke-grid' kell
+          if (news.cat_id === 5) {
+            hirGrid = section.querySelector('.kiemelt-szurke-grid');
+          } else {
+            hirGrid = section.querySelector('.hír-grid');
+          }
+  
+          const newCard = document.createElement('div');
+          newCard.classList.add('hír-kártya');
+  
+          const img = document.createElement('img');
+          img.src = `https://nodejs.dszcbaross.edu.hu/server/7b76faf3/files#/dailywave_backend/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
+          img.alt = news.news_title;
+  
+          const title = document.createElement('p');
+          title.textContent = news.news_title;
+  
+          newCard.appendChild(img);
+          newCard.appendChild(title);
+  
+          hirGrid.appendChild(newCard);
+        });
+      })
+      .catch(err => console.error('Hiba a hírek lekérésekor:', err));
+  });
   

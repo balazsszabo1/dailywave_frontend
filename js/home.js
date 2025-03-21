@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
           newCard.classList.add('hír-kártya');
   
           const img = document.createElement('img');
-          img.src = `/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
+          img.src = `https://dailywave.netlify.app/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
           img.alt = news.news_title;
   
           const title = document.createElement('p');

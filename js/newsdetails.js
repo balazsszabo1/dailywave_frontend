@@ -1,34 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Lekérjük az URL paramétereket
+window.addEventListener('DOMContentLoaded', () => {
+    // Lekérjük az URL-ből a hír ID-ját
     const urlParams = new URLSearchParams(window.location.search);
-    const newsId = urlParams.get('id'); // A hír ID, amit az URL-ben kaptunk
-
-    // Ha nincs hír ID, hibaüzenet
+    const newsId = urlParams.get('id'); // Az URL-ből kivesszük az id paramétert (pl. ?id=1)
+  
+    // Ha nincs id paraméter, visszairányítjuk a felhasználót a főoldalra
     if (!newsId) {
-        alert("Hiba! Nincs megadva hír ID.");
-        return;
+      window.location.href = 'home.html'; // Ha nincs id, akkor a home.html oldalra irányítjuk
     }
-
+  
     // API hívás a hír részleteinek lekérésére
-    fetch(`/api/news/${newsId}`)
-        .then(response => response.json())
-        .then(data => {
-            // Ha hiba történik az API válaszában
-            if (data.error) {
-                alert(data.error);
-            } else {
-                // A hír adatainak megjelenítése
-                document.getElementById('hir-cim').innerText = data.news_title; // Hír cím
-                document.getElementById('hir-leiras').innerText = data.news; // Hír leírás
-                const imageElement = document.getElementById('hir-reszletek');
-                
-                // A kép URL-je, amit a backend visszaadott
-                imageElement.src = `https://nodejs.dszcbaross.edu.hu/uploads/${data.index_pic}`; 
-            }
-        })
-        .catch(error => {
-            console.error('Hiba történt a hír lekérésekor:', error);
-            alert('Hiba történt a hír lekérése közben.');
-        });
-});
+    fetch(`/api/news/${newsId}`)  // Kérés az API-ra a hír ID alapján
+      .then(response => response.json())
+      .then(data => {
+        // Ha hiba történt vagy nem található adat
+        if (data.error) {
+          alert('Hiba történt a hír betöltése közben.');
+        } else {
+          // Ha sikerült lekérni a hír adatait, megjelenítjük a megfelelő elemekben
+          document.getElementById('hir-cim').textContent = data.news_title;  // A hír címének beállítása
+          document.getElementById('hir-leiras').textContent = data.news;      // A hír leírásának beállítása
+          document.getElementById('hir-reszletek').src = `/uploads/${data.index_pic}`; // A hír képének beállítása
+        }
+      })
+      .catch(err => {
+        console.error('Hiba a hír betöltése közben:', err); // Hibaüzenet a konzolon
+        alert('Hiba történt a hír betöltése közben.');
+      });
+  });
+  
  

@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
           newCard.classList.add('hír-kártya');
   
           const img = document.createElement('img');
-          img.src = `https://nodejs.dszcbaross.edu.hu/server/7b76faf3/files#/dailywave_backend/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
+          img.src = `/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
           img.alt = news.news_title;
   
           const title = document.createElement('p');

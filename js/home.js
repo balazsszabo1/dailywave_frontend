@@ -99,6 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const title = document.createElement('p');
           title.textContent = news.news_title;
   
+          // Ha a hír kiemelt, piros színt adunk a címhez
+          if (news.cat_id === 5) {
+            title.style.color = 'red'; // Piros szín beállítása
+          }
+  
           newCard.appendChild(img);
           newCard.appendChild(title);
   

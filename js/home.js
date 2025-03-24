@@ -60,16 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  const categoryIdToSection = {
-    1: '#magyarorszag',
-    2: '#altalanos',
-    3: '#sport',
-    4: '#politika',
-    5: '#kiemelt' // Kiemelt hírek hozzáadása
-  };
-  
   document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/news/getAllNews') // ez az endpoint, amit a backend ad vissza
+    fetch('/api/news/getAllNews')
       .then(res => res.json())
       .then(newsList => {
         newsList.forEach(news => {
@@ -82,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
   
           let hirGrid;
-          // Ha a kategória #kiemelt, akkor az 'kiemelt-szurke-grid' kell
           if (news.cat_id === 5) {
             hirGrid = section.querySelector('.kiemelt-szurke-grid');
           } else {
@@ -99,10 +90,22 @@ document.addEventListener("DOMContentLoaded", () => {
           const title = document.createElement('p');
           title.textContent = news.news_title;
   
-          // Ha a hír kiemelt, piros színt adunk a címhez
           if (news.cat_id === 5) {
-            title.style.color = 'red'; // Piros szín beállítása
+            title.style.color = 'red';
           }
+  
+          // Hover event to change color
+          title.addEventListener('mouseenter', () => {
+            title.style.color = '#007bff'; // Kék színre változtatás
+          });
+  
+          title.addEventListener('mouseleave', () => {
+            if (news.cat_id === 5) {
+              title.style.color = 'red'; // Ha kiemelt hír, marad piros
+            } else {
+              title.style.color = ''; // Alapértelmezett szín
+            }
+          });
   
           newCard.appendChild(img);
           newCard.appendChild(title);

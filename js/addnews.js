@@ -1,40 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Kinyerjük a news_id-t az URL query paramétereiből
-  const urlParams = new URLSearchParams(window.location.search);
-  const newsId = urlParams.get('news_id');
-  
-  console.log('news_id az URL-ből:', newsId);  // Debug log
+let selectedCategory = null;
+const categoryElements = document.querySelectorAll('.kategoriavalaszto');
+const fileInput = document.getElementById('fileInput');
+const previewImage = document.getElementById('hirkephozzaadas'); // Ez az a kép, amit frissíteni fogunk
 
-  if (!newsId) {
-    console.error('Nem található news_id az URL-ben');
-    alert('Hiba: A hír azonosító nem található!');
+// Kategória választás eseménykezelő
+categoryElements.forEach(elem => {
+  elem.addEventListener('click', () => {
+    if (selectedCategory) {
+      selectedCategory.classList.remove('kivalasztva'); // Előző kijelölés törlése
+    }
+
+    elem.classList.add('kivalasztva'); // Új kategória kijelölése
+    selectedCategory = elem;
+    console.log('Kiválasztott kategória:', selectedCategory.getAttribute('data-kategoria'));
+  });
+});
+
+// 🔥 Kép kiválasztás eseménykezelő az előnézethez
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      previewImage.src = e.target.result; // Megjelenítjük az előnézeti képet
+      previewImage.style.objectFit = 'cover'; // biztos, ami biztos
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+document.getElementById('mentesGomb').addEventListener('click', () => {
+  const titleInput = document.getElementById('new-name');
+  const descriptionInput = document.getElementById('new-description');
+
+  const news_title = titleInput.value.trim();
+  const news = descriptionInput.value.trim();
+  const cat_id = selectedCategory ? selectedCategory.getAttribute('data-kategoria') : null;
+  const index_pic = fileInput.files[0];
+
+  if (!cat_id || !news_title || !news || !index_pic) {
+    alert('Minden mező kitöltése kötelező!');
     return;
   }
 
-  // Lekérjük az összes hírt
-  fetch(`/api/news/getAllNews`)
-    .then(res => res.json())
-    .then(newsList => {
-      console.log('Válasz hírek listája:', newsList);  // Debug log
+  const formData = new FormData();
+  formData.append('cat_id', cat_id);
+  formData.append('news_title', news_title);
+  formData.append('news', news);
+  formData.append('index_pic', index_pic);
 
-      // Kiválasztjuk a megfelelő hírt a news_id alapján
-      const news = newsList.find(newsItem => String(newsItem.id) === String(newsId));
+  fetch('/api/news/uploadNews', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      alert('Hiba: ' + data.error);
+    } else {
+      alert('Sikeres feltöltés!');
 
-      if (news) {
-        const newsTitle = document.querySelector('#hir-cim');
-        const newsDescription = document.querySelector('#hir-leiras');
-        const newsImage = document.querySelector('#hir-reszletek');
+      // Űrlap mezők ürítése
+      titleInput.value = '';
+      descriptionInput.value = '';
 
-        newsTitle.textContent = news.news_title;
-        newsDescription.textContent = news.news;
-        newsImage.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${news.index_pic}`;
-      } else {
-        console.error('Nem található hír az adott ID-hoz');
-        alert('Hiba: A keresett hír nem található.');
-      }
-    })
-    .catch(err => {
-      console.error('Hiba a hír részleteinek lekérésekor:', err);
-      alert('Hiba történt a hír lekérése közben.');
-    });
+      // Fájl input törlése és újraalkotása
+      const newFileInput = fileInput.cloneNode(true);
+      fileInput.replaceWith(newFileInput);
+
+      // Új event listener az új fileInputhoz!
+      newFileInput.addEventListener('change', () => {
+        const file = newFileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // A kép visszaállítása az alapértelmezett képre
+      previewImage.src = 'img/hirkephozzaadas.png';
+
+      // Kategóriát meghagyjuk!
+      console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
+    }
+  })
+  .catch(error => { 
+    console.error('Hiba a feltöltés során:', error);
+    alert('Hiba történt a feltöltés közben.');
+  });
 });

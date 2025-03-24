@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   
   document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/news/getAllNews') // ez az endpoint, amit a backend ad vissza
+    fetch('https://nodejs.dszcbaross.edu.hu/api/news/getAllNews') // 👉 teljes URL legyen, ne relatív!
       .then(res => res.json())
       .then(newsList => {
         newsList.forEach(news => {
@@ -89,12 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
             hirGrid = section.querySelector('.hír-grid');
           }
   
+          if (!hirGrid) {
+            console.error('Nem található a grid elem a szekción belül!', sectionSelector);
+            return;
+          }
+  
           const newCard = document.createElement('div');
           newCard.classList.add('hír-kártya');
   
           const img = document.createElement('img');
-          img.src = `https://nodejs.dszcbaross.edu.hu/uploads/${news.index_pic}`; // vagy a helyes kép elérési út
+          img.src = `https://nodejs.dszcbaross.edu.hu/uploads/${news.index_pic}`; // 👉 Ez az új multer path!
           img.alt = news.news_title;
+          img.loading = 'lazy'; // 👉 Optimalizáció, hogy ne mindent egyszerre töltsön!
   
           const title = document.createElement('p');
           title.textContent = news.news_title;

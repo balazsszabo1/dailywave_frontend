@@ -8,16 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Lekérjük a hír részleteit az adott news_id alapján
-  fetch(`/api/news/getNewsDetails?id=${newsId}`)
+  // Lekérjük az összes hírt
+  fetch('/api/news/getAllNews')
     .then(res => res.json())
-    .then(news => {
-      // Feltételezve, hogy a válasz tartalmazza a hír részleteit
-      const newsTitle = document.querySelector('#hir-cim');
-      const newsDescription = document.querySelector('#hir-leiras');
-      const newsImage = document.querySelector('#hir-reszletek');
+    .then(newsList => {
+      // Kiválasztjuk a megfelelő hírt a news_id alapján
+      const news = newsList.find(newsItem => newsItem.id == newsId);
 
       if (news) {
+        // Feltételezve, hogy a válasz tartalmazza a hír részleteit
+        const newsTitle = document.querySelector('#hir-cim');
+        const newsDescription = document.querySelector('#hir-leiras');
+        const newsImage = document.querySelector('#hir-reszletek');
+
         // Beállítjuk a hír címét, leírását és képeit
         newsTitle.textContent = news.news_title;  // A hír címe
         newsDescription.textContent = news.news;  // A hír szöveges leírása
@@ -26,5 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Nem található hír az adott ID-hoz');
       }
     })
-    .catch(err => console.error('Hiba a hír részleteinek lekérésekor:', err));
+    .catch(err => console.error('Hiba a hírek lekérésekor:', err));
 });

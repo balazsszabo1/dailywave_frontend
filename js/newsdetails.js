@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(newsList => {
       // Kiválasztjuk a megfelelő hírt a news_id alapján
-      const news = newsList.find(newsItem => newsItem.id == newsId);
+      const news = newsList.find(newsItem => newsItem.news_id == newsId);  // Itt a news_id-t használtuk
 
       if (news) {
         // Feltételezve, hogy a válasz tartalmazza a hír részleteit
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newsDescription.textContent = news.news;  // A hír szöveges leírása
         newsImage.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${news.index_pic}`; // Index kép
       } else {
-        console.error('Nem található hír az adott ID-hoz');
+        console.error('Nem található hír az adott news_id-hoz');
       }
     })
     .catch(err => console.error('Hiba a hírek lekérésekor:', err));

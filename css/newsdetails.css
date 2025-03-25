@@ -123,7 +123,7 @@
     margin: 50px auto 40px;
     transform: scale(1.2); /* 20%-kal nagyobb */
     width: 150%;  /* 1.5-szörös szélesség */
-    height: 150%; /* 1.5-szörös magasság */
+    height: 180%; /* 1.5-szörös magasság */
 }
 
 
@@ -189,7 +189,7 @@
     #hir-leiras {
         flex-direction: column; /* Függőleges elrendezés */
         max-width: 450px;
-        height: 500px; /* Magasság beállítása */
+        height: 350px; /* Magasság beállítása */
         margin-top: 10px;
     }
 }

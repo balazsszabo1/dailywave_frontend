@@ -1,41 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const newsId = urlParams.get('news_id'); // Lekérjük a news_id paramétert az URL-ből
-  
+    const newsId = urlParams.get('news_id'); // Retrieve the news_id from the URL
+    
     if (!newsId) {
-      alert('Nincs megadva hír azonosító!');
-      return;
+        alert('Nincs megadva hír azonosító!');
+        return;
     }
-  
-    fetch(`/api/news/getNewsById?news_id=${newsId}`) // Lekérjük a hír adatokat az ID alapján
-      .then(res => res.json())
-      .then(selectedNews => {
-        if (selectedNews.error) {
-          alert('Nem található ilyen hír!');
-          return;
-        }
-  
-        // Beállítjuk a hír részleteit a HTML elemeken
-        const newsImage = document.getElementById('hir-kep');
-        const newsTitle = document.getElementById('hir-cim');
-        const newsDescription = document.getElementById('hir-leiras');
-  
-        // 1. Hír képe
-        newsImage.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${selectedNews.index_pic}`;  // Hír képe
-  
-        // 2. Hír címe
-        newsTitle.textContent = selectedNews.news_title;  // Hír címe
-  
-        // 3. Hír leírása
-        newsDescription.textContent = selectedNews.news;  // Hír leírása
-  
-        // Ha a hír kiemelt, akkor piros színű lesz a cím
-        if (selectedNews.cat_id === 5) {
-          newsTitle.style.color = 'red';
-        }
-      })
-      .catch(err => {
-        console.error('Hiba a hír részleteinek betöltésekor:', err);
-        alert('Hiba történt a hír betöltése során.');
-      });
+
+    // Fetch the news details using the news_id
+    fetch(`/api/news/getNewsById?news_id=${newsId}`)
+        .then(res => res.json())
+        .then(news => {
+            if (news.error) {
+                alert('Nem található ilyen hír!');
+                return;
+            }
+
+            // Populate the page with the fetched news details
+            const newsTitle = document.getElementById('hir-cim');
+            const newsDescription = document.getElementById('hir-leiras');
+            const newsImage = document.getElementById('hir-kep');
+
+            newsTitle.textContent = news.news_title; // Set news title
+            newsDescription.textContent = news.news; // Set news description
+            newsImage.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${news.index_pic}`; // Set news image
+
+            if (news.cat_id === 5) {
+                newsTitle.style.color = 'red'; // If it's a highlighted news, change the title color
+            }
+        })
+        .catch(err => {
+            console.error('Hiba a hír betöltésekor:', err);
+            alert('Hiba történt a hír betöltése során.');
+        });
 });

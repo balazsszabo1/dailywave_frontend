@@ -7,13 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
-    fetch('/api/news/getAllNews') // Lekérjük az összes hírt
+    fetch(`/api/news/getNewsById?id=${newsId}`) // Lekérjük a hír adatokat az ID alapján
       .then(res => res.json())
-      .then(newsList => {
-        // Megkeressük az adott hírt a listában a news_id alapján
-        const selectedNews = newsList.find(news => news.id === parseInt(newsId));
-  
-        if (!selectedNews) {
+      .then(selectedNews => {
+        if (selectedNews.error) {
           alert('Nem található ilyen hír!');
           return;
         }
@@ -36,5 +33,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Hiba a hír részleteinek betöltésekor:', err);
         alert('Hiba történt a hír betöltése során.');
       });
-  });
-  
+});

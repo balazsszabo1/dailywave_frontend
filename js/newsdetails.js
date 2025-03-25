@@ -16,13 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
   
         // Beállítjuk a hír részleteit a HTML elemeken
+        const newsImage = document.getElementById('hir-kep');
         const newsTitle = document.getElementById('hir-cim');
         const newsDescription = document.getElementById('hir-leiras');
-        const newsImage = document.getElementById('hir-kep');
   
-        newsTitle.textContent = selectedNews.news_title;  // Hír címe
-        newsDescription.textContent = selectedNews.news;  // Hír leírása
+        // 1. Hír képe
         newsImage.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${selectedNews.index_pic}`;  // Hír képe
+  
+        // 2. Hír címe
+        newsTitle.textContent = selectedNews.news_title;  // Hír címe
+  
+        // 3. Hír leírása
+        newsDescription.textContent = selectedNews.news;  // Hír leírása
   
         // Ha a hír kiemelt, akkor piros színű lesz a cím
         if (selectedNews.cat_id === 5) {

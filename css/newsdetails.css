@@ -102,13 +102,21 @@
 }
 
 
-#hir-leiras {
-    width: 100%; /* Teljes szélesség */
-    max-width: 600px; /* Maximum szélesség */
-    height: 150px; /* Magasság */
-    font-size: 16px; /* Betűméret */
-    padding: 10px; /* Belső térköz */
-    border: 1px solid #ccc; /* Szegély */
-    border-radius: 5px; /* Lekerekített sarkok */
-    resize: vertical; /* Csak függőlegesen átméretezhető */
+#hir-reszletek {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#hir-cim {
+    text-align: center;
+}
+
+#hir-leiras {
+    text-align: center;
+    max-width: 600px;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

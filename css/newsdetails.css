@@ -189,7 +189,7 @@
     #hir-leiras {
         flex-direction: column; /* Függőleges elrendezés */
         max-width: 450px;
-        height: 270px; /* Magasság beállítása */
+        height: 350px; /* Magasság beállítása */
         margin-top: 10px;
     }
 }

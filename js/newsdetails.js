@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
-    fetch(`/api/news/getNewsById?id=${newsId}`) // Lekérjük a hír adatokat az ID alapján
+    fetch(`/api/news/getNewsById?news_id=${newsId}`) // Lekérjük a hír adatokat az ID alapján
       .then(res => res.json())
       .then(selectedNews => {
         if (selectedNews.error) {

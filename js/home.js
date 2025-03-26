@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add click event to navigate to newsdetails.html
         newCard.addEventListener('click', () => {
-          window.location.href = `newsdetails.html?news_id=${news_id}`;
+          window.location.href = `newsdetails.html?news_id=${news.id}`;
         });
 
         newCard.appendChild(img);

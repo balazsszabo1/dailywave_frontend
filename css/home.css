@@ -289,8 +289,9 @@ section h2 {
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Flexbox elrendezés beállítása */
+    justify-content: center; /* Horizontálisan középre igazítás */
+    align-items: center; /* Vertikálisan középre igazítás */
 }
 
 .fixed:hover {
@@ -303,18 +304,14 @@ section h2 {
 }
 
 .fixed img {
-    position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%); /* Ugyanúgy középre igazítjuk az ikont is */
     width: 60px;
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    justify-content: center;
-    align-items: center;
+    /* Az i és img elemekre nem szükséges a flex stílus, ha nincs flexbox */
 }
+
 
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */

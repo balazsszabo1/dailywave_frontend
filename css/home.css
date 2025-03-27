@@ -289,7 +289,6 @@ section h2 {
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -313,11 +312,9 @@ section h2 {
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */

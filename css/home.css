@@ -282,16 +282,15 @@ section h2 {
     position: fixed;
     right: 30px;
     top: 50%;
-    transform: translateY(-50%); /* Ezzel pontosan középre igazítjuk függőlegesen */
     background-color: rgba(49, 81, 143, 0.8) !important;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    display: flex; /* Flexbox elrendezés beállítása */
-    justify-content: center; /* Horizontálisan középre igazítás */
-    align-items: center; /* Vertikálisan középre igazítás */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fixed:hover {
@@ -304,15 +303,18 @@ section h2 {
 }
 
 .fixed img {
+    position: fixed;
+    right: 30px;
+    top: 50%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    /* Az i és img elemekre nem szükséges a flex stílus, ha nincs flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
 @media (max-width: 991px) {

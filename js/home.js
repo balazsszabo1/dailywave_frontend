@@ -133,16 +133,22 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       console.log(data); // Ellenőrizd, mit kapsz válaszként
       if (data.role === 1) {
-        document.getElementById("adminPanel").style.display = "block"; // Admin gomb megjelenítése
+        const adminPanel = document.getElementById("adminPanel");
+        adminPanel.style.display = "block"; // Admin gomb megjelenítése
+        console.log("Admin panel látható:", adminPanel.style.display);
       } else {
-        document.getElementById("adminPanel").style.display = "none"; // Átlag felhasználónál elrejtés
+        const adminPanel = document.getElementById("adminPanel");
+        adminPanel.style.display = "none"; // Átlag felhasználónál elrejtés
+        console.log("Admin panel elrejtve:", adminPanel.style.display);
       }
     })
     .catch(err => {
       console.warn("Hiba történt:", err);
-      document.getElementById("adminPanel").style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
+      const adminPanel = document.getElementById("adminPanel");
+      adminPanel.style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
     });
 });
+
 
 
 

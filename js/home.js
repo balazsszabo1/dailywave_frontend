@@ -123,7 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/api/admin/admin-only", {
       credentials: "include", // A cookie-k elküldéséhez szükséges
   })
-  .then(res => res.json())
+  .then(res => {
+      if (!res.ok) {
+          throw new Error('Nem jogosult hozzáférés');  // Ha nem admin vagy nem vagy bejelentkezve
+      }
+      return res.json();
+  })
   .then(data => {
       if (data.role === 1) { 
           document.getElementById("adminPanel").style.display = "block"; // Admin gomb megjelenítése
@@ -132,9 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   })
   .catch(err => {
-      console.warn("Hiba történt a felhasználói adatok lekérése közben:", err);
+      console.warn("Hiba történt:", err);
       document.getElementById("adminPanel").style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
   });
 });
+
 
 

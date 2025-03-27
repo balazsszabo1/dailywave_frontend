@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       credentials: "include", // A cookie-k elküldéséhez szükséges
   })
   .then(res => {
+    console.log(res); // Ellenőrizd, mit kapsz válaszként
       if (!res.ok) {
           throw new Error('Nem jogosult hozzáférés');  // Ha nem admin vagy nem vagy bejelentkezve
       }

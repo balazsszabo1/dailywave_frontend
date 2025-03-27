@@ -306,14 +306,12 @@ section h2 {
     position: fixed;
     right: 30px;
     top: 50%;
-    transform: translateY(-50%); /* Ugyanúgy középre igazítjuk az ikont is */
+    transform: translateY(-50%); /* Középre igazítjuk a képet függőlegesen */
     width: 60px;
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1000;
-    justify-content: center;
-    align-items: center;
 }
 
 

@@ -282,6 +282,7 @@ section h2 {
     position: fixed;
     right: 30px;
     top: 50%;
+    transform: translateY(-50%); /* Ezzel pontosan középre igazítjuk függőlegesen */
     background-color: rgba(49, 81, 143, 0.8) !important;
     width: 60px;
     height: 60px;
@@ -306,6 +307,7 @@ section h2 {
     position: fixed;
     right: 30px;
     top: 50%;
+    transform: translateY(-50%); /* Ugyanúgy középre igazítjuk az ikont is */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -315,6 +317,7 @@ section h2 {
     justify-content: center;
     align-items: center;
 }
+
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
 @media (max-width: 991px) {

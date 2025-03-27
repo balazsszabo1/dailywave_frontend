@@ -117,3 +117,24 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error('Hiba a hírek lekérésekor:', err));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Lekérjük a bejelentkezett felhasználó adatokat
+  fetch("/api/admin/admin-only", {
+      credentials: "include", // A cookie-k elküldéséhez szükséges
+  })
+  .then(res => res.json())
+  .then(data => {
+      if (data.role === 1) { 
+          document.getElementById("adminPanel").style.display = "block"; // Admin gomb megjelenítése
+      } else {
+          document.getElementById("adminPanel").style.display = "none"; // Átlag felhasználónál elrejtés
+      }
+  })
+  .catch(err => {
+      console.warn("Hiba történt a felhasználói adatok lekérése közben:", err);
+      document.getElementById("adminPanel").style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
+  });
+});
+
+

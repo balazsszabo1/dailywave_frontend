@@ -15,57 +15,57 @@ fetch('/api/user/check-admin')
 */
 
 async function logout() {
-    const res = await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include'
-    });
+  const res = await fetch('/api/auth/logout', {
+    method: 'POST',
+    credentials: 'include'
+  });
 
-    console.log(res);
-    if (res.ok) {
-        window.location.href = '../home.html';
-    } else {
-        alert(JSON.stringify(res));
-    }
+  console.log(res);
+  if (res.ok) {
+    window.location.href = '../home.html';
+  } else {
+    alert(JSON.stringify(res));
+  }
 }
 
 
 //Feliratkozás a hírlevélre
 document.addEventListener("DOMContentLoaded", () => {
-    const newsletterButton = document.querySelector(".newsLetter");
-  
-    if (newsletterButton) {
-      newsletterButton.addEventListener("click", feliratkozas);
-    }
-  });
-  
-  function feliratkozas() {
-    const email = prompt("Kérjük, adja meg az e-mail címét a feliratkozáshoz:");
-  
-    if (email && validateEmail(email)) {
-      alert("Köszönjük! Sikeresen feliratkozott a hírlevelünkre: " + email);
-      // Esetleg elmentheted localStorage-be is:
-      // localStorage.setItem('feliratkozott', email);
-    } else if (email !== null) {
-      alert("Helytelen e-mail cím! Próbálja újra.");
-    }
+  const newsletterButton = document.querySelector(".newsLetter");
+
+  if (newsletterButton) {
+    newsletterButton.addEventListener("click", feliratkozas);
   }
-  
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+});
+
+function feliratkozas() {
+  const email = prompt("Kérjük, adja meg az e-mail címét a feliratkozáshoz:");
+
+  if (email && validateEmail(email)) {
+    alert("Köszönjük! Sikeresen feliratkozott a hírlevelünkre: " + email);
+    // Esetleg elmentheted localStorage-be is:
+    // localStorage.setItem('feliratkozott', email);
+  } else if (email !== null) {
+    alert("Helytelen e-mail cím! Próbálja újra.");
   }
+}
+
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
 
 
 
 
 
 
-  const categoryIdToSection = {
-    1: '#magyarorszag',
-    2: '#altalanos',
-    3: '#sport',
-    4: '#politika',
-    5: '#kiemelt' // Kiemelt hírek hozzáadása
+const categoryIdToSection = {
+  1: '#magyarorszag',
+  2: '#altalanos',
+  3: '#sport',
+  4: '#politika',
+  5: '#kiemelt' // Kiemelt hírek hozzáadása
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,27 +121,29 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
   // Lekérjük a bejelentkezett felhasználó adatokat
   fetch("/api/admin/admin-only", {
-      credentials: "include", // A cookie-k elküldéséhez szükséges
+    credentials: "include", // A cookie-k elküldéséhez szükséges
   })
-  .then(res => {
-    console.log(res); // Ellenőrizd, mit kapsz válaszként
+    .then(res => {
+      console.log(res); // Válasz objektum, ellenőrizd a státuszt és a válasz szöveget
       if (!res.ok) {
-          throw new Error('Nem jogosult hozzáférés');  // Ha nem admin vagy nem vagy bejelentkezve
+        throw new Error('Nem jogosult hozzáférés');
       }
       return res.json();
-  })
-  .then(data => {
-      if (data.role === 1) { 
-          document.getElementById("adminPanel").style.display = "block"; // Admin gomb megjelenítése
+    })
+    .then(data => {
+      console.log(data); // Ellenőrizd, mit kapsz válaszként
+      if (data.role === 1) {
+        document.getElementById("adminPanel").style.display = "block"; // Admin gomb megjelenítése
       } else {
-          document.getElementById("adminPanel").style.display = "none"; // Átlag felhasználónál elrejtés
+        document.getElementById("adminPanel").style.display = "none"; // Átlag felhasználónál elrejtés
       }
-  })
-  .catch(err => {
+    })
+    .catch(err => {
       console.warn("Hiba történt:", err);
       document.getElementById("adminPanel").style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
-  });
+    });
 });
+
 
 
 

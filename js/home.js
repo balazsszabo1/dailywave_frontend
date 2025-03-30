@@ -211,7 +211,7 @@ newsletterForm.onsubmit = (event) => {
   const email = document.getElementById('email').value;
 
   // Post kérés küldése a backendre
-  fetch('http://localhost:3000/newsletter', {
+  fetch('https://nodejs315.dszcbaross.edu.hu/api/news/newsletter', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -153,33 +153,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// Keresési gomb eseménykezelője
-document.getElementById('searchButton').addEventListener('click', async function() {
-  // A keresési kifejezés megszerzése
+document.getElementById('searchButton').addEventListener('click', async function () {
   const query = document.getElementById('searchQuery').value.trim();
+  const resultsDiv = document.getElementById('searchResults');
 
-  // Ha nincs megadva keresési kifejezés
   if (!query) {
     alert('Kérlek, add meg a keresési kifejezést!');
     return;
   }
 
-  // A backend hívása a keresési kifejezéssel
+  resultsDiv.innerHTML = '<p>Keresés folyamatban...</p>'; // Ideiglenes üzenet
+
   try {
-    const response = await fetch(`/api/news/search?query=${query}`);
-    
+    const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`);
+
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Hiba történt a keresés során');
+      throw new Error('Hiba történt a keresés során');
     }
 
     const data = await response.json();
-    
-    // Eredmények megjelenítése
-    const resultsDiv = document.getElementById('searchResults');
+
     resultsDiv.innerHTML = ''; // Előző eredmények törlése
 
-    if (data.results.length > 0) {
+    if (data.results && data.results.length > 0) {
       const ul = document.createElement('ul');
       data.results.forEach(result => {
         const li = document.createElement('li');
@@ -190,18 +186,8 @@ document.getElementById('searchButton').addEventListener('click', async function
     } else {
       resultsDiv.innerHTML = '<p>Nincs találat.</p>';
     }
-
   } catch (error) {
     console.error('Hiba a keresés során:', error);
-    alert('Hiba történt a keresés során: ' + error.message);
+    resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
   }
 });
-
-
-
-
-
-
-
-
-

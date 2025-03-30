@@ -28,38 +28,6 @@ async function logout() {
   }
 }
 
-
-//Feliratkozás a hírlevélre
-document.addEventListener("DOMContentLoaded", () => {
-  const newsletterButton = document.querySelector(".newsLetter");
-
-  if (newsletterButton) {
-    newsletterButton.addEventListener("click", feliratkozas);
-  }
-});
-
-function feliratkozas() {
-  const email = prompt("Kérjük, adja meg az e-mail címét a feliratkozáshoz:");
-
-  if (email && validateEmail(email)) {
-    alert("Köszönjük! Sikeresen feliratkozott a hírlevelünkre: " + email);
-    // Esetleg elmentheted localStorage-be is:
-    // localStorage.setItem('feliratkozott', email);
-  } else if (email !== null) {
-    alert("Helytelen e-mail cím! Próbálja újra.");
-  }
-}
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-
-
-
-
-
 const categoryIdToSection = {
   1: '#magyarorszag',
   2: '#altalanos',
@@ -202,6 +170,66 @@ document.getElementById('searchButton').addEventListener('click', async function
     resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
   }
 });
+
+
+
+
+
+
+// A gomb, ami megnyitja a modális ablakot
+const newsLetterButton = document.querySelector('.newsLetter');
+
+// A modális ablak és a bezáró gomb
+const modal = document.getElementById('newsletterModal');
+const closeButton = document.querySelector('.close');
+
+// A form és a beküldés kezelése
+const newsletterForm = document.getElementById('newsletterForm');
+
+// Amikor a felhasználó rákattint a gombra, a modális ablak megjelenik
+newsLetterButton.onclick = () => {
+  modal.style.display = 'block';
+};
+
+// Amikor a felhasználó rákattint a bezárás gombra, a modális ablak eltűnik
+closeButton.onclick = () => {
+  modal.style.display = 'none';
+};
+
+// Ha a felhasználó kívül kattint a modális ablakon, az is bezáródik
+window.onclick = (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// Form beküldése
+newsletterForm.onsubmit = (event) => {
+  event.preventDefault(); // Megakadályozza a form alapértelmezett elküldését
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+
+  // Post kérés küldése a backendre
+  fetch('http://localhost:3000/newsletter', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert(data.message); // Kiírjuk a választ
+      modal.style.display = 'none'; // Bezárjuk a modális ablakot
+    })
+    .catch(error => {
+      console.error('Hiba történt:', error);
+      alert('Hiba történt a feliratkozás során.');
+    });
+};
+
+
 
 
 

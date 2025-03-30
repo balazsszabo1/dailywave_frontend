@@ -152,34 +152,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 document.getElementById('searchButton').addEventListener('click', async function () {
   const query = document.getElementById('searchQuery').value.trim();
   const resultsDiv = document.getElementById('searchResults');
 
+  // Ha nincs keresési kifejezés, figyelmeztetjük a felhasználót
   if (!query) {
     alert('Kérlek, add meg a keresési kifejezést!');
     return;
   }
 
-  resultsDiv.innerHTML = '<p>Keresés folyamatban...</p>'; // Ideiglenes üzenet
+  // Ideiglenes üzenet, amíg várunk a keresési eredményekre
+  resultsDiv.innerHTML = '<p>Keresés folyamatban...</p>';
 
   try {
+    // Keresési kifejezés küldése a backend API-hoz
     const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`);
 
     if (!response.ok) {
       throw new Error('Hiba történt a keresés során');
     }
 
+    // A válasz adatainak kinyerése
     const data = await response.json();
 
-    resultsDiv.innerHTML = ''; // Előző eredmények törlése
+    resultsDiv.innerHTML = ''; // Előző keresési eredmények törlése
 
     if (data.results && data.results.length > 0) {
+      // A keresési eredmények listájának megjelenítése
       const ul = document.createElement('ul');
       data.results.forEach(result => {
         const li = document.createElement('li');
-        li.textContent = result.news_title; // Csak a hír címét jelenítjük meg
+
+        // Link hozzáadása, amely a hír részletes oldalára navigál
+        const link = document.createElement('a');
+        link.href = `newsdetails.html?news_id=${result.news_id}`; // A hír ID-t paraméterként átadjuk
+        link.textContent = result.news_title; // A hír címét jelenítjük meg
+
+        li.appendChild(link);
         ul.appendChild(li);
       });
       resultsDiv.appendChild(ul);
@@ -191,4 +201,5 @@ document.getElementById('searchButton').addEventListener('click', async function
     resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
   }
 });
+
 

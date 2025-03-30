@@ -615,14 +615,14 @@ section h2 {
   
   #submitButton {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: rgba(49, 81, 143, 0.8);
     color: white;
     border: none;
     cursor: pointer;
   }
   
   #submitButton:hover {
-    background-color: #45a049;
+    background-color: rgba(49, 81, 143, 0.8);
   }
   
 

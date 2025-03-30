@@ -36,11 +36,13 @@
           </li>
           <a href="forum.html"><img src="img/fórumgomb.png" alt=""></a>
         </ul>
-        <div class="search-container">
-          <input type="text" id="search" placeholder="Keresés">
-          <button>Keresés</button>
-      </div>
-      <div id="results"></div>
+        <form class="d-flex align-items-center" role="Keresés" style="display: flex; align-items: center;">
+          <i class="bi bi-search me-2" style="display: inline-flex; align-items: center;">
+            <img src="img/keresés.png" alt="KeresésIkon" style="width: 25px; height: 25px;">
+          </i>
+          <input class="form-control me-2" type="text" placeholder="Keresés" aria-label="Keresés" id="searchQuery" style="display: inline-flex; align-items: center;">
+          <button class="btn btn-primary" id="searchButton">Keresés</button>
+          <div id="searchResults"></div>
           <i class="bi bi-person-circle ms-2"
             style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">
             <img src="img/facebook.png" alt="" style="width: 40px; height: 40px;">

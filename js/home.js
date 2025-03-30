@@ -152,38 +152,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// Keresés
-const button = document.querySelectorAll('button')[0];
-const results = document.getElementById('results');
 
-button.addEventListener('click', searchNews);
+// Keresési gomb eseménykezelője
+document.getElementById('searchButton').addEventListener('click', async function() {
+  // A keresési kifejezés megszerzése
+  const query = document.getElementById('searchQuery').value.trim();
 
-async function searchNews() {
-    const search = document.getElementById('search').value; // Keresési kifejezés
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = ''; // Ürítjük a keresési eredményeket
+  // Ha nincs megadva keresési kifejezés
+  if (!query) {
+    alert('Kérlek, add meg a keresési kifejezést!');
+    return;
+  }
 
-    const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/getSearch/${search}`); 
-
-    const news = await response.json(); // A válasz hírek lesznek
-
-    if (news.length === 0) {
-        const noNewsMessage = document.createElement('p');
-        noNewsMessage.textContent = 'Nincs találat a keresett szövegre.';
-        resultsDiv.appendChild(noNewsMessage);
-    } else {
-        news.forEach(newsItem => {
-            const newsDiv = document.createElement('div');
-            newsDiv.classList.add('news'); // Hozzáadjuk a 'news' osztályt
-
-            const newsTitle = document.createElement('h2');
-            newsTitle.textContent = newsItem.news_title; // A hírek címét jelenítjük meg
-            newsDiv.appendChild(newsTitle);
-
-            resultsDiv.appendChild(newsDiv); // Hozzáadjuk az eredményhez
-        });
+  // A backend hívása a keresési kifejezéssel
+  try {
+    const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${query}`);
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Hiba történt a keresés során');
     }
-}
+
+    const data = await response.json();
+    
+    // Eredmények megjelenítése
+    const resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = ''; // Előző eredmények törlése
+
+    if (data.results.length > 0) {
+      const ul = document.createElement('ul');
+      data.results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.news_title;
+        ul.appendChild(li);
+      });
+      resultsDiv.appendChild(ul);
+    } else {
+      resultsDiv.innerHTML = '<p>Nincs találat.</p>';
+    }
+
+  } catch (error) {
+    console.error('Hiba a keresés során:', error);
+    alert('Hiba történt a keresés során: ' + error.message);
+  }
+});
 
 
 

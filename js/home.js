@@ -166,7 +166,7 @@ document.getElementById('searchButton').addEventListener('click', async function
 
   // A backend hívása a keresési kifejezéssel
   try {
-    const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${query}`);
+    const response = await fetch(`/api/news/search?query=${query}`);
     
     if (!response.ok) {
       const errorData = await response.json();

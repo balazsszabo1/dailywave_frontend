@@ -168,13 +168,14 @@ document.getElementById('searchButton').addEventListener('click', async function
   try {
     // Keresési kifejezés küldése a backend API-hoz
     const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`);
-
+    
     if (!response.ok) {
       throw new Error('Hiba történt a keresés során');
     }
 
     // A válasz adatainak kinyerése
     const data = await response.json();
+    console.log(data);  // Ellenőrizzük a válasz adatait a konzolban
 
     resultsDiv.innerHTML = ''; // Előző keresési eredmények törlése
 
@@ -201,5 +202,7 @@ document.getElementById('searchButton').addEventListener('click', async function
     resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
   }
 });
+
+
 
 

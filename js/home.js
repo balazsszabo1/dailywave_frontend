@@ -179,7 +179,7 @@ document.getElementById('searchButton').addEventListener('click', async function
       const ul = document.createElement('ul');
       data.results.forEach(result => {
         const li = document.createElement('li');
-        li.textContent = result.news_title;
+        li.textContent = result.news_title; // Csak a hír címét jelenítjük meg
         ul.appendChild(li);
       });
       resultsDiv.appendChild(ul);
@@ -191,3 +191,4 @@ document.getElementById('searchButton').addEventListener('click', async function
     resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
   }
 });
+

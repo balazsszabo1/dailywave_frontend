@@ -181,7 +181,7 @@ const newsLetterButton = document.querySelector('.newsLetter');
 
 // A modális ablak és a bezáró gomb
 const modal = document.getElementById('newsletterModal');
-const closeButton = document.querySelector('.close');
+const closeButton = document.getElementById('closeModal');
 
 // A form és a beküldés kezelése
 const newsletterForm = document.getElementById('newsletterForm');
@@ -211,7 +211,7 @@ newsletterForm.onsubmit = (event) => {
   const email = document.getElementById('email').value;
 
   // Post kérés küldése a backendre
-  fetch('https://nodejs315.dszcbaross.edu.hu/api/news/newsletter', {
+  fetch('https://nodejs315.dszcbaross.edu.hu/api/news/newsLetter', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -228,9 +228,3 @@ newsletterForm.onsubmit = (event) => {
       alert('Hiba történt a feliratkozás során.');
     });
 };
-
-
-
-
-
-

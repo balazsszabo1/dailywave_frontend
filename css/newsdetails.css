@@ -124,6 +124,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 
 /* Hír cím stílusa */
@@ -132,6 +133,7 @@
     font-weight: bold; /* Félig vastag betű */
     color: #31518f; /* Szín a címsornak */
     margin-bottom: 15px; /* Alsó margó */
+    text-align: center;
 }
 
 /* Hír leírás stílusa */
@@ -142,6 +144,7 @@
     text-align: justify; /* Szöveg igazítása */
     margin-bottom: 30px; /* Alsó margó */
     padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
+    text-align: center;
 }
 
 /* Elválasztó vonal a hírkép és cím között */

@@ -145,8 +145,8 @@
     margin-bottom: 30px; /* Alsó margó */
     padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
     text-align: center;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 /* Elválasztó vonal a hírkép és cím között */

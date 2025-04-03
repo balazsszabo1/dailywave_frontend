@@ -1,35 +1,37 @@
 function previewImage(event) {
     const file = event.target.files[0];
-    const preview = document.getElementById("preview");
-
     if (file) {
         const reader = new FileReader();
         reader.onload = function () {
+            const preview = document.getElementById("preview");
             preview.src = reader.result;
-            applyImageStyles(preview);
+
+            // Várjuk meg, amíg a kép betöltődik
+            preview.onload = function() {
+                const container = document.getElementById("preview-container");
+
+                // Kép és tároló arányainak kiszámítása
+                const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
+                const containerAspectRatio = container.offsetWidth / container.offsetHeight;
+
+                // Kép beállítása fix 356px x 190px méretre
+                preview.style.width = "356px";  // Fix szélesség
+                preview.style.height = "190px"; // Fix magasság
+                preview.style.objectFit = "cover"; // Arányos kitöltés
+
+                // Ha a kép szélesebb, mint a tároló, akkor alkalmazzuk a megfelelő beállítást
+                if (imgAspectRatio > containerAspectRatio) {
+                    preview.style.width = "356px";
+                    preview.style.height = "190px";
+                } else {
+                    preview.style.width = "356px";
+                    preview.style.height = "190%";
+                }
+            };
         };
         reader.readAsDataURL(file);
-    } else {
-        resetPreview();
     }
 }
-
-// Alapértelmezett kép beállítása
-function resetPreview() {
-    const preview = document.getElementById("preview");
-    preview.src = "https://nodejs315.dszcbaross.edu.hu/uploads/default.png";
-    applyImageStyles(preview);
-}
-
-// Stílusok alkalmazása
-function applyImageStyles(image) {
-    image.style.width = "356px";
-    image.style.height = "190px";
-    image.style.objectFit = "cover";
-}
-
-
-
 
 
 // Frontend: Profilkép mentése

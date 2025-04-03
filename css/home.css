@@ -554,12 +554,12 @@ section h2 {
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
     }
 
-    /* Képek szélessége és magassága */
+    /* Képek fix szélesség és magasság */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: 200px; /* Fix magasság a képekhez */
-        object-fit: cover; /* A képek arányosan kitöltik a területet */
+        width: 300px; /* Fix szélesség */
+        height: 200px; /* Fix magasság */
+        object-fit: cover; /* A képek kitöltik a teret, de nem torzulnak */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -588,11 +588,12 @@ section h2 {
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
     }
 
+    /* Képek fix szélesség és magasság mobil nézetben */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: 150px; /* Mobilon kisebb magasság */
-        object-fit: cover; /* A képek arányosan kitöltik a területet */
+        width: 250px; /* Fix szélesség mobilon */
+        height: 150px; /* Fix magasság mobilon */
+        object-fit: cover; /* A képek kitöltik a teret, de nem torzulnak */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -604,5 +605,6 @@ section h2 {
         margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
     }
 }
+
 
 

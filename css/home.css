@@ -485,56 +485,59 @@ section h2 {
     overflow: auto;
     background-color: rgb(0, 0, 0); /* Fekete háttér */
     background-color: rgba(0, 0, 0, 0.4); /* Átlátszó háttér */
-  }
+}
   
-  /* A modális ablak tartalmának stílusa */
-  #newsletterModalContent {
+/* A modális ablak tartalmának stílusa */
+#newsletterModalContent {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
-  }
+}
   
-  /* Bezárás gomb stílusa */
-  #closeModal {
+/* Bezárás gomb stílusa */
+#closeModal {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+}
   
-  #closeModal:hover,
-  #closeModal:focus {
+#closeModal:hover,
+#closeModal:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
   
-  /* Formázás az űrlaphoz */
-  #newsletterForm {
+/* Formázás az űrlaphoz */
+#newsletterForm {
     display: flex;
     flex-direction: column;
-  }
+}
   
-  #newsletterForm input {
+#newsletterForm input {
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #ccc;
-  }
+    border-radius: 4px; /* Szögletesebb szegély */
+}
   
-  #submitButton {
+#submitButton {
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
     color: white;
     border: none;
     cursor: pointer;
-  }
+    border-radius: 4px; /* Szögletesebb gomb */
+}
   
-  #submitButton:hover {
+#submitButton:hover {
     background-color: rgba(49, 81, 143, 0.8);
-  }
+}
+
   
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */

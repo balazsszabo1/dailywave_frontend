@@ -507,45 +507,7 @@ section h2 {
     }
 }
 
-/* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
-@media (max-width: 991px) {
-    .kiemelt-szurke-grid,
-    .hír-grid {
-        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
-    }
 
-    /* Kiemelt szürke szakasz és hír szakaszok szélessége */
-    .kiemelt-szurke-section,
-    .sport-section,
-    .politika-section,
-    .magyarorszag-section,
-    .altalanos-section {
-        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
-        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
-    }
-
-    /* Képek szélessége */
-    .kiemelt-szurke-grid img,
-    .hír-grid img {
-        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: auto; /* A képek arányosak maradnak */
-    }
-
-    /* Különböző szakaszok közötti távolság hozzáadása */
-    .sport-section,
-    .politika-section,
-    .magyarorszag-section,
-    .altalanos-section {
-        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
-    }
-}
-
-@media (max-width: 768px) {
-    .kiemelt-szurke-grid,
-    .hír-grid {
-        grid-template-columns: repeat(1, 1fr); /* Egy oszlop */
-    }
-}
 
 /* A modális ablak rejtett alapértelmezetten */
 #newsletterModal {

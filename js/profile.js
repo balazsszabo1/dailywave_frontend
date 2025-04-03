@@ -52,7 +52,6 @@ async function getProfileName() {
 
 
 
-// Profilkép lekérése
 async function getProfilPic() {
     try {
         const res = await fetch('/api/profile/getProfilePic', {
@@ -60,31 +59,38 @@ async function getProfilPic() {
             credentials: 'include',
         });
 
+        const profilePic = document.getElementById('profilePic');
+        let imageUrl = '';
+
         if (res.ok) {
             const data = await res.json();
             console.log('Profilkép adatok:', data);
 
             if (data.profilePicUrl) {
-                let imageUrl = data.profilePicUrl.trim();
+                imageUrl = data.profilePicUrl.trim();
 
                 if (imageUrl.startsWith('/uploads/')) {
                     imageUrl = imageUrl.replace('/uploads/', '');
                 }
 
                 imageUrl = `https://nodejs315.dszcbaross.edu.hu/uploads/${imageUrl}`;
-
-                const profilePic = document.getElementById('profilePic');
-                profilePic.src = `${imageUrl}?t=${new Date().getTime()}`;
-
-                console.log('Végleges kép URL:', profilePic.src);
             }
-        } else {
-            console.error('Nem sikerült lekérni a profilképet.');
+        } 
+        
+        // Ha nincs egyéni profilkép, akkor az alapértelmezett képet töltjük be
+        if (!imageUrl) {
+            imageUrl = 'https://nodejs315.dszcbaross.edu.hu/uploads/default.png';
         }
+
+        // Frissítjük az img src attribútumát
+        profilePic.src = `${imageUrl}?t=${new Date().getTime()}`;
+
+        console.log('Végleges kép URL:', profilePic.src);
     } catch (error) {
         console.error('Hálózati hiba:', error);
     }
 }
+
 
 async function logout() {
     const res = await fetch('/api/auth/logout', {

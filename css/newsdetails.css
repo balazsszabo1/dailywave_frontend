@@ -148,6 +148,22 @@
     text-align: center;
     padding-left: 300px;
     padding-right: 300px;
+    position: relative; /* Pozicionálás biztosítása */
+    z-index: 1; /* Biztosítja, hogy a szöveg a box fölött jelenjen meg */
+}
+
+/* Box a leírás körül */
+#hir-leiras-box {
+    position: absolute; /* Pozicionálás */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1; /* Világos szürke háttér */
+    padding: 20px; /* Párnázás a boxban */
+    border-radius: 10px; /* Lekerekített sarkok */
+    z-index: -1; /* Box a szöveg mögött legyen */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Finom árnyék */
 }
 
 /* Elválasztó vonal a hírkép és cím között */

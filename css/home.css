@@ -557,8 +557,8 @@ section h2 {
     /* Képek fix szélesség és magasság */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 300px; /* Fix szélesség */
-        height: 200px; /* Fix magasság */
+        width: 250px; /* Fix szélesség */
+        height: 170px; /* Fix magasság */
         object-fit: cover; /* A képek kitöltik a teret, de nem torzulnak */
     }
 

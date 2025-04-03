@@ -120,6 +120,7 @@
     height: 394px; /* A kép magassága fixen 394px */
     object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet torzítás nélkül */
     border-radius: 5px; /* Lekerekített sarkok */
+    margin-top: 15px; /* Felső margó 15px */
     margin-bottom: 20px; /* Kép alatti távolság */
 }
 
@@ -140,6 +141,7 @@
     margin-bottom: 30px; /* Alsó margó */
     padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
 }
+
 
 /* Reszponzív dizájn (mobilra optimalizálva) */
 @media (max-width: 768px) {

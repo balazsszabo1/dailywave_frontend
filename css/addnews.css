@@ -284,16 +284,19 @@
 
     /* Kategóriák összehúzása */
     .kategoriak {
-        flex-wrap: wrap; /* Engedjük, hogy a kategóriák sorokra törjenek */
+        flex-wrap: nowrap; /* Ne törjen sorra, maradjanak egy sorban */
         gap: 5px; /* Kisebb távolság a kategóriák között */
-        justify-content: center; /* Középre igazítjuk */
+        justify-content: flex-start; /* Balra igazítjuk */
+        overflow-x: auto; /* Ha túl sok kategória van, legyen görgethető */
     }
 
     .kategoriavalaszto {
-        padding: 4px 10px; /* Kevesebb padding a kisebb képernyőkhöz */
+        padding: 4px 8px; /* Még kevesebb padding */
         font-size: 14px; /* Kisebb betűméret */
+        white-space: nowrap; /* Megakadályozza, hogy a szöveg töredezzen */
     }
 }
+
 
 
 /*Mentés gomb*/

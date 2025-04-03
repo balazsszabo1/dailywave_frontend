@@ -1,37 +1,40 @@
 function previewImage(event) {
     const file = event.target.files[0];
+    const preview = document.getElementById("preview");
+    const container = document.getElementById("preview-container");
+
     if (file) {
         const reader = new FileReader();
         reader.onload = function () {
-            const preview = document.getElementById("preview");
             preview.src = reader.result;
 
-            // Várjuk meg, amíg a kép betöltődik
-            preview.onload = function() {
-                const container = document.getElementById("preview-container");
-
-                // Kép és tároló arányainak kiszámítása
+            preview.onload = function () {
                 const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
                 const containerAspectRatio = container.offsetWidth / container.offsetHeight;
 
-                // Kép beállítása fix 356px x 190px méretre
-                preview.style.width = "356px";  // Fix szélesség
-                preview.style.height = "190px"; // Fix magasság
-                preview.style.objectFit = "cover"; // Arányos kitöltés
+                preview.style.width = "356px";
+                preview.style.height = "190px";
+                preview.style.objectFit = "cover";
 
-                // Ha a kép szélesebb, mint a tároló, akkor alkalmazzuk a megfelelő beállítást
                 if (imgAspectRatio > containerAspectRatio) {
                     preview.style.width = "356px";
                     preview.style.height = "190px";
                 } else {
                     preview.style.width = "356px";
-                    preview.style.height = "190%";
+                    preview.style.height = "190px";
                 }
             };
         };
         reader.readAsDataURL(file);
+    } else {
+        // Ha nincs kiválasztva fájl, akkor alapértelmezett kép
+        preview.src = "https://nodejs315.dszcbaross.edu.hu/uploads/default.png";
+        preview.style.width = "356px";
+        preview.style.height = "190px";
+        preview.style.objectFit = "cover";
     }
 }
+
 
 
 // Frontend: Profilkép mentése

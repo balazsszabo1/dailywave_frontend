@@ -316,76 +316,6 @@ section h2 {
     align-items: center;
 }
 
-/* === Kisebb képernyőkre (max 991px) – 2 oszlop === */
-@media (max-width: 991px) {
-    .kiemelt-szurke-grid,
-    .hír-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .kiemelt-szurke-section,
-    .sport-section,
-    .politika-section,
-    .magyarorszag-section,
-    .altalanos-section {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .kiemelt-szurke-grid img,
-    .hír-grid img {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Kiemelt szürke szakasz alján is legyen margin-bottom */
-    .kiemelt-szurke-section {
-        margin-bottom: 32px;
-    }
-}
-
-/* === Még kisebb képernyőkre (max 768px) – 1 oszlop === */
-@media (max-width: 768px) {
-    .kiemelt-szurke-grid,
-    .hír-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .kiemelt-szurke-section,
-    .sport-section,
-    .politika-section,
-    .magyarorszag-section,
-    .altalanos-section {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .kiemelt-szurke-grid img,
-    .hír-grid img {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Kiemelt szürke szakasz alján is legyen margin-bottom */
-    .kiemelt-szurke-section {
-        margin-bottom: 32px;
-    }
-}
-
-/* === Extra távolságok a szakaszok között === */
-@media (max-width: 991px) {
-    .kiemelt-szurke-section {
-        margin-bottom: 32px;  /* Egyenlő távolság a többi szakaszhoz */
-    }
-
-    .magyarorszag-section {
-        margin-top: 32px;
-    }
-}
-
-
-
-
 
 /* Kapcsolat szakasz stílusa */
 .kapcsolat-section {
@@ -507,7 +437,45 @@ section h2 {
     }
 }
 
+/* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
+@media (max-width: 991px) {
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
+    }
 
+    /* Kiemelt szürke szakasz és hír szakaszok szélessége */
+    .kiemelt-szurke-section,
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
+        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+    }
+
+    /* Képek szélessége */
+    .kiemelt-szurke-grid img,
+    .hír-grid img {
+        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
+        height: auto; /* A képek arányosak maradnak */
+    }
+
+    /* Különböző szakaszok közötti távolság hozzáadása */
+    .sport-section,
+    .politika-section,
+    .magyarorszag-section,
+    .altalanos-section {
+        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
+    }
+}
+
+@media (max-width: 768px) {
+    .kiemelt-szurke-grid,
+    .hír-grid {
+        grid-template-columns: repeat(1, 1fr); /* Egy oszlop */
+    }
+}
 
 /* A modális ablak rejtett alapértelmezetten */
 #newsletterModal {

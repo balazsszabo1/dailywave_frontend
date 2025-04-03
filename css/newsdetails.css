@@ -132,8 +132,9 @@
     font-size: 2em; /* Kisebb nagyobb betűméret */
     font-weight: bold; /* Félig vastag betű */
     color: #31518f; /* Szín a címsornak */
-    margin-bottom: 15px; /* Alsó margó */
+    margin-bottom: 20px; /* Alsó margó */
     text-align: center;
+
 }
 
 /* Hír leírás stílusa */

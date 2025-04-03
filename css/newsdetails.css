@@ -101,27 +101,47 @@
     }
 }
 
-
+/* Hír kép stílusa */
 #hir-kep {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-    margin-bottom: 10px;
+    width: 700px;  /* A kép szélessége fixen 700px */
+    height: 394px; /* A kép magassága fixen 394px */
+    object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet torzítás nélkül */
+    border-radius: 5px; /* Lekerekített sarkok */
+    margin-bottom: 20px; /* Kép alatti távolság */
 }
 
+/* Hír cím stílusa */
 #hir-cim {
-    margin-top: 15px;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 2em; /* Kisebb nagyobb betűméret */
+    font-weight: bold; /* Félig vastag betű */
+    color: #31518f; /* Szín a címsornak */
+    margin-bottom: 15px; /* Alsó margó */
 }
 
+/* Hír leírás stílusa */
 #hir-leiras {
-    text-align: center;
-    max-width: 1000px;
-    max-height: 500px ;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.1em; /* Kicsit nagyobb szöveg */
+    line-height: 1.6; /* Jobb olvashatóság érdekében */
+    color: #555; /* Halvány szürke szín */
+    text-align: justify; /* Szöveg igazítása */
+    margin-bottom: 30px; /* Alsó margó */
+    padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
+}
+
+/* Reszponzív dizájn (mobilra optimalizálva) */
+@media (max-width: 768px) {
+    #hir-kep {
+        width: 100%;  /* Kép szélessége mobilon 100% */
+        height: auto; /* Automatikus magasság a képarány megtartásához */
+    }
+
+    #hir-cim {
+        font-size: 1.8em; /* A cím kisebb lesz mobilon */
+    }
+
+    #hir-leiras {
+        font-size: 1em; /* A leírás betűmérete csökken */
+        padding: 0 10px; /* Oldalsó padding csökkentése mobilon */
+    }
 }
 

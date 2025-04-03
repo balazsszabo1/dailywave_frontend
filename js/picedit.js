@@ -1,39 +1,36 @@
 function previewImage(event) {
     const file = event.target.files[0];
     const preview = document.getElementById("preview");
-    const container = document.getElementById("preview-container");
 
     if (file) {
         const reader = new FileReader();
         reader.onload = function () {
             preview.src = reader.result;
-
-            preview.onload = function () {
-                const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
-                const containerAspectRatio = container.offsetWidth / container.offsetHeight;
-
-                preview.style.width = "356px";
-                preview.style.height = "190px";
-                preview.style.objectFit = "cover";
-
-                if (imgAspectRatio > containerAspectRatio) {
-                    preview.style.width = "356px";
-                    preview.style.height = "190px";
-                } else {
-                    preview.style.width = "356px";
-                    preview.style.height = "190px";
-                }
-            };
+            applyImageStyles(preview);
         };
         reader.readAsDataURL(file);
     } else {
-        // Ha nincs kiválasztva fájl, akkor alapértelmezett kép
-        preview.src = "https://nodejs315.dszcbaross.edu.hu/uploads/default.png";
-        preview.style.width = "356px";
-        preview.style.height = "190px";
-        preview.style.objectFit = "cover";
+        resetPreview();
     }
 }
+
+// Alapértelmezett kép beállítása
+function resetPreview() {
+    const preview = document.getElementById("preview");
+    preview.src = "https://nodejs315.dszcbaross.edu.hu/uploads/default.png";
+    applyImageStyles(preview);
+}
+
+// Stílusok alkalmazása
+function applyImageStyles(image) {
+    image.style.width = "356px";
+    image.style.height = "190px";
+    image.style.objectFit = "cover";
+}
+
+// Ha az oldal betöltődik, legyen alapértelmezett kép
+document.addEventListener("DOMContentLoaded", resetPreview);
+
 
 
 

@@ -584,8 +584,9 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section {
-        width: 100%;  /* A szakaszok szélessége 100% */
+        width: 90%;  /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+        padding: 0 10px; /* A bal és jobb oldali padding csökkentése */
     }
 
     /* Képek fix szélesség és magasság mobil nézetben */
@@ -602,7 +603,7 @@ section h2 {
     .magyarorszag-section,
     .altalanos-section,
     .kiemelt-szurke-section {
-        margin-bottom: 10px;  /* Kis távolságot adunk a szakaszok alá */
+        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
     }
 }
 

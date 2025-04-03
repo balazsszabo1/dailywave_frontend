@@ -586,8 +586,8 @@ section h2 {
     .altalanos-section {
         width: 100%;  /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     /* Képek fix szélesség és magasság mobil nézetben */

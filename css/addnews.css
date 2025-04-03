@@ -177,22 +177,20 @@
 }
 
 .kategoriavalaszto {
-    padding: 8px 18px; /* Kicsit több hely a kategóriák szövegének */
-    border-radius: 12px; /* Finomabb lekerekítés */
-    background-color: rgba(49, 81, 143, 0.1); /* Könnyed háttérszín */
+    padding: 5px 15px;
+    border-radius: 8px;
+    background-color: rgba(49, 81, 143, 0.2);
     color: #31518f;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
     user-select: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
 }
 
 .kategoriavalaszto:hover {
-    background-color: rgba(49, 81, 143, 0.3); /* Finom változtatás a hover színnél */
+    background-color: rgba(49, 81, 143, 0.5);
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Erősebb árnyék a hover állapotban */
 }
 
 .kategoriavalaszto.aktiv {
@@ -200,9 +198,7 @@
     color: white;
     font-weight: bold;
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Erősebb árnyék az aktív kategórián */
 }
-
 
 /* Reszponzív dizájn */
 @media (max-width: 768px) {

@@ -584,9 +584,9 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section {
-        width: 95%;  /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
+        width: 97%;  /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
-        padding: 0 10px; /* A bal és jobb oldali padding csökkentése */
+        padding: 0 5px; /* A bal és jobb oldali padding csökkentése */
     }
 
     /* Képek fix szélesség és magasság mobil nézetben */

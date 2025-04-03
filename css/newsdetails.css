@@ -116,8 +116,8 @@
 
 /* Hír kép stílusa */
 #hir-kep {
-    width: 700px;  /* Kép szélessége fixen 700px */
-    height: 394px; /* Kép magassága fixen 394px */
+    width: 600px;  /* Kép szélessége fixen 700px */
+    height: 300px; /* Kép magassága fixen 394px */
     object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet torzítás nélkül */
     border-radius: 5px; /* Lekerekített sarkok */
     margin-bottom: 20px; /* Kép alatti távolság */
@@ -145,6 +145,8 @@
     margin-bottom: 30px; /* Alsó margó */
     padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* Elválasztó vonal a hírkép és cím között */

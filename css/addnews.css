@@ -281,7 +281,20 @@
         width: 350px !important; /* A textarea szélessége 100%-ra változik */
         height: 35vh; /* A magasság kicsit csökkentve */
     }
+
+    /* Kategóriák összehúzása */
+    .kategoriak {
+        flex-wrap: wrap; /* Engedjük, hogy a kategóriák sorokra törjenek */
+        gap: 5px; /* Kisebb távolság a kategóriák között */
+        justify-content: center; /* Középre igazítjuk */
+    }
+
+    .kategoriavalaszto {
+        padding: 4px 10px; /* Kevesebb padding a kisebb képernyőkhöz */
+        font-size: 14px; /* Kisebb betűméret */
+    }
 }
+
 
 /*Mentés gomb*/
 .mentes-gomb-container {

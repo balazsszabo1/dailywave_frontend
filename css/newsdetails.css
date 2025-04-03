@@ -121,6 +121,9 @@
     object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet torzítás nélkül */
     border-radius: 5px; /* Lekerekített sarkok */
     margin-bottom: 20px; /* Kép alatti távolság */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Hír cím stílusa */
@@ -168,4 +171,5 @@
         font-size: 1em; /* A leírás szövegének mérete is csökkenhet */
     }
 }
+
 

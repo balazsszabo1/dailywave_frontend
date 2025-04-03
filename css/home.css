@@ -568,7 +568,7 @@ section h2 {
   }
   
 
-  /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
+/* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
 @media (max-width: 1200px) {
     .kiemelt-szurke-grid,
     .hír-grid {
@@ -585,11 +585,12 @@ section h2 {
         margin: 0 auto; /* Középre igazítjuk a szakaszokat */
     }
 
-    /* Képek szélessége */
+    /* Képek szélessége és magassága */
     .kiemelt-szurke-grid img,
     .hír-grid img {
         width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: auto; /* A képek arányosak maradnak */
+        height: 200px; /* Fix magasság a képekhez */
+        object-fit: cover; /* A képek arányosan kitöltik a területet */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -621,7 +622,8 @@ section h2 {
     .kiemelt-szurke-grid img,
     .hír-grid img {
         width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: auto; /* A képek arányosak maradnak */
+        height: 150px; /* Mobilon kisebb magasság */
+        object-fit: cover; /* A képek arányosan kitöltik a területet */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -633,6 +635,5 @@ section h2 {
         margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
     }
 }
-
 
 

@@ -28,8 +28,6 @@ function applyImageStyles(image) {
     image.style.objectFit = "cover";
 }
 
-// Ha az oldal betöltődik, legyen alapértelmezett kép
-document.addEventListener("DOMContentLoaded", resetPreview);
 
 
 

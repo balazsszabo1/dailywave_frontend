@@ -337,6 +337,11 @@ section h2 {
         width: 100%;
         height: auto;
     }
+
+    /* Kiemelt szürke szakasz alján is legyen margin-bottom */
+    .kiemelt-szurke-section {
+        margin-bottom: 32px;
+    }
 }
 
 /* === Még kisebb képernyőkre (max 768px) – 1 oszlop === */
@@ -360,18 +365,24 @@ section h2 {
         width: 100%;
         height: auto;
     }
+
+    /* Kiemelt szürke szakasz alján is legyen margin-bottom */
+    .kiemelt-szurke-section {
+        margin-bottom: 32px;
+    }
 }
 
 /* === Extra távolságok a szakaszok között === */
 @media (max-width: 991px) {
     .kiemelt-szurke-section {
-        margin-bottom: 32px;
+        margin-bottom: 32px;  /* Egyenlő távolság a többi szakaszhoz */
     }
-    
+
     .magyarorszag-section {
         margin-top: 32px;
     }
 }
+
 
 
 

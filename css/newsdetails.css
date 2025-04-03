@@ -101,6 +101,19 @@
     }
 }
 
+/* Központozott konténer */
+#hir-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Középre igazítás vízszintesen */
+    justify-content: center; /* Középre igazítás függőlegesen */
+    text-align: center; /* A szövegek is középre igazítva */
+    padding: 20px;
+    width: 100%;
+    max-width: 800px; /* Maximális szélesség */
+    margin: auto; /* Középre igazítás */
+}
+
 /* Hír kép stílusa */
 #hir-kep {
     width: 700px;  /* A kép szélessége fixen 700px */
@@ -144,4 +157,5 @@
         padding: 0 10px; /* Oldalsó padding csökkentése mobilon */
     }
 }
+
 

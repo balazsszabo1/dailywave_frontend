@@ -205,7 +205,7 @@
 /* ======= 576px ======= */
 @media (max-width: 576px) {
     #hir-kep {
-        width: 100%;
+        width: 90%;
         height: auto;
     }
 

@@ -101,81 +101,121 @@
     }
 }
 
-/* Központozott konténer */
 #hir-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Kép és szöveg középre igazítása */
+    align-items: center;
     justify-content: center;
     text-align: center;
     padding: 20px;
     width: 100%;
-    max-width: 800px; /* Maximális szélesség */
+    max-width: 800px;
     margin: auto;
 }
 
-/* Hír kép stílusa */
+/* Kép alapstílus */
 #hir-kep {
-    width: 600px;  /* Kép szélessége fixen 700px */
-    height: 300px; /* Kép magassága fixen 394px */
-    object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet torzítás nélkül */
-    border-radius: 10px; /* Lekerekített sarkok */
-    margin-bottom: 20px; /* Kép alatti távolság */
+    width: 600px;  
+    height: 300px; 
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
 }
 
-/* Hír cím stílusa */
+/* Cím */
 #hir-cim {
-    font-size: 2em; /* Kisebb nagyobb betűméret */
-    font-weight: bold; /* Félig vastag betű */
-    color: #31518f; /* Szín a címsornak */
-    margin-bottom: 20px; /* Alsó margó */
+    font-size: 2em;
+    font-weight: bold;
+    color: #31518f;
+    margin-bottom: 20px;
     text-align: center;
-
 }
 
-/* Hír leírás stílusa */
+/* Leírás */
 #hir-leiras {
-    font-size: 1.1em; /* Kicsit nagyobb szöveg */
-    line-height: 1.6; /* Jobb olvashatóság érdekében */
-    color: #555; /* Halvány szürke szín */
-    text-align: justify; /* Szöveg igazítása */
-    margin-bottom: 30px; /* Alsó margó */
-    padding: 0 15px; /* Oldalsó padding a kényelmesebb olvasáshoz */
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 30px;
+    padding: 0 15px;
     text-align: center;
     padding-left: 300px;
     padding-right: 300px;
 }
 
-/* Elválasztó vonal a hírkép és cím között */
-#hir-kep + #hir-cim {
-    border-top: 2px solid #ccc; /* Halvány szürke elválasztó vonal */
-    padding-top: 20px;
-    margin-top: 20px;
-}
-
-/* Kiemelt hír stílusa (piros szín) */
-#hir-cim.kiemelt {
-    color: red; /* A cím pirosra vált, ha kiemelt */
-}
-
-/* Reszponzív dizájn (mobilra optimalizálva) */
-@media (max-width: 768px) {
+/* ======= 1200px ======= */
+@media (max-width: 1200px) {
     #hir-kep {
-        width: 100%;  /* Kép szélessége mobilon 100% */
-        height: auto; /* Automatikus magasság a képarány megtartásához */
+        width: 550px;
+        height: auto;
     }
 
     #hir-cim {
-        font-size: 1.8em; /* A cím kisebb lesz mobilon */
+        font-size: 1.8em;
     }
 
     #hir-leiras {
-        font-size: 1em; /* A leírás szövegének mérete is csökkenhet */
+        font-size: 1em;
+        padding-left: 200px;
+        padding-right: 200px;
     }
 }
 
+/* ======= 991px ======= */
+@media (max-width: 991px) {
+    #hir-kep {
+        width: 500px;
+        height: auto;
+    }
 
+    #hir-cim {
+        font-size: 1.7em;
+    }
+
+    #hir-leiras {
+        font-size: 1em;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}
+
+/* ======= 768px ======= */
+@media (max-width: 768px) {
+    #hir-kep {
+        width: 450px;
+        height: auto;
+    }
+
+    #hir-cim {
+        font-size: 1.6em;
+    }
+
+    #hir-leiras {
+        font-size: 0.95em;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+/* ======= 576px ======= */
+@media (max-width: 576px) {
+    #hir-kep {
+        width: 100%;
+        height: auto;
+    }
+
+    #hir-cim {
+        font-size: 1.5em;
+    }
+
+    #hir-leiras {
+        font-size: 0.9em;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

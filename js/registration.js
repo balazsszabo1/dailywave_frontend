@@ -7,7 +7,6 @@ async function register() {
     const psw = document.getElementById('psw').value.trim();
     const psw2 = document.getElementById('psw2').value.trim();
 
-    // Ellenőrzés: jelszavak egyezése
     if (psw !== psw2) {
         return alert('A két jelszó nem egyezik!');
     }
@@ -19,18 +18,16 @@ async function register() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email, name, password: psw }),
-            credentials: 'include', // Szükséges a sütik kezeléséhez
+            credentials: 'include',
         });
 
         const data = await res.json();
 
         if (res.ok) {
-            // Sikeres regisztráció
             resetInputs();
             alert(data.message || 'Sikeres regisztráció!');
             window.location.href = '../login.html';
         } else {
-            // Hibák kezelése
             handleErrors(data);
         }
     } catch (error) {

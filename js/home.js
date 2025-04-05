@@ -1,19 +1,3 @@
-/*
-fetch('/api/user/check-admin')
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Nem admin jogosultság.');
-    })
-    .then(data => {
-        if (data.isAdmin) {
-            document.getElementById('adminButton').style.display = 'block';
-        }
-    })
-    .catch(error => console.error('Hiba admin ellenőrzésekor:', error));
-*/
-
 async function logout() {
   const res = await fetch('/api/auth/logout', {
     method: 'POST',
@@ -33,11 +17,11 @@ const categoryIdToSection = {
   2: '#altalanos',
   3: '#sport',
   4: '#politika',
-  5: '#kiemelt' // Kiemelt hírek hozzáadása
+  5: '#kiemelt'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('/api/news/getAllNews') // ez az endpoint, amit a backend ad vissza
+  fetch('/api/news/getAllNews')
     .then(res => res.json())
     .then(newsList => {
       newsList.forEach(news => {
@@ -50,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let hirGrid;
-        // Ha a kategória #kiemelt, akkor az 'kiemelt-szurke-grid' kell
         if (news.cat_id === 5) {
           hirGrid = section.querySelector('.kiemelt-szurke-grid');
         } else {
@@ -67,12 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = document.createElement('p');
         title.textContent = news.news_title;
 
-        // Ha a hír kiemelt, piros színt adunk a címhez
         if (news.cat_id === 5) {
-          title.style.color = 'red'; // Piros szín beállítása
+          title.style.color = 'red';
         }
 
-        // Add click event to navigate to newsdetails.html
         newCard.addEventListener('click', () => {
           window.location.href = `newsdetails.html?news_id=${news.news_id}`;
         });
@@ -87,76 +68,66 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Lekérjük a bejelentkezett felhasználó adatokat
   fetch("/api/admin/admin-only", {
-    credentials: "include", // A cookie-k elküldéséhez szükséges
+    credentials: "include",
   })
     .then(res => {
-      console.log(res); // Válasz objektum, ellenőrizd a státuszt és a válasz szöveget
+      console.log(res);
       if (!res.ok) {
         throw new Error('Nem jogosult hozzáférés');
       }
       return res.json();
     })
     .then(data => {
-      console.log(data); // Ellenőrizd, mit kapsz válaszként
+      console.log(data);
       if (data.role === 1) {
         const adminPanel = document.getElementById("adminPanel");
-        adminPanel.style.display = "block"; // Admin gomb megjelenítése
+        adminPanel.style.display = "block";
         console.log("Admin panel látható:", adminPanel.style.display);
       } else {
         const adminPanel = document.getElementById("adminPanel");
-        adminPanel.style.display = "none"; // Átlag felhasználónál elrejtés
+        adminPanel.style.display = "none";
         console.log("Admin panel elrejtve:", adminPanel.style.display);
       }
     })
     .catch(err => {
       console.warn("Hiba történt:", err);
       const adminPanel = document.getElementById("adminPanel");
-      adminPanel.style.display = "none"; // Ha nincs bejelentkezve, elrejtjük
+      adminPanel.style.display = "none";
     });
 });
-
-
-
 
 document.getElementById('searchButton').addEventListener('click', async function () {
   const query = document.getElementById('searchQuery').value.trim();
   const resultsDiv = document.getElementById('searchResults');
 
-  // Ha nincs keresési kifejezés, figyelmeztetjük a felhasználót
   if (!query) {
     alert('Kérlek, add meg a keresési kifejezést!');
     return;
   }
 
-  // Ideiglenes üzenet, amíg várunk a keresési eredményekre
   resultsDiv.innerHTML = '<p>Keresés folyamatban...</p>';
 
   try {
-    // Keresési kifejezés küldése a backend API-hoz
     const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`);
 
     if (!response.ok) {
       throw new Error('Hiba történt a keresés során');
     }
 
-    // A válasz adatainak kinyerése
     const data = await response.json();
-    console.log(data);  // Ellenőrizzük a válasz adatait a konzolban
+    console.log(data);
 
-    resultsDiv.innerHTML = ''; // Előző keresési eredmények törlése
+    resultsDiv.innerHTML = '';
 
     if (data.results && data.results.length > 0) {
-      // A keresési eredmények listájának megjelenítése
       const ul = document.createElement('ul');
       data.results.forEach(result => {
         const li = document.createElement('li');
 
-        // Link hozzáadása, amely a hír részletes oldalára navigál
         const link = document.createElement('a');
-        link.href = `newsdetails.html?news_id=${result.news_id}`; // A hír ID-t paraméterként átadjuk
-        link.textContent = result.news_title; // A hír címét jelenítjük meg
+        link.href = `newsdetails.html?news_id=${result.news_id}`;
+        link.textContent = result.news_title;
 
         li.appendChild(link);
         ul.appendChild(li);
@@ -171,46 +142,33 @@ document.getElementById('searchButton').addEventListener('click', async function
   }
 });
 
-
-
-
-
-
-// A gomb, ami megnyitja a modális ablakot
 const newsLetterButton = document.querySelector('.newsLetter');
 
-// A modális ablak és a bezáró gomb
 const modal = document.getElementById('newsletterModal');
 const closeButton = document.getElementById('closeModal');
 
-// A form és a beküldés kezelése
 const newsletterForm = document.getElementById('newsletterForm');
 
-// Amikor a felhasználó rákattint a gombra, a modális ablak megjelenik
 newsLetterButton.onclick = () => {
   modal.style.display = 'block';
 };
 
-// Amikor a felhasználó rákattint a bezárás gombra, a modális ablak eltűnik
 closeButton.onclick = () => {
   modal.style.display = 'none';
 };
 
-// Ha a felhasználó kívül kattint a modális ablakon, az is bezáródik
 window.onclick = (event) => {
   if (event.target === modal) {
     modal.style.display = 'none';
   }
 };
 
-// Form beküldése
 newsletterForm.onsubmit = (event) => {
-  event.preventDefault(); // Megakadályozza a form alapértelmezett elküldését
+  event.preventDefault();
 
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
 
-  // Post kérés küldése a backendre
   fetch('https://nodejs315.dszcbaross.edu.hu/api/news/newsLetter', {
     method: 'POST',
     headers: {
@@ -220,8 +178,8 @@ newsletterForm.onsubmit = (event) => {
   })
     .then(response => response.json())
     .then(data => {
-      alert(data.message); // Kiírjuk a választ
-      modal.style.display = 'none'; // Bezárjuk a modális ablakot
+      alert(data.message);
+      modal.style.display = 'none';
     })
     .catch(error => {
       console.error('Hiba történt:', error);

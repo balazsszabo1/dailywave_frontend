@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!response.ok) {
                 console.error("HTTP status:", response.status);
-                const errorText = await response.text(); // backend hibaüzenet, ha van
+                const errorText = await response.text();
                 console.error("Error body:", errorText);
                 throw new Error('Hozzáférés megtagadva vagy hiba történt az adatok lekérésekor.');
             }
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             console.log(topics);
 
-            // Témák kirajzolása
             topicsList.innerHTML = topics.map(topic => `
                 <tr>
                     <td><a href="#" data-id="${topic.topic_id}" class="topic-link">${topic.topic_title}</a></td>
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Add a new topic
     addTopicBtn.addEventListener("click", async () => {
         const title = prompt("Írd be a téma címét");
         if (title) {
@@ -59,8 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (response.ok) {
                     alert("Téma sikeresen hozzáadva!");
-                    // Az új téma hozzáadása után frissítjük a témák listáját
-                    fetchTopics();  // Frissítjük a témák listáját, hogy az új téma azonnal megjelenjen
+                    fetchTopics();
                 } else {
                     alert(`Failed to add topic: ${data.error || "Unknown error"}`);
                 }
@@ -71,17 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Handle topic selection
     topicsList.addEventListener("click", async (event) => {
         if (event.target.classList.contains("topic-link")) {
             event.preventDefault();
             const topicId = event.target.dataset.id;
 
-            // Show chat section
             chatSection.style.display = "block";
             chatTitle.textContent = event.target.textContent;
 
-            // Fetch and display comments for the topic
             const response = await fetch(`/api/topics/getComments/${topicId}`, {
                 method: 'GET',
                 credentials: 'include'
@@ -95,12 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Post a comment
     chatForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         const topicId = chatForm.dataset.topicId;
         const comment = chatInput.value;
-        const userId = 11; // Replace with the actual user ID logic
+        const userId = 11;
 
         try {
             const response = await fetch('/api/topics/addComment', {
@@ -114,11 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
 
             if (response.ok) {
-                // Successfully added the comment
                 chatInput.value = "";
                 alert("Komment sikeresen hozzáadva!");
 
-                // Az új komment hozzáadása után frissítjük a kommentek listáját
                 const commentsResponse = await fetch(`/api/topics/getComments/${topicId}`);
                 const comments = await commentsResponse.json();
 
@@ -133,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Hiba történt a komment hozzáadásakor: Kérlek, próbáld újra később!");
         }
     });
-
 
     fetchTopics();
 });

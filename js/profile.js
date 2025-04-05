@@ -1,31 +1,7 @@
 const logoutBtn = document.getElementById('logout');
 
 logoutBtn.addEventListener('click', logout);
-// Bejelentkezési ellenőrzés minden oldalon
-/*  async function checkLoginStatus() {
-    try {
-        // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-        const res = await fetch('/api/auth/checkAuth', {
-            method: 'GET',
-            credentials: 'include', // Küldi a cookie-kat
-        });
 
-        // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
-        if (!res.ok) {
-            alert('Kérlek, jelentkezz be!');
-            window.location.href = 'login.html'; // Átirányítás a login oldalra
-        }
-    } catch (error) {
-        console.error('Hiba történt a hitelesítés ellenőrzésekor:', error);
-        alert('Nem sikerült ellenőrizni a bejelentkezési állapotot.');
-        window.location.href = 'login.html'; // Ha hiba történt, irányítás a login oldalra
-    }
-}
-
-// Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
-document.addEventListener('DOMContentLoaded', checkLoginStatus);  */
-
-// Profil név lekérése
 async function getProfileName() {
     try {
         const res = await fetch('/api/profile/getProfileName', {
@@ -51,8 +27,6 @@ async function getProfileName() {
 }
 
 
-
-// Profilkép lekérése
 async function getProfilPic() {
     try {
         const res = await fetch('/api/profile/getProfilePic', {
@@ -97,10 +71,9 @@ async function logout() {
     if (res.ok) {
         alert('Sikeres kijelentkezés!');
 
-        // Böngésző gyorsítótár ürítése és újratöltés
         setTimeout(() => {
             window.location.href = '../login.html';
-        }, 1000); // Késleltetett átirányítás, hogy a törlés érvényesüljön
+        }, 1000);
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
@@ -114,8 +87,6 @@ async function logout() {
         alert(errorMessage);
     }
 }
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     getProfileName();

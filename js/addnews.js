@@ -1,22 +1,20 @@
 let selectedCategory = null;
 const categoryElements = document.querySelectorAll('.kategoriavalaszto');
 const fileInput = document.getElementById('fileInput');
-const previewImage = document.getElementById('hirkephozzaadas'); // Ez az a kép, amit frissíteni fogunk
+const previewImage = document.getElementById('hirkephozzaadas');
 
-// Kategória választás eseménykezelő
 categoryElements.forEach(elem => {
   elem.addEventListener('click', () => {
     if (selectedCategory) {
-      selectedCategory.classList.remove('kivalasztva'); // Előző kijelölés törlése
+      selectedCategory.classList.remove('kivalasztva');
     }
 
-    elem.classList.add('kivalasztva'); // Új kategória kijelölése
+    elem.classList.add('kivalasztva');
     selectedCategory = elem;
     console.log('Kiválasztott kategória:', selectedCategory.getAttribute('data-kategoria'));
   });
 });
 
-// 🔥 Kép kiválasztás eseménykezelő az előnézethez
 fileInput.addEventListener('change', () => {
   const file = fileInput.files[0];
 
@@ -24,8 +22,8 @@ fileInput.addEventListener('change', () => {
     const reader = new FileReader();
 
     reader.onload = (e) => {
-      previewImage.src = e.target.result; // Megjelenítjük az előnézeti képet
-      previewImage.style.objectFit = 'cover'; // biztos, ami biztos
+      previewImage.src = e.target.result;
+      previewImage.style.objectFit = 'cover';
     };
 
     reader.readAsDataURL(file);
@@ -63,15 +61,12 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
       } else {
         alert('Sikeres feltöltés!');
 
-        // Űrlap mezők ürítése
         titleInput.value = '';
         descriptionInput.value = '';
 
-        // Fájl input törlése és újraalkotása
         const newFileInput = fileInput.cloneNode(true);
         fileInput.replaceWith(newFileInput);
 
-        // Új event listener az új fileInputhoz!
         newFileInput.addEventListener('change', () => {
           const file = newFileInput.files[0];
           if (file) {
@@ -83,10 +78,8 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
           }
         });
 
-        // A kép visszaállítása az alapértelmezett képre
         previewImage.src = 'img/hirkephozzaadas.png';
 
-        // Kategóriát meghagyjuk!
         console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
       }
     })

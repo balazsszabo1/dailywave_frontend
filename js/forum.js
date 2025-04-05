@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add a new topic
     addTopicBtn.addEventListener("click", async () => {
-        const title = prompt("Enter the topic title:");
+        const title = prompt("Írd be a téma címét");
         if (title) {
             try {
                 const response = await fetch('/api/topics/uploadTopic', {

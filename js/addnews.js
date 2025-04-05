@@ -56,42 +56,42 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     method: 'POST',
     body: formData
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.error) {
-      alert('Hiba: ' + data.error);
-    } else {
-      alert('Sikeres feltöltés!');
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert('Hiba: ' + data.error);
+      } else {
+        alert('Sikeres feltöltés!');
 
-      // Űrlap mezők ürítése
-      titleInput.value = '';
-      descriptionInput.value = '';
+        // Űrlap mezők ürítése
+        titleInput.value = '';
+        descriptionInput.value = '';
 
-      // Fájl input törlése és újraalkotása
-      const newFileInput = fileInput.cloneNode(true);
-      fileInput.replaceWith(newFileInput);
+        // Fájl input törlése és újraalkotása
+        const newFileInput = fileInput.cloneNode(true);
+        fileInput.replaceWith(newFileInput);
 
-      // Új event listener az új fileInputhoz!
-      newFileInput.addEventListener('change', () => {
-        const file = newFileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            previewImage.src = e.target.result;
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+        // Új event listener az új fileInputhoz!
+        newFileInput.addEventListener('change', () => {
+          const file = newFileInput.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              previewImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
 
-      // A kép visszaállítása az alapértelmezett képre
-      previewImage.src = 'img/hirkephozzaadas.png';
+        // A kép visszaállítása az alapértelmezett képre
+        previewImage.src = 'img/hirkephozzaadas.png';
 
-      // Kategóriát meghagyjuk!
-      console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
-    }
-  })
-  .catch(error => { 
-    console.error('Hiba a feltöltés során:', error);
-    alert('Hiba történt a feltöltés közben.');
-  });
+        // Kategóriát meghagyjuk!
+        console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
+      }
+    })
+    .catch(error => {
+      console.error('Hiba a feltöltés során:', error);
+      alert('Hiba történt a feltöltés közben.');
+    });
 });

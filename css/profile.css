@@ -21,8 +21,10 @@ body {
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -31,9 +33,12 @@ body {
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -48,25 +53,34 @@ body {
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -79,14 +93,18 @@ body {
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -110,6 +128,7 @@ body {
         line-height: 1.3;
     }
 }
+
 /* Profil nézet konténer */
 .profile-container {
     background-color: #ffffff;
@@ -134,42 +153,61 @@ body {
 /* Profilkép */
 .profile-image {
     display: flex;
-    justify-content: center; /* Kép középre igazítása vízszintesen */
-    align-items: center;     /* Kép középre igazítása függőlegesen */
-    margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
-    overflow: hidden;        /* Ha a kép túl nagy, ne lógjon ki */
-    width: 120px;            /* Rögzített szélesség */
-    height: 120px;           /* Rögzített magasság */
-    border-radius: 50%;      /* Kör alakú */
+    justify-content: center;
+    /* Kép középre igazítása vízszintesen */
+    align-items: center;
+    /* Kép középre igazítása függőlegesen */
+    margin-bottom: 5px;
+    /* Kevesebb hely a kép és a név között */
+    overflow: hidden;
+    /* Ha a kép túl nagy, ne lógjon ki */
+    width: 120px;
+    /* Rögzített szélesség */
+    height: 120px;
+    /* Rögzített magasság */
+    border-radius: 50%;
+    /* Kör alakú */
     object-fit: cover;
 }
 
 /* Profilkép */
 .profile-image #profilePic {
     display: flex;
-    justify-content: center; /* Kép középre igazítása vízszintesen */
-    align-items: center;     /* Kép középre igazítása függőlegesen */
-    margin-bottom: 5px;      /* Kevesebb hely a kép és a név között */
-    overflow: hidden;        /* Ha a kép túl nagy, ne lógjon ki */
-    width: 120px;            /* Rögzített szélesség */
-    height: 120px;           /* Rögzített magasság */
-    border-radius: 50%;      /* Kör alakú */
+    justify-content: center;
+    /* Kép középre igazítása vízszintesen */
+    align-items: center;
+    /* Kép középre igazítása függőlegesen */
+    margin-bottom: 5px;
+    /* Kevesebb hely a kép és a név között */
+    overflow: hidden;
+    /* Ha a kép túl nagy, ne lógjon ki */
+    width: 120px;
+    /* Rögzített szélesség */
+    height: 120px;
+    /* Rögzített magasság */
+    border-radius: 50%;
+    /* Kör alakú */
     object-fit: cover;
 }
 
 /* Kép beállítása, hogy kitöltse a div-et */
 .profile-image img {
-    width: 120px;             /* A kép kitölti a div szélességét */
-    height: 120px;            /* A kép kitölti a div magasságát */
-    object-fit: cover;       /* A kép kitölti a tárolót, miközben megtartja az arányokat */
+    width: 120px;
+    /* A kép kitölti a div szélességét */
+    height: 120px;
+    /* A kép kitölti a div magasságát */
+    object-fit: cover;
+    /* A kép kitölti a tárolót, miközben megtartja az arányokat */
 }
 
 /* Név */
 .profile-info .name {
     font-size: 22px;
-    color: rgba(49, 81, 143, 0.8); /* Kék szín */
+    color: rgba(49, 81, 143, 0.8);
+    /* Kék szín */
     margin: 0;
-    text-align: center; /* Középre igazítás */
+    text-align: center;
+    /* Középre igazítás */
 }
 
 /* Gombok */

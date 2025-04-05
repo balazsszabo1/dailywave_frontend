@@ -22,8 +22,10 @@ body {
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -32,9 +34,12 @@ body {
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -49,25 +54,34 @@ body {
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -80,14 +94,18 @@ body {
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -119,36 +137,45 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgba(49, 81, 143, 0.8); /* Kék színű keret */
+    border: 2px solid rgba(49, 81, 143, 0.8);
+    /* Kék színű keret */
     width: 100%;
-    max-width: 400px; /* Maximális szélesség a kényelem érdekében */
+    max-width: 400px;
+    /* Maximális szélesség a kényelem érdekében */
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     justify-content: center;
-    margin: auto auto; /* Vízszintes középre igazítás és függőleges eltolás */
+    margin: auto auto;
+    /* Vízszintes középre igazítás és függőleges eltolás */
 }
 
 
 /* Profilkép */
 .profile-image img {
-    width: 120px; /* A kép mérete */
-    height: 120px; 
-    border-radius: 50%; /* Kör alakú */
-    margin-bottom: 15px; /* Kép és név közötti távolság */
+    width: 120px;
+    /* A kép mérete */
+    height: 120px;
+    border-radius: 50%;
+    /* Kör alakú */
+    margin-bottom: 15px;
+    /* Kép és név közötti távolság */
 }
 
 /* Név */
 .profile-info .name {
     font-size: 22px;
-    color: rgba(49, 81, 143, 0.8); /* Kék szín */
+    color: rgba(49, 81, 143, 0.8);
+    /* Kék szín */
     margin: 0;
-    text-align: center; /* Középre igazítás */
+    text-align: center;
+    /* Középre igazítás */
 }
 
 /* Gombok */
-.edit-button, .back-button {
+.edit-button,
+.back-button {
     margin-top: 10px;
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
@@ -160,11 +187,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.edit-button:hover, .back-button:hover {
+.edit-button:hover,
+.back-button:hover {
     background-color: #31518f;
 }
 
 
-.profileImg:hover{
+.profileImg:hover {
     scale: 1.1;
 }

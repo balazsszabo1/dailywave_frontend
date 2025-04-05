@@ -21,7 +21,8 @@ table {
     margin-top: 1em;
 }
 
-table th, table td {
+table th,
+table td {
     border: 1px solid #ddd;
     padding: 0.5em;
     text-align: left;

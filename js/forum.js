@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
+                console.error("HTTP status:", response.status);
+                const errorText = await response.text(); // backend hibaüzenet, ha van
+                console.error("Error body:", errorText);
                 throw new Error('Hozzáférés megtagadva vagy hiba történt az adatok lekérésekor.');
             }
 
@@ -23,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error('Érvénytelen válaszformátum: tömböt vártunk.');
             }
             console.log(topics);
-            
+
             // Témák kirajzolása
             topicsList.innerHTML = topics.map(topic => `
                 <tr>
@@ -37,31 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert('Nem sikerült betölteni a fórum témákat. Kérlek, jelentkezz be újra!');
         }
     }
-
-    // Bejelentkezési ellenőrzés minden oldalon
-    /*     async function checkLoginStatus() {
-            try {
-                // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
-                const res = await fetch('/api/auth/checkAuth', {
-                    method: 'GET',
-                    credentials: 'include', // Az authentikációs süti elküldése
-                });
-    
-                // Ha a válasz nem OK, irányítsuk át a bejelentkezési oldalra
-                if (!res.ok) {
-                    alert('Kérlek, jelentkezz be!');
-                    window.location.href = 'login.html'; // Átirányítás a login oldalra
-                }
-            } catch (error) {
-                console.error('Hiba történt a hitelesítés ellenőrzésekor:', error);
-                alert('Nem sikerült ellenőrizni a bejelentkezési állapotot.');
-                window.location.href = 'login.html'; // Ha hiba történt, irányítás a login oldalra
-            }
-        }
-    
-        // Hívjuk meg ezt a funkciót minden oldalon, ahol szükséges a bejelentkezés ellenőrzése
-        document.addEventListener('DOMContentLoaded', checkLoginStatus); */
-
 
     // Add a new topic
     addTopicBtn.addEventListener("click", async () => {
@@ -78,13 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 const data = await response.json();
-                console.log("Response Data:", data); // Hozzáadott naplózás
 
                 if (response.ok) {
                     alert("Topic successfully added!");
-                    // Frissítheted a topic listát, ha szükséges
+                    // Az új téma hozzáadása után frissítjük a témák listáját
+                    fetchTopics();  // Frissítjük a témák listáját, hogy az új téma azonnal megjelenjen
                 } else {
-                    alert(`Failed to add topic: ${data.message || "Unknown error"}`);
+                    alert(`Failed to add topic: ${data.error || "Unknown error"}`);
                 }
             } catch (error) {
                 console.error("Error adding topic:", error);
@@ -92,8 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-
-
 
     // Handle topic selection
     topicsList.addEventListener("click", async (event) => {

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const newsId = urlParams.get('news_id'); // Retrieve the news_id from the URL
-    
+
     if (!newsId) {
         alert('Nincs megadva hír azonosító!');
         return;

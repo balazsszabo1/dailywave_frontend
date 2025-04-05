@@ -28,22 +28,29 @@ body {
 
 /* Előnézeti kép tároló */
 #preview-container {
-    width: 150px;            /* Fix szélesség */
-    height: 150px;           /* Fix magasság */
+    width: 150px;
+    /* Fix szélesség */
+    height: 150px;
+    /* Fix magasság */
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;      /* Kör alakú */
-    overflow: hidden;        /* Ha a kép túl nagy, elvágódik */
+    border-radius: 50%;
+    /* Kör alakú */
+    overflow: hidden;
+    /* Ha a kép túl nagy, elvágódik */
     border: 2px solid rgba(49, 81, 143, 0.8);
     background-color: #f4f4f9;
 }
 
 .preview-img {
-    width: 360px;           /* Fix szélesség */
-    height: 190px;          /* Fix magasság */
-    object-fit: cover;      /* A kép kitöltése arányosan */
+    width: 360px;
+    /* Fix szélesség */
+    height: 190px;
+    /* Fix magasság */
+    object-fit: cover;
+    /* A kép kitöltése arányosan */
     border-radius: 50%;
 }
 
@@ -51,8 +58,10 @@ body {
 #imgProfile {
     width: 120px;
     height: 120px;
-    object-fit: cover; /* Arányosan kitölti a területet */
-    border-radius: 50%; /* Kör alakú */
+    object-fit: cover;
+    /* Arányosan kitölti a területet */
+    border-radius: 50%;
+    /* Kör alakú */
 }
 
 
@@ -111,22 +120,22 @@ button#btnSavePic:hover {
         width: 90%;
         padding: 15px;
     }
-    
+
     #preview-container {
         width: 120px;
         height: 120px;
     }
-    
+
     .preview-img {
         width: 120px;
         height: 120px;
     }
-    
+
     input[type="file"] {
         font-size: 14px;
         padding: 8px;
     }
-    
+
     button#btnSavePic {
         font-size: 14px;
         padding: 8px 15px;
@@ -150,8 +159,10 @@ button#btnSavePic:hover {
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -160,9 +171,12 @@ button#btnSavePic:hover {
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -177,25 +191,34 @@ button#btnSavePic:hover {
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -207,14 +230,18 @@ button#btnSavePic:hover {
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -238,4 +265,3 @@ button#btnSavePic:hover {
         line-height: 1.3;
     }
 }
-

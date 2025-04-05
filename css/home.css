@@ -11,8 +11,10 @@
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -21,9 +23,12 @@
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -38,25 +43,34 @@
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -69,14 +83,18 @@
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -111,7 +129,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-  
+
 
 /* Kiemelt szürke szakasz stílusa */
 .kiemelt-szurke-section {
@@ -133,7 +151,8 @@
 /* Kiemelt hírek rácsos elrendezése */
 .kiemelt-szurke-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Alapértelmezett három oszlop */
+    grid-template-columns: repeat(3, 1fr);
+    /* Alapértelmezett három oszlop */
     gap: 40px;
     justify-items: center;
 }
@@ -197,7 +216,8 @@ section h2 {
 /* Általános hírek rácsos elrendezés */
 .hír-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Alapértelmezett három oszlop */
+    grid-template-columns: repeat(3, 1fr);
+    /* Alapértelmezett három oszlop */
     gap: 40px;
     justify-items: center;
 }
@@ -365,13 +385,16 @@ section h2 {
 /* --- Footer --- */
 .footer {
     display: flex;
-    flex-wrap: wrap; /* Elem a sorokban, ha szükséges */
+    flex-wrap: wrap;
+    /* Elem a sorokban, ha szükséges */
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    min-height: 100px; /* Minimalizált magasság */
+    min-height: 100px;
+    /* Minimalizált magasság */
     background-color: rgba(49, 81, 143, 0.8);
-    padding: 20px; /* Padding a szellősséghez */
+    padding: 20px;
+    /* Padding a szellősséghez */
     box-sizing: border-box;
     margin-top: 0;
 }
@@ -407,41 +430,57 @@ section h2 {
 /* Reszponzív footer stílusok */
 @media (max-width: 991px) {
     .footer {
-        padding: 10px; /* Kevesebb padding a kisebb képernyőkön */
-        flex-direction: column; /* Függőleges elrendezés */
-        justify-content: center; /* Középre igazítás */
-        align-items: center; /* Középre igazítás */
-        min-height: 120px; /* Magasság növelése */
+        padding: 10px;
+        /* Kevesebb padding a kisebb képernyőkön */
+        flex-direction: column;
+        /* Függőleges elrendezés */
+        justify-content: center;
+        /* Középre igazítás */
+        align-items: center;
+        /* Középre igazítás */
+        min-height: 120px;
+        /* Magasság növelése */
     }
 
     .footer .newsLetter {
-        width: 150px; /* Szűkebb gomb a kisebb képernyőkön */
-        height: 40px; /* Kisebb magasság */
-        font-size: 16px; /* Kisebb betűméret */
+        width: 150px;
+        /* Szűkebb gomb a kisebb képernyőkön */
+        height: 40px;
+        /* Kisebb magasság */
+        font-size: 16px;
+        /* Kisebb betűméret */
     }
 }
 
 @media (max-width: 576px) {
     .footer {
-        padding: 10px; /* Kevesebb padding a kisebb képernyőkön */
-        flex-direction: column; /* Függőleges elrendezés */
+        padding: 10px;
+        /* Kevesebb padding a kisebb képernyőkön */
+        flex-direction: column;
+        /* Függőleges elrendezés */
         justify-content: center;
         align-items: center;
-        min-height: 100px; /* Kisebb magasság */
+        min-height: 100px;
+        /* Kisebb magasság */
     }
 
     .footer .newsLetter {
-        width: 120px; /* Még szűkebb gomb */
-        height: 35px; /* Még kisebb magasság */
-        font-size: 14px; /* Még kisebb betűméret */
+        width: 120px;
+        /* Még szűkebb gomb */
+        height: 35px;
+        /* Még kisebb magasság */
+        font-size: 14px;
+        /* Még kisebb betűméret */
     }
 }
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
 @media (max-width: 991px) {
+
     .kiemelt-szurke-grid,
     .hír-grid {
-        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
+        grid-template-columns: repeat(2, 1fr);
+        /* Két oszlop */
     }
 
     /* Kiemelt szürke szakasz és hír szakaszok szélessége */
@@ -450,15 +489,19 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section {
-        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
-        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+        width: 90%;
+        /* A szakaszok a konténer 90%-át foglalják el */
+        margin: 0 auto;
+        /* Középre igazítjuk a szakaszokat */
     }
 
     /* Képek szélessége */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 100%; /* A képek a szakaszok szélességéhez igazodnak */
-        height: auto; /* A képek arányosak maradnak */
+        width: 100%;
+        /* A képek a szakaszok szélességéhez igazodnak */
+        height: auto;
+        /* A képek arányosak maradnak */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -466,8 +509,10 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section,
-    .kiemelt-szurke-section { /* A kiemelt szürke szakaszhoz is hozzáadjuk */
-        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
+    .kiemelt-szurke-section {
+        /* A kiemelt szürke szakaszhoz is hozzáadjuk */
+        margin-bottom: 16px;
+        /* Kis távolságot adunk a szakaszok alá (1 br nagyságú távolság) */
     }
 }
 
@@ -483,10 +528,12 @@ section h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0); /* Fekete háttér */
-    background-color: rgba(0, 0, 0, 0.4); /* Átlátszó háttér */
+    background-color: rgb(0, 0, 0);
+    /* Fekete háttér */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Átlátszó háttér */
 }
-  
+
 /* A modális ablak tartalmának stílusa */
 #newsletterModalContent {
     background-color: #fefefe;
@@ -496,7 +543,7 @@ section h2 {
     width: 80%;
     max-width: 400px;
 }
-  
+
 /* Bezárás gomb stílusa */
 #closeModal {
     color: #aaa;
@@ -504,47 +551,51 @@ section h2 {
     font-size: 28px;
     font-weight: bold;
 }
-  
+
 #closeModal:hover,
 #closeModal:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
-  
+
 /* Formázás az űrlaphoz */
 #newsletterForm {
     display: flex;
     flex-direction: column;
 }
-  
+
 #newsletterForm input {
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px; /* Szögletesebb szegély */
+    border-radius: 4px;
+    /* Szögletesebb szegély */
 }
-  
+
 #submitButton {
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 4px; /* Szögletesebb gomb */
+    border-radius: 4px;
+    /* Szögletesebb gomb */
 }
-  
+
 #submitButton:hover {
     background-color: rgba(49, 81, 143, 0.8);
 }
 
-  
+
 
 /* Kiemelt szürke szakasz és hír szakasz reszponzív viselkedése */
 @media (max-width: 1200px) {
+
     .kiemelt-szurke-grid,
     .hír-grid {
-        grid-template-columns: repeat(2, 1fr); /* Két oszlop */
+        grid-template-columns: repeat(2, 1fr);
+        /* Két oszlop */
     }
 
     /* Kiemelt szürke szakasz és hír szakaszok szélessége */
@@ -553,16 +604,21 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section {
-        width: 90%;  /* A szakaszok a konténer 90%-át foglalják el */
-        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+        width: 90%;
+        /* A szakaszok a konténer 90%-át foglalják el */
+        margin: 0 auto;
+        /* Középre igazítjuk a szakaszokat */
     }
 
     /* Képek fix szélesség és magasság */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 250px; /* Fix szélesség */
-        height: 170px; /* Fix magasság */
-        object-fit: cover; /* A képek kitöltik a teret, de nem torzulnak */
+        width: 250px;
+        /* Fix szélesség */
+        height: 170px;
+        /* Fix magasság */
+        object-fit: cover;
+        /* A képek kitöltik a teret, de nem torzulnak */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -571,14 +627,17 @@ section h2 {
     .magyarorszag-section,
     .altalanos-section,
     .kiemelt-szurke-section {
-        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
+        margin-bottom: 16px;
+        /* Kis távolságot adunk a szakaszok alá */
     }
 }
 
 @media (max-width: 768px) {
+
     .kiemelt-szurke-grid,
     .hír-grid {
-        grid-template-columns: repeat(1, 1fr); /* Egy oszlop */
+        grid-template-columns: repeat(1, 1fr);
+        /* Egy oszlop */
     }
 
     /* Szélesség beállítása mobil nézetben */
@@ -587,8 +646,10 @@ section h2 {
     .politika-section,
     .magyarorszag-section,
     .altalanos-section {
-        width: 100%;  /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
-        margin: 0 auto; /* Középre igazítjuk a szakaszokat */
+        width: 100%;
+        /* A szakaszok szélessége 90%, így keskenyebbek lesznek */
+        margin: 0 auto;
+        /* Középre igazítjuk a szakaszokat */
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -596,9 +657,12 @@ section h2 {
     /* Képek fix szélesség és magasság mobil nézetben */
     .kiemelt-szurke-grid img,
     .hír-grid img {
-        width: 250px; /* Fix szélesség mobilon */
-        height: 150px; /* Fix magasság mobilon */
-        object-fit: cover; /* A képek kitöltik a teret, de nem torzulnak */
+        width: 250px;
+        /* Fix szélesség mobilon */
+        height: 150px;
+        /* Fix magasság mobilon */
+        object-fit: cover;
+        /* A képek kitöltik a teret, de nem torzulnak */
     }
 
     /* Különböző szakaszok közötti távolság hozzáadása */
@@ -607,9 +671,7 @@ section h2 {
     .magyarorszag-section,
     .altalanos-section,
     .kiemelt-szurke-section {
-        margin-bottom: 16px;  /* Kis távolságot adunk a szakaszok alá */
+        margin-bottom: 16px;
+        /* Kis távolságot adunk a szakaszok alá */
     }
 }
-
-
-

@@ -11,8 +11,10 @@
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -21,9 +23,12 @@
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -38,25 +43,34 @@
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -69,14 +83,18 @@
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -104,32 +122,40 @@
 #hirkephozzaadas {
     width: 252px;
     height: 173px;
-    object-fit: cover; /* Fontos! Így kitölti a képet anélkül, hogy eltorzulna */
-    border: 1px solid #ccc; /* opcionális: keret a kép köré */
-    border-radius: 5px;      /* opcionális: lekerekítés */
-  }
-  
+    object-fit: cover;
+    /* Fontos! Így kitölti a képet anélkül, hogy eltorzulna */
+    border: 1px solid #ccc;
+    /* opcionális: keret a kép köré */
+    border-radius: 5px;
+    /* opcionális: lekerekítés */
+}
+
 
 .hírhozzadas {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .kephozzadas {
-    position: absolute; /* A div pozicionálása a képen belül */
-    bottom: 10px; /* A div 10px-re kerül a kép közepétől lefelé */
-  }
-
-  /* A link színének változtatása */
-.kephozzadas a {
-    color: rgba(49, 81, 143, 0.8); /* Kék szín */
-    text-decoration: none; /* Aláhúzás eltávolítása */
 }
-  
+
+.kephozzadas {
+    position: absolute;
+    /* A div pozicionálása a képen belül */
+    bottom: 10px;
+    /* A div 10px-re kerül a kép közepétől lefelé */
+}
+
+/* A link színének változtatása */
+.kephozzadas a {
+    color: rgba(49, 81, 143, 0.8);
+    /* Kék szín */
+    text-decoration: none;
+    /* Aláhúzás eltávolítása */
+}
+
 .kephozzadas a:hover {
-    color: #102a5e; /* Vörös szín a hover (ráhúzás) hatásra */
+    color: #102a5e;
+    /* Vörös szín a hover (ráhúzás) hatásra */
 }
 
 .input {
@@ -173,7 +199,8 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 15px;
-    flex-wrap: nowrap; /* Ne törjön meg */
+    flex-wrap: nowrap;
+    /* Ne törjön meg */
 }
 
 .kategoriavalaszto {
@@ -203,12 +230,16 @@
 /* Reszponzív dizájn */
 @media (max-width: 768px) {
     .kategoriak {
-        flex-direction: row; /* Maradjanak egymás mellett kisebb képernyőn is */
+        flex-direction: row;
+        /* Maradjanak egymás mellett kisebb képernyőn is */
         align-items: center;
-        justify-content: flex-start; /* Balra igazítás, hogy ne legyenek középen */
+        justify-content: flex-start;
+        /* Balra igazítás, hogy ne legyenek középen */
     }
+
     .kategoriavalaszto {
-        width: auto; /* A szélességük automatikus legyen, ne 80% */
+        width: auto;
+        /* A szélességük automatikus legyen, ne 80% */
         text-align: center;
     }
 }
@@ -221,79 +252,96 @@
 .hírleírás textarea {
     width: 1000px;
     height: 400px;
-    background-color: #d3d3d3; 
+    background-color: #d3d3d3;
     border: none;
     border-radius: 15px;
     padding: 20px;
-    font-size: 16px; 
-    resize: none; 
-    color: #333; 
+    font-size: 16px;
+    resize: none;
+    color: #333;
 }
 
 .hírleírás textarea::placeholder {
-    color: #888; 
+    color: #888;
     font-style: italic;
 }
 
-.profileImg:hover{
+.profileImg:hover {
     scale: 1.1;
 }
 
 /* Reszponzív: Kisebb képernyők */
 @media (max-width: 768px) {
     .tarolo {
-        padding: 10px; /* Kisebb margó */
+        padding: 10px;
+        /* Kisebb margó */
     }
 
     .hírleírás textarea {
-        width: 400px; /* A textarea szélessége 100%-ra változik */
-        height: 40vh; /* A magasság a képernyő magasságának 40%-a lesz */
+        width: 400px;
+        /* A textarea szélessége 100%-ra változik */
+        height: 40vh;
+        /* A magasság a képernyő magasságának 40%-a lesz */
     }
 }
 
 @media (min-width: 769px) and (max-width: 1000px) {
     .tarolo {
-        padding: 10px !important; /* Kisebb margó, fontos, hogy felülírja más szabályokat */
+        padding: 10px !important;
+        /* Kisebb margó, fontos, hogy felülírja más szabályokat */
     }
 
     .hírleírás textarea {
-        width: 550px !important; /* A textarea szélessége 400px lesz */
+        width: 550px !important;
+        /* A textarea szélessége 400px lesz */
     }
 }
 
 @media (min-width: 1001px) and (max-width: 1080px) {
     .tarolo {
-        padding: 10px !important; /* Kisebb margó, fontos, hogy felülírja más szabályokat */
+        padding: 10px !important;
+        /* Kisebb margó, fontos, hogy felülírja más szabályokat */
     }
 
     .hírleírás textarea {
-        width: 600px !important; /* A textarea szélessége 400px lesz */
+        width: 600px !important;
+        /* A textarea szélessége 400px lesz */
     }
 }
 
 /* Reszponzív: Nagyon kicsi képernyők (pl. mobiltelefonok) */
 @media (max-width: 480px) {
     .tarolo {
-        padding: 8px; /* Még kisebb margó a kisebb képernyőkhöz */
+        padding: 8px;
+        /* Még kisebb margó a kisebb képernyőkhöz */
     }
 
     .hírleírás textarea {
-        width: 350px !important; /* A textarea szélessége 100%-ra változik */
-        height: 35vh; /* A magasság kicsit csökkentve */
+        width: 350px !important;
+        /* A textarea szélessége 100%-ra változik */
+        height: 35vh;
+        /* A magasság kicsit csökkentve */
     }
 
     /* Kategóriák összehúzása */
     .kategoriak {
-        flex-wrap: nowrap; /* Ne törjen sorra, maradjanak egy sorban */
-        gap: 5px; /* Kisebb távolság a kategóriák között */
-        justify-content: flex-start; /* Balra igazítjuk */
-        overflow-x: auto; /* Ha túl sok kategória van, legyen görgethető */
+        flex-wrap: nowrap;
+        /* Ne törjen sorra, maradjanak egy sorban */
+        gap: 5px;
+        /* Kisebb távolság a kategóriák között */
+        justify-content: flex-start;
+        /* Balra igazítjuk */
+        overflow-x: auto;
+        /* Ha túl sok kategória van, legyen görgethető */
     }
 
     .kategoriavalaszto {
-        padding: 4px 8px; /* Még kevesebb padding */
-        font-size: 14px; /* Kisebb betűméret */
-        white-space: nowrap; /* Megakadályozza, hogy a szöveg töredezzen */
+        padding: 4px 8px;
+        /* Még kevesebb padding */
+        font-size: 14px;
+        /* Kisebb betűméret */
+        white-space: nowrap;
+        /* Megakadályozza, hogy a szöveg töredezzen */
     }
 }
 
@@ -327,6 +375,3 @@
     background-color: #0a1d3e;
     transform: scale(0.98);
 }
-
-
-

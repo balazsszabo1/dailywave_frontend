@@ -22,8 +22,10 @@ body {
 
 .navbar-nav {
     display: flex;
-    align-items: center; /* Középre igazítja a szövegeket és ikonokat függőlegesen */
-    gap: 15px; /* Távolság az elemek között */
+    align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
+    gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -32,9 +34,12 @@ body {
 
 .navbar-nav .nav-link {
     color: white !important;
-    line-height: 1.5; /* Egységes magasság */
-    padding: 8px 10px; /* Tér a szöveg körül */
-    font-size: 16px; /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
+    padding: 8px 10px;
+    /* Tér a szöveg körül */
+    font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -49,25 +54,34 @@ body {
 /* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
-    align-items: center; /* Függőleges középre igazítás */
-    gap: 8px; /* Távolság a zászló és szöveg között */
-    white-space: nowrap; /* Ne törjön el a sor */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    gap: 8px;
+    /* Távolság a zászló és szöveg között */
+    white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
-    width: 24px; /* Zászló mérete */
+    width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
-    min-width: 24px; /* Minimum szélesség a zászló képének */
-    min-height: 24px; /* Minimum magasság */
+    min-width: 24px;
+    /* Minimum szélesség a zászló képének */
+    min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
-    font-size: 16px; /* Betűméret */
-    line-height: 1.5; /* Egységes magasság */
+    font-size: 16px;
+    /* Betűméret */
+    line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
-    min-width: 0; /* Ne tartsa meg a helyet, ha nincs szöveg */
+    min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
 /* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
@@ -80,14 +94,18 @@ body {
 /* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row; /* Menüpontok vízszintesen */
-        justify-content: space-between; /* Távolság a menüpontok között */
-        width: 100%; /* Menüpontok kitöltik a teljes szélességet */
+        flex-direction: row;
+        /* Menüpontok vízszintesen */
+        justify-content: space-between;
+        /* Távolság a menüpontok között */
+        width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
-        padding: 10px 15px; /* Növeljük a paddingot, hogy szellősebb legyen */
+        padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -148,10 +166,12 @@ body {
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
 .table td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
 }
+
 .table td:last-child {
     text-align: right;
 }
@@ -225,7 +245,7 @@ body {
     font-weight: bold;
 }
 
-.profileImg:hover{
+.profileImg:hover {
     scale: 1.1;
 }
 
@@ -238,6 +258,7 @@ body {
     margin-top: 20px;
     max-width: 700px;
 }
+
 #chat-title {
     font-size: 1.5rem;
     color: #31518f;
@@ -254,6 +275,7 @@ body {
     overflow-y: auto;
     border-radius: 5px;
 }
+
 .chat-message {
     background: #e3e8ff;
     padding: 10px;
@@ -262,6 +284,7 @@ body {
     display: inline-block;
     max-width: 80%;
 }
+
 #chat-form {
     display: flex;
     gap: 10px;
@@ -290,14 +313,18 @@ body {
 }
 
 @media (max-width: 768px) {
-    .table th, .table td {
+
+    .table th,
+    .table td {
         padding: 10px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 576px) {
-    .table th, .table td {
+
+    .table th,
+    .table td {
         font-size: 12px;
         padding: 8px;
     }

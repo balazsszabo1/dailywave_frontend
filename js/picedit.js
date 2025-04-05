@@ -7,7 +7,7 @@ function previewImage(event) {
             preview.src = reader.result;
 
             // Várjuk meg, amíg a kép betöltődik
-            preview.onload = function() {
+            preview.onload = function () {
                 const container = document.getElementById("preview-container");
 
                 // Kép és tároló arányainak kiszámítása

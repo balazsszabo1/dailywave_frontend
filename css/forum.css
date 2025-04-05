@@ -156,7 +156,7 @@ body {
 }
 
 .table th {
-    background-color: #31518f;
+    background-color: #2C3E50;
     color: white;
     text-align: left;
     padding: 14px;
@@ -164,7 +164,11 @@ body {
 }
 
 .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #ecf0f1;
 }
 
 .table td {
@@ -274,6 +278,7 @@ body {
     height: 250px;
     overflow-y: auto;
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .chat-message {
@@ -283,6 +288,10 @@ body {
     margin-bottom: 8px;
     display: inline-block;
     max-width: 80%;
+    transition: transform 0.3s ease;
+}
+.chat-message:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 #chat-form {

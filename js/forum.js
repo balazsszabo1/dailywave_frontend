@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const topicId = chatForm.dataset.topicId;
         const comment = chatInput.value;
         const userId = 11; // Replace with the actual user ID logic
-
+    
         try {
             const response = await fetch('/api/topics/addComment', {
                 method: "POST",
@@ -110,16 +110,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 body: JSON.stringify({ topic_id: topicId, comment, user_id: userId }),
             });
-
+    
             const data = await response.json();
-
+    
             if (response.ok) {
                 // Successfully added the comment
                 chatInput.value = "";
                 alert("Comment added successfully!");
-                // Optionally refresh comments here
+    
+                // Az új komment hozzáadása után frissítjük a kommentek listáját
+                const commentsResponse = await fetch(`/api/topics/getComments/${topicId}`);
+                const comments = await commentsResponse.json();
+    
+                chatMessages.innerHTML = comments
+                    .map((comment) => `<p><strong>${comment.username}</strong>: ${comment.comment}</p>`)
+                    .join("");
             } else {
-                // Display the error message from the backend
                 alert(`Failed to post comment: ${data.message}`);
             }
         } catch (error) {
@@ -127,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Failed to post comment. Please try again later.");
         }
     });
+    
 
     fetchTopics();
 });

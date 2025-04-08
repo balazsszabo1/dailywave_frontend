@@ -23,7 +23,9 @@ body {
 .navbar-nav {
     display: flex;
     align-items: center;
+    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
     gap: 15px;
+    /* Távolság az elemek között */
 }
 
 .navbar-nav .nav-item {
@@ -33,8 +35,11 @@ body {
 .navbar-nav .nav-link {
     color: white !important;
     line-height: 1.5;
+    /* Egységes magasság */
     padding: 8px 10px;
+    /* Tér a szöveg körül */
     font-size: 16px;
+    /* Betűméret */
     text-align: center;
 }
 
@@ -46,43 +51,61 @@ body {
     background-color: white !important;
 }
 
+/* Magyarország és zászló stílus */
 .navbar-magyarorszag {
     display: flex;
     align-items: center;
+    /* Függőleges középre igazítás */
     gap: 8px;
+    /* Távolság a zászló és szöveg között */
     white-space: nowrap;
+    /* Ne törjön el a sor */
 }
 
 .navbar-magyarorszag img {
     width: 24px;
+    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
     min-width: 24px;
+    /* Minimum szélesség a zászló képének */
     min-height: 24px;
+    /* Minimum magasság */
 }
 
 .navbar-magyarorszag span {
     font-size: 16px;
+    /* Betűméret */
     line-height: 1.5;
+    /* Egységes magasság */
     color: white !important;
     min-width: 0;
+    /* Ne tartsa meg a helyet, ha nincs szöveg */
 }
 
+/* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
 .navbar-magyarorszag img {
     content: url('path/to/magyar.png');
 }
 
+
+/* Reszponzív stílusok navbarra*/
+/* Hamburger menüben a menüpontok vízszintes elrendezése */
 @media (max-width: 991px) {
     .navbar-nav {
         flex-direction: row;
+        /* Menüpontok vízszintesen */
         justify-content: space-between;
+        /* Távolság a menüpontok között */
         width: 100%;
+        /* Menüpontok kitöltik a teljes szélességet */
     }
 
     .navbar-nav .nav-link {
         font-size: 14px;
         padding: 10px 15px;
+        /* Növeljük a paddingot, hogy szellősebb legyen */
         text-align: center;
     }
 }
@@ -162,11 +185,6 @@ body {
     overflow-x: auto;
 }
 
-.table tbody tr:hover {
-    background-color: #d6e4ff;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-}
 
 /* Pagination styling */
 .pagination .page-link {
@@ -196,14 +214,15 @@ body {
 /* Dropdown menu */
 .dropdown {
     margin: 20px 0;
-    border-radius: 10px;
-    font-weight: bold;
+    border-radius: none;
     position: relative;
 }
 
-.dropdown-menu {
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.dropdown {
+    margin: 20px 0;
+
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 .dropdown-menu a {
@@ -230,14 +249,10 @@ body {
     font-weight: bold;
 }
 
-.temaLink:hover {
-    color: #31518f;
-    text-decoration: underline;
-}
-
 .profileImg:hover {
     scale: 1.1;
 }
+
 
 #chat-section {
     background: white;
@@ -275,13 +290,8 @@ body {
     max-width: 80%;
     transition: transform 0.3s ease;
 }
-
 .chat-message:hover {
-    transform: scale(1.05);
-}
-
-.chat-message + .chat-message {
-    margin-top: 10px;
+    transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 #chat-form {
@@ -312,20 +322,19 @@ body {
 }
 
 @media (max-width: 768px) {
-    .table th, .table td {
+
+    .table th,
+    .table td {
         padding: 10px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 576px) {
-    .table th, .table td {
+
+    .table th,
+    .table td {
         font-size: 12px;
         padding: 8px;
     }
-}
-
-button, input {
-    touch-action: manipulation;
-    outline: none;
 }

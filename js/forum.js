@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const topicsList = document.getElementById("topics-list");
+    const topicsList = document.getElementById("topics-list")
     const addTopicBtn = document.getElementById("add-topic-btn");
     const chatSection = document.getElementById("chat-section");
     const chatTitle = document.getElementById("chat-title");
@@ -7,28 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
 
-    let currentUser = null;  // A bejelentkezett felhasználó adatainak tárolása
-
-    // Bejelentkezett felhasználó adatainak lekérése
-    async function fetchCurrentUser() {
-        try {
-            const response = await fetch('/api/users/getCurrentUser', {
-                method: 'GET',
-                credentials: 'include',
-            });
-
-            if (response.ok) {
-                currentUser = await response.json();
-                console.log("Bejelentkezett felhasználó:", currentUser);
-            } else {
-                console.error("Nem sikerült lekérni a felhasználó adatokat.");
-            }
-        } catch (error) {
-            console.error("Hiba történt a felhasználó adatainak lekérésekor:", error);
-        }
-    }
-
-    // Fórum témák lekérése
     async function fetchTopics() {
         try {
             const response = await fetch('/api/topics/getAlltopics', {
@@ -47,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!Array.isArray(topics)) {
                 throw new Error('Érvénytelen válaszformátum: tömböt vártunk.');
             }
+            console.log(topics);
 
             topicsList.innerHTML = topics.map(topic => `
                 <tr>
@@ -61,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Téma hozzáadása
     addTopicBtn.addEventListener("click", async () => {
         const title = prompt("Írd be a téma címét");
         if (title) {
@@ -81,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("Téma sikeresen hozzáadva!");
                     fetchTopics();
                 } else {
-                    alert(`Téma hozzáadása sikertelen: ${data.error || "Ismeretlen hiba"}`);
+                    alert(`Failed to add topic: ${data.error || "Unknown error"}`);
                 }
             } catch (error) {
                 console.error("Error adding topic:", error);
@@ -90,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Kattintás esemény a témákra (hozzászólások megjelenítése)
     topicsList.addEventListener("click", async (event) => {
         if (event.target.classList.contains("topic-link")) {
             event.preventDefault();
@@ -112,17 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Hozzászólás hozzáadása
     chatForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-
-        if (!currentUser) {
-            alert("Kérlek, jelentkezz be a hozzászóláshoz!");
-            return;
-        }
-
         const topicId = chatForm.dataset.topicId;
         const comment = chatInput.value;
+        const userId = 11;
 
         try {
             const response = await fetch('/api/topics/addComment', {
@@ -130,11 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    topic_id: topicId,
-                    comment: comment,
-                    user_id: currentUser.user_id  // Bejelentkezett felhasználó ID-ja
-                }),
+                body: JSON.stringify({ topic_id: topicId, comment, user_id: userId }),
             });
 
             const data = await response.json();
@@ -150,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .map((comment) => `<p><strong>${comment.username}</strong>: ${comment.comment}</p>`)
                     .join("");
             } else {
-                alert(`Komment hozzáadása sikertelen: ${data.message}`);
+                alert(`Failed to post comment: ${data.message}`);
             }
         } catch (error) {
             console.error("Error posting comment:", error);
@@ -158,9 +125,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Kérjük le a bejelentkezett felhasználót
-    fetchCurrentUser();
-
-    // Kérjük le a témákat
     fetchTopics();
 });

@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const topicId = chatForm.dataset.topicId;
         const comment = chatInput.value;
-        const userId = 11;
 
         try {
             const response = await fetch('/api/topics/addComment', {
@@ -101,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ topic_id: topicId, comment, user_id: userId }),
+                body: JSON.stringify({ topic_id: topicId, comment }),
             });
 
             const data = await response.json();

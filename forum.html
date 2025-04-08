@@ -63,80 +63,77 @@
     </div>
   </nav>
 
-
   <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <button class="btn btn-info" id="add-topic-btn" data-bs-toggle="modal" data-bs-target="#newTopicModal">Új téma hozzáadása</button>
+
+    <div class="forum-header d-flex justify-content-between align-items-center mb-4">
+      <div class="dropdown">
+        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+          Témák Szűrése
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Politika</a></li>
+          <li><a class="dropdown-item" href="#">Valuta</a></li>
+          <li><a class="dropdown-item" href="#">Lakás</a></li>
+        </ul>
+      </div>
+      <button class="btn btn-info" id="add-topic-btn">Új téma hozzáadása</button>
       <input type="text" class="form-control" placeholder="Keresés a Fórumban" style="max-width: 300px;">
     </div>
 
     <div class="row">
       <div class="col-lg-8">
-        <section id="topics-section">
-          <table class="table table-striped">
-            <thead class="table-dark">
-              <tr>
-                <th>Téma</th>
-                <th>Létrehozó</th>
-                <th>Dátum</th>
-              </tr>
-            </thead>
-            <tbody id="topics-list"></tbody>
-          </table>
-        </section>
-
-        <section id="chat-section" style="display: none;">
-          <h4 id="chat-title" class="mb-3"></h4>
-          <div id="chat-messages" class="border p-3 mb-3 bg-light" style="height: 300px; overflow-y: auto;"></div>
-          <form id="chat-form" class="d-flex">
-            <input type="text" id="chat-input" class="form-control me-2" placeholder="Írj egy hozzászólást..." required>
-            <button type="submit" class="btn btn-primary">Küldés</button>
-          </form>
-        </section>
-
-        <nav aria-label="Page navigation" class="mt-4">
+        <table class="table table-striped">
+          <section id="topics-section">
+            <table>
+              <thead class="table-dark">
+                <tr>
+                  <th style="color: black;">Téma</th>
+                  <th style="color: black;">Létrehozó</th>
+                  <th style="color: black;">Utólsó Hozzászólás</th>
+                </tr>
+              </thead>
+              <tbody id="topics-list">
+              </tbody>
+            </table>
+          </section>
+          <section id="chat-section" style="display: none;">
+            <h2 id="chat-title"></h2>
+            <div id="chat-messages"></div>
+            <form id="chat-form">
+              <input type="text" id="chat-input" placeholder="Írj egy hozzászólást..." required>
+              <button type="submit">Küldés</button>
+            </form>
+          </section>
+        </table>
+        <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center">
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="forum2.html">2</a></li>
           </ul>
         </nav>
       </div>
-
       <div class="col-lg-4">
         <div class="card">
-          <div class="card-header bg-primary text-white">Friss Hírek</div>
+          <div class="card-header bg-primary text-white">
+            Friss Hírek
+          </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>11:39</strong> Sikeres tőkeemelés az Épdufernél</li>
-            <li class="list-group-item"><strong>11:35</strong> Lejjebb húzta a GDP-növekedési előrejelzését az MBH Bank</li>
-            <li class="list-group-item"><strong>11:32</strong> Ukrajnai háború: mélységi csapások eredményei</li>
-            <li class="list-group-item"><strong>11:32</strong> Brazíliába látogatna Putyin, de akad egy bökkenő</li>
-            <li class="list-group-item"><strong>11:15</strong> Élénkülés a lakáspiacon - Jövőre is szárnyalás?</li>
-            <li class="list-group-item"><strong>11:15</strong> Államadósság elszállt – nagy a baj?</li>
+            <li class="list-group-item"><strong>11:35</strong> Lejjebb húzta a GDP-növekedési előrejelzését
+              az MBH Bank</li>
+            <li class="list-group-item"><strong>11:32</strong> Harmadik ország katonái szállhattak be a
+              háborúba, látszódnak az ukrán mélységi csapások eredményei - Híreink az ukrajnai háborúról
+              kedden</li>
+            <li class="list-group-item"><strong>11:32</strong> Brazíliába látogatna Putyin, de akad egy
+              bökkenő</li>
+            <li class="list-group-item"><strong>11:15</strong> Látványos élénkülés a lakáspiacon - Jövőre is
+              folytatódhat a szárnyalás?</li>
+            <li class="list-group-item"><strong>11:15</strong> Teljesen elszállt az államadósság–állomány,
+              nagy a baj a világon</li>
             <li class="list-group-item"><strong>10:38</strong> Mi történik ma a tőzsdéken?</li>
           </ul>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Új téma modal -->
-  <div class="modal fade" id="newTopicModal" tabindex="-1" aria-labelledby="newTopicModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <form id="new-topic-form" class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="newTopicModalLabel">Új téma hozzáadása</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="topic-title" class="form-label">Téma címe</label>
-            <input type="text" class="form-control" id="topic-title" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Létrehozás</button>
-        </div>
-      </form>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

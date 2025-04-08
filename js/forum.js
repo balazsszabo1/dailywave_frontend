@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td><a href="#" data-id="${topic.topic_id}" class="topic-link">${topic.topic_title}</a></td>
                     <td>${topic.username}</td>
-                    <td>${topic.last_comment || "Nincsenek még hozzászólások."}</td>
+                    <td>${new Date(topic.created_at).toLocaleString()}</td> <!-- Added date -->
                 </tr>
             `).join('');
         } catch (error) {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             const comments = await response.json();
             chatMessages.innerHTML = comments
-                .map((comment) => `<p><strong>${comment.username}</strong>: ${comment.comment}</p>`)
+                .map((comment) => `<p><strong>${comment.username}</strong> (${new Date(comment.created_at).toLocaleString()}): ${comment.comment}</p>`)
                 .join("");
 
             chatForm.dataset.topicId = topicId;
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const comments = await commentsResponse.json();
 
                 chatMessages.innerHTML = comments
-                    .map((comment) => `<p><strong>${comment.username}</strong>: ${comment.comment}</p>`)
+                    .map((comment) => `<p><strong>${comment.username}</strong> (${new Date(comment.created_at).toLocaleString()}): ${comment.comment}</p>`)
                     .join("");
             } else {
                 alert(`Failed to post comment: ${data.message}`);

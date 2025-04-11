@@ -269,7 +269,14 @@ button#btnSavePic:hover {
 img#preview.preview-img {
     width: 356px;
     height: 151px;
-    object-fit: cover; /* vagy 'contain', ha szeretnéd teljes képet látni torzítás nélkül */
+    object-fit: cover;
+    display: block;
+  }
+  
+  #preview {
+    width: 356px;
+    height: 151px;
+    object-fit: cover;
     display: block;
   }
   

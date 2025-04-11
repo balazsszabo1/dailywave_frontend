@@ -6,7 +6,7 @@ async function getProfileName() {
     try {
         const res = await fetch('/api/profile/getProfileName', {
             method: 'GET',
-            credentials: 'include', // Küldi a cookie-kat
+            credentials: 'include',
         });
 
         if (res.ok) {
@@ -18,11 +18,11 @@ async function getProfileName() {
         } else {
             const data = await res.json();
             console.error('Hiba a név lekérésekor:', data.error);
-            alert(data.error || 'Hiba történt a név lekérésekor');
+            showLoginPrompt('A profil megtekintéséhez jelentkezz be.');
         }
     } catch (error) {
         console.error('Hálózati hiba a név lekérésekor:', error);
-        alert('Nem sikerült lekérni a nevet');
+        showLoginPrompt('A profil megtekintéséhez jelentkezz be.');
     }
 }
 
@@ -54,11 +54,14 @@ async function getProfilPic() {
             }
         } else {
             console.error('Nem sikerült lekérni a profilképet.');
+            showLoginPrompt('A profil megtekintéséhez jelentkezz be.');
         }
     } catch (error) {
         console.error('Hálózati hiba:', error);
+        showLoginPrompt('A profil megtekintéséhez jelentkezz be.');
     }
 }
+
 
 async function logout() {
     const res = await fetch('/api/auth/logout', {
@@ -92,3 +95,51 @@ document.addEventListener('DOMContentLoaded', () => {
     getProfileName();
     getProfilPic();
 });
+
+
+function showLoginPrompt(message = 'A profil megtekintéséhez jelentkezz be.') {
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.width = '100vw';
+    container.style.height = '100vh';
+    container.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    container.style.display = 'flex';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.zIndex = '1000';
+
+    const box = document.createElement('div');
+    box.style.background = '#fff';
+    box.style.padding = '30px';
+    box.style.borderRadius = '12px';
+    box.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+    box.style.textAlign = 'center';
+    box.style.maxWidth = '400px';
+    box.style.width = '80%';
+
+    const msg = document.createElement('p');
+    msg.textContent = message;
+    msg.style.fontSize = '18px';
+    msg.style.marginBottom = '20px';
+
+    const button = document.createElement('button');
+    button.textContent = 'Bejelentkezés';
+    button.style.padding = '10px 20px';
+    button.style.backgroundColor = '#007BFF';
+    button.style.color = '#fff';
+    button.style.border = 'none';
+    button.style.borderRadius = '8px';
+    button.style.cursor = 'pointer';
+    button.style.fontSize = '16px';
+
+    button.onclick = () => {
+        window.location.href = '../login.html';
+    };
+
+    box.appendChild(msg);
+    box.appendChild(button);
+    container.appendChild(box);
+    document.body.appendChild(container);
+}

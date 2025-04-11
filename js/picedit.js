@@ -59,7 +59,7 @@ async function saveProfilePic() {
             showSuccessToast('Profilkép sikeresen frissítve!');
             setTimeout(() => {
                 window.location.href = 'profile.html';
-            }, 2500);
+            }, 1000);
         } else {
             showErrorToast(data.error || 'Hiba történt a profilkép frissítésekor');
         }
@@ -106,6 +106,6 @@ function showToast(message, bgColor) {
     // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 300);
-    }, 300);
+        setTimeout(() => toast.remove(), 1000);
+    }, 1000);
 }

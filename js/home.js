@@ -184,7 +184,7 @@ newsletterForm.onsubmit = (event) => {
         // Redirect to home.html after the toast
         setTimeout(() => {
           window.location.href = 'home.html';
-        }, 2500);
+        }, 1000);
       }
     })
     .catch(error => {
@@ -230,6 +230,6 @@ function showToast(message, bgColor) {
   // Remove after 2.5s
   setTimeout(() => {
     toast.style.opacity = '0';
-    setTimeout(() => toast.remove(), 300);
-  }, 300);
+    setTimeout(() => toast.remove(), 1000);
+  }, 1000);
 }

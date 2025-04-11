@@ -26,7 +26,7 @@ async function register() {
         if (res.ok) {
             resetInputs();
             showSuccessToast(data.message || 'Sikeres regisztráció!');
-            setTimeout(() => window.location.href = '../login.html', 1500);
+            setTimeout(() => window.location.href = '../login.html', 1000);
         } else {
             handleErrors(data);
         }
@@ -86,11 +86,11 @@ function showToast(message, bgColor) {
     // Fade in
     setTimeout(() => {
         toast.style.opacity = '1';
-    }, 10);
+    }, 1000);
 
     // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 300);
-    }, 300);
+        setTimeout(() => toast.remove(), 1000);
+    }, 1000);
 }

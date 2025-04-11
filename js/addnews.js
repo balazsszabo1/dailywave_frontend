@@ -131,6 +131,6 @@ function showToast(message, bgColor) {
   // Remove after 2.5s
   setTimeout(() => {
     toast.style.opacity = '0';
-    setTimeout(() => toast.remove(), 300);
-  }, 300);
+    setTimeout(() => toast.remove(), 1000);
+  }, 1000);
 }

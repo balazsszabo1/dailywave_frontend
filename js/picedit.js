@@ -34,7 +34,7 @@ async function saveProfilePic() {
     const file = fileInput.files[0];
 
     if (!file) {
-        return alert('Kérlek válassz ki egy képet!');
+        return showErrorToast('Kérlek válassz ki egy képet!');
     }
 
     const formData = new FormData();
@@ -51,18 +51,61 @@ async function saveProfilePic() {
 
         document.getElementById('loading').style.display = 'none';
 
+        const data = await res.json();
+
         if (res.ok) {
-            const data = await res.json();
             const profilePicUrl = data.profilePicUrl;
             document.getElementById('preview').src = profilePicUrl;
-            alert('Profilkép sikeresen frissítve!');
-            window.location.href = 'profile.html';
+            showSuccessToast('Profilkép sikeresen frissítve!');
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 2500);
         } else {
-            const data = await res.json();
-            alert(data.error || 'Hiba történt a profilkép frissítésekor');
+            showErrorToast(data.error || 'Hiba történt a profilkép frissítésekor');
         }
     } catch (error) {
         document.getElementById('loading').style.display = 'none';
-        alert('Hiba történt a kapcsolatban. Kérlek próbáld újra!');
+        showErrorToast('Hiba történt a kapcsolatban. Kérlek próbáld újra!');
     }
+}
+
+// Success Toast
+function showSuccessToast(message) {
+    showToast(message, '#28a745'); // Zöld
+}
+
+// Error Toast
+function showErrorToast(message) {
+    showToast(message, '#dc3545'); // Piros
+}
+
+function showToast(message, bgColor) {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '30px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = bgColor;
+    toast.style.color = '#fff';
+    toast.style.padding = '14px 24px';
+    toast.style.borderRadius = '8px';
+    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    toast.style.fontSize = '16px';
+    toast.style.zIndex = '1000';
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.3s ease';
+
+    document.body.appendChild(toast);
+
+    // Fade in
+    setTimeout(() => {
+        toast.style.opacity = '1';
+    }, 10);
+
+    // Remove after 2.5s
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
 }

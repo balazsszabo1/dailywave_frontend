@@ -80,6 +80,11 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
 
         previewImage.src = 'img/hirkephozzaadas.png';
 
+        // Redirect to home.html after 2.5 seconds
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 2500);
+
         console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
       }
     })

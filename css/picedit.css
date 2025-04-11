@@ -266,21 +266,10 @@ button#btnSavePic:hover {
     }
 }
 
-.input {
+img#preview.preview-img {
     width: 356px;
-    height: 190px;
-    margin: 0 auto; /* Középre igazítás */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed #ccc; /* Opcionális keret */
-    border-radius: 8px;       /* Opcionális lekerekített sarkok */
-    overflow: hidden;         /* Ha a kép kilógna */
-  }
-  
-  .preview-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* vagy contain, attól függ mit szeretnél */
+    height: 151px;
+    object-fit: cover; /* vagy 'contain', ha szeretnéd teljes képet látni torzítás nélkül */
+    display: block;
   }
   

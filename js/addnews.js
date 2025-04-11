@@ -83,7 +83,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
         // Redirect to home.html after 2.5 seconds
         setTimeout(() => {
           window.location.href = 'home.html';
-        }, 2500);
+        }, 500);
 
         console.log('Kategória megmaradt:', selectedCategory.getAttribute('data-kategoria'));
       }

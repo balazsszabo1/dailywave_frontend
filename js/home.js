@@ -178,11 +178,58 @@ newsletterForm.onsubmit = (event) => {
   })
     .then(response => response.json())
     .then(data => {
-      alert(data.message);
-      modal.style.display = 'none';
+      if (data.message) {
+        showSuccessToast(data.message);
+        
+        // Redirect to home.html after the toast
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 2500);
+      }
     })
     .catch(error => {
       console.error('Hiba történt:', error);
-      alert('Hiba történt a feliratkozás során.');
+      showErrorToast('Hiba történt a feliratkozás során.');
     });
 };
+
+// Success Toast
+function showSuccessToast(message) {
+  showToast(message, '#28a745'); // Zöld
+}
+
+// Error Toast
+function showErrorToast(message) {
+  showToast(message, '#dc3545'); // Piros
+}
+
+function showToast(message, bgColor) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '30px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.backgroundColor = bgColor;
+  toast.style.color = '#fff';
+  toast.style.padding = '14px 24px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+  toast.style.fontSize = '16px';
+  toast.style.zIndex = '1000';
+  toast.style.opacity = '0';
+  toast.style.transition = 'opacity 0.3s ease';
+
+  document.body.appendChild(toast);
+
+  // Fade in
+  setTimeout(() => {
+    toast.style.opacity = '1';
+  }, 10);
+
+  // Remove after 2.5s
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 1000);
+}

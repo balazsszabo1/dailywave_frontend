@@ -40,7 +40,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
   const index_pic = fileInput.files[0];
 
   if (!cat_id || !news_title || !news || !index_pic) {
-    alert('Minden mező kitöltése kötelező!');
+    showErrorToast('Minden mező kitöltése kötelező!');
     return;
   }
 
@@ -57,10 +57,10 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     .then(response => response.json())
     .then(data => {
       if (data.error) {
-        alert('Hiba: ' + data.error);
+        showErrorToast('Hiba: ' + data.error);
       } else {
-        alert('Sikeres feltöltés!');
-
+        showSuccessToast('Sikeres feltöltés!');
+        
         titleInput.value = '';
         descriptionInput.value = '';
 
@@ -85,6 +85,47 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     })
     .catch(error => {
       console.error('Hiba a feltöltés során:', error);
-      alert('Hiba történt a feltöltés közben.');
+      showErrorToast('Hiba történt a feltöltés közben.');
     });
 });
+
+// Success Toast
+function showSuccessToast(message) {
+  showToast(message, '#28a745'); // Zöld
+}
+
+// Error Toast
+function showErrorToast(message) {
+  showToast(message, '#dc3545'); // Piros
+}
+
+function showToast(message, bgColor) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '30px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.backgroundColor = bgColor;
+  toast.style.color = '#fff';
+  toast.style.padding = '14px 24px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+  toast.style.fontSize = '16px';
+  toast.style.zIndex = '1000';
+  toast.style.opacity = '0';
+  toast.style.transition = 'opacity 0.3s ease';
+
+  document.body.appendChild(toast);
+
+  // Fade in
+  setTimeout(() => {
+    toast.style.opacity = '1';
+  }, 10);
+
+  // Remove after 2.5s
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}

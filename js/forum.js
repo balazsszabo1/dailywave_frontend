@@ -13,20 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 method: 'GET',
                 credentials: 'include',
             });
-
+    
             if (!response.ok) {
                 console.error("HTTP status:", response.status);
                 const errorText = await response.text();
                 console.error("Error body:", errorText);
                 throw new Error('Hozzáférés megtagadva vagy hiba történt az adatok lekérésekor.');
             }
-
+    
             const topics = await response.json();
             if (!Array.isArray(topics)) {
                 throw new Error('Érvénytelen válaszformátum: tömböt vártunk.');
             }
             console.log(topics);
-
+    
             topicsList.innerHTML = topics.map(topic => `
                 <tr>
                     <td><a href="#" data-id="${topic.topic_id}" class="topic-link">${topic.topic_title}</a></td>
@@ -36,9 +36,59 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join('');
         } catch (error) {
             console.error('Error fetching topics:', error.message);
-            alert('Nem sikerült betölteni a fórum témákat. Kérlek, jelentkezz be újra!');
+            showLoginPrompt();
         }
     }
+    
+    function showLoginPrompt() {
+        const container = document.createElement('div');
+        container.style.position = 'fixed';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.width = '100vw';
+        container.style.height = '100vh';
+        container.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.style.alignItems = 'center';
+        container.style.zIndex = '1000';
+    
+        const box = document.createElement('div');
+        box.style.background = '#fff';
+        box.style.padding = '30px';
+        box.style.borderRadius = '12px';
+        box.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+        box.style.textAlign = 'center';
+        box.style.maxWidth = '400px';
+        box.style.width = '80%';
+    
+        const message = document.createElement('p');
+        message.textContent = 'A fórum használatához jelentkezz be.';
+        message.style.fontSize = '18px';
+        message.style.marginBottom = '20px';
+    
+        const button = document.createElement('button');
+        button.textContent = 'Bejelentkezés';
+        button.style.padding = '10px 20px';
+        button.style.backgroundColor = '#007BFF';
+        button.style.color = '#fff';
+        button.style.border = 'none';
+        button.style.borderRadius = '8px';
+        button.style.cursor = 'pointer';
+        button.style.fontSize = '16px';
+    
+        button.onclick = () => {
+            window.location.href = 'login.html';
+        };
+    
+        box.appendChild(message);
+        box.appendChild(button);
+        container.appendChild(box);
+        document.body.appendChild(container);
+    }
+    
+
+
 
     addTopicBtn.addEventListener("click", async () => {
         const title = prompt("Írd be a téma címét");

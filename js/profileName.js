@@ -82,5 +82,5 @@ function showToast(message, bgColor) {
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 300);
-    }, 2500);
+    }, 300);
 }

@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast(message, '#dc3545'); // Piros
     }
 
+    // General Toast Display
     function showToast(message, bgColor) {
         const toast = document.createElement('div');
         toast.textContent = message;

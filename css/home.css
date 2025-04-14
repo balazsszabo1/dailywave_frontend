@@ -679,30 +679,3 @@ section h2 {
 
 
 
-
-
-/* A form konténerének beállítása */
-form {
-    display: flex;
-    flex-direction: column; /* Az input, gomb és találatok egymás alatt */
-    align-items: flex-start; /* Igazítás balra, de változtathatod */
-  }
-  
-  /* A találatok dobozának stílusa */
-  #searchResults {
-    margin-top: 10px;
-    width: 100%; /* Az input szélességével azonos */
-  }
-  
-  /* Az egyes találatok linkjei */
-  #searchResults a {
-    display: block;
-    margin-top: 5px;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  #searchResults a:hover {
-    text-decoration: underline;
-  }
-  

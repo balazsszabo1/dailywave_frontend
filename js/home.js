@@ -97,50 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-document.getElementById('searchButton').addEventListener('click', async function () {
-  const query = document.getElementById('searchQuery').value.trim();
-  const resultsDiv = document.getElementById('searchResults');
 
-  if (!query) {
-    alert('Kérlek, add meg a keresési kifejezést!');
-    return;
-  }
 
-  resultsDiv.innerHTML = '<p>Keresés folyamatban...</p>';
-
-  try {
-    const response = await fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`);
-
-    if (!response.ok) {
-      throw new Error('Hiba történt a keresés során');
-    }
-
-    const data = await response.json();
-    console.log(data);
-
-    resultsDiv.innerHTML = '';
-
-    if (data.results && data.results.length > 0) {
-      const ul = document.createElement('ul');
-      data.results.forEach(result => {
-        const li = document.createElement('li');
-
-        const link = document.createElement('a');
-        link.href = `newsdetails.html?news_id=${result.news_id}`;
-        link.textContent = result.news_title;
-
-        li.appendChild(link);
-        ul.appendChild(li);
-      });
-      resultsDiv.appendChild(ul);
-    } else {
-      resultsDiv.innerHTML = '<p>Nincs találat.</p>';
-    }
-  } catch (error) {
-    console.error('Hiba a keresés során:', error);
-    resultsDiv.innerHTML = '<p>Hiba történt a keresés során.</p>';
-  }
-});
 
 const newsLetterButton = document.querySelector('.newsLetter');
 
@@ -233,3 +191,38 @@ function showToast(message, bgColor) {
     setTimeout(() => toast.remove(), 1000);
   }, 1000);
 }
+
+
+
+  document.getElementById('searchButton').addEventListener('click', function (e) {
+    e.preventDefault(); // ne frissítse az oldalt
+    const query = document.getElementById('searchQuery').value.trim();
+    const resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = ''; // előző találatok törlése
+
+    if (!query) {
+      resultsDiv.innerHTML = '<p class="text-danger mt-2">Adj meg egy keresési kifejezést!</p>';
+      return;
+    }
+
+    fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          data.results.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'mt-2';
+            resultItem.textContent = item.news_title;
+            resultsDiv.appendChild(resultItem);
+          });
+        } else if (data.message) {
+          resultsDiv.innerHTML = `<p class="text-warning mt-2">${data.message}</p>`;
+        } else {
+          resultsDiv.innerHTML = '<p class="text-danger mt-2">Nem található eredmény.</p>';
+        }
+      })
+      .catch(err => {
+        console.error('Hiba a lekérdezés során:', err);
+        resultsDiv.innerHTML = '<p class="text-danger mt-2">Hiba történt a keresés során.</p>';
+      });
+  });

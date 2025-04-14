@@ -201,18 +201,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchButton = document.getElementById('searchButton');
   const searchInput = document.getElementById('searchQuery');
   const resultsDiv = document.getElementById('searchResults');
-  const allCards = document.querySelectorAll('.hír-kártya'); // Minden kártya összegyűjtése
 
   // Keresés indítása
   searchButton.addEventListener('click', function (e) {
     e.preventDefault();
     const query = searchInput.value.trim();
     resultsDiv.innerHTML = '';
-
-    // Elrejtjük az összes kártyát, amíg nem találunk találatot
-    allCards.forEach(card => {
-      card.style.display = 'none';
-    });
 
     if (!query) {
       resultsDiv.innerHTML = '<p class="text-danger mt-2">Adj meg egy keresési kifejezést!</p>';
@@ -224,20 +218,12 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
         if (data.results && data.results.length > 0) {
           data.results.forEach(item => {
-            // Hozzáadjuk a találatot a keresési eredményekhez
             const link = document.createElement('a');
             link.href = `home.html?highlight=${encodeURIComponent(item.news_title)}`;
             link.textContent = item.news_title;
             link.className = 'd-block mt-2 text-decoration-none';
             link.style.color = '#007bff';
             resultsDiv.appendChild(link);
-
-            // Megjelenítjük a hozzá tartozó kártyát
-            const card = document.querySelector(`[data-news-id="${item.news_id}"]`);
-            if (card) {
-              card.style.display = 'block'; // A keresett hír kártyáját megjelenítjük
-              card.style.backgroundColor = 'yellow'; // Kiemeljük sárgával
-            }
           });
         } else if (data.message) {
           resultsDiv.innerHTML = `<p class="text-warning mt-2">${data.message}</p>`;
@@ -251,5 +237,3 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
-
-

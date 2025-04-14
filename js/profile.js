@@ -70,13 +70,13 @@ async function logout() {
     });
     console.log(res);
 
-
     if (res.ok) {
-        alert('Sikeres kijelentkezés!');
+        // Sikeres kijelentkezés után prompt megjelenítése
+        showLogoutPrompt('Sikeres kijelentkezés!');
 
         setTimeout(() => {
             window.location.href = '../login.html';
-        }, 1000);
+        }, 2000); // 2 másodperc után irányít át
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
@@ -90,6 +90,54 @@ async function logout() {
         alert(errorMessage);
     }
 }
+
+function showLogoutPrompt(message = 'Sikeres kijelentkezés!') {
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.width = '100vw';
+    container.style.height = '100vh';
+    container.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    container.style.display = 'flex';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.zIndex = '1000';
+
+    const box = document.createElement('div');
+    box.style.background = '#fff';
+    box.style.padding = '30px';
+    box.style.borderRadius = '12px';
+    box.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+    box.style.textAlign = 'center';
+    box.style.maxWidth = '400px';
+    box.style.width = '80%';
+
+    const msg = document.createElement('p');
+    msg.textContent = message;
+    msg.style.fontSize = '18px';
+    msg.style.marginBottom = '20px';
+
+    const button = document.createElement('button');
+    button.textContent = 'Újra bejelentkezés';
+    button.style.padding = '10px 20px';
+    button.style.backgroundColor = '#007BFF';
+    button.style.color = '#fff';
+    button.style.border = 'none';
+    button.style.borderRadius = '8px';
+    button.style.cursor = 'pointer';
+    button.style.fontSize = '16px';
+
+    button.onclick = () => {
+        window.location.href = '../login.html';
+    };
+
+    box.appendChild(msg);
+    box.appendChild(button);
+    container.appendChild(box);
+    document.body.appendChild(container);
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getProfileName();

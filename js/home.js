@@ -194,11 +194,19 @@ function showToast(message, bgColor) {
 
 
 
-  document.getElementById('searchButton').addEventListener('click', function (e) {
-    e.preventDefault(); // ne frissítse az oldalt
-    const query = document.getElementById('searchQuery').value.trim();
-    const resultsDiv = document.getElementById('searchResults');
-    resultsDiv.innerHTML = ''; // előző találatok törlése
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchButton = document.getElementById('searchButton');
+  const searchInput = document.getElementById('searchQuery');
+  const resultsDiv = document.getElementById('searchResults');
+
+  // Keresés indítása
+  searchButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    resultsDiv.innerHTML = '';
 
     if (!query) {
       resultsDiv.innerHTML = '<p class="text-danger mt-2">Adj meg egy keresési kifejezést!</p>';
@@ -210,10 +218,12 @@ function showToast(message, bgColor) {
       .then(data => {
         if (data.results && data.results.length > 0) {
           data.results.forEach(item => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'mt-2';
-            resultItem.textContent = item.news_title;
-            resultsDiv.appendChild(resultItem);
+            const link = document.createElement('a');
+            link.href = `home.html?highlight=${encodeURIComponent(item.news_title)}`;
+            link.textContent = item.news_title;
+            link.className = 'd-block mt-2 text-decoration-none';
+            link.style.color = '#007bff';
+            resultsDiv.appendChild(link);
           });
         } else if (data.message) {
           resultsDiv.innerHTML = `<p class="text-warning mt-2">${data.message}</p>`;
@@ -226,3 +236,18 @@ function showToast(message, bgColor) {
         resultsDiv.innerHTML = '<p class="text-danger mt-2">Hiba történt a keresés során.</p>';
       });
   });
+
+  // Kiemelés a home.html oldalon
+  const params = new URLSearchParams(window.location.search);
+  const highlightTitle = params.get('highlight');
+
+  if (highlightTitle) {
+    const newsTitles = document.querySelectorAll('.news-title');
+    newsTitles.forEach(el => {
+      if (el.textContent.trim() === highlightTitle.trim()) {
+        el.style.backgroundColor = 'yellow';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+});

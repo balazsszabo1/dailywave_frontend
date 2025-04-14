@@ -70,12 +70,11 @@ async function logout() {
     });
 
     if (res.ok) {
-        // Sikeres kijelentkezés után a prompt
-        showLogoutPrompt('Sikeres kijelentkezés!');
+        showSuccessToast('Sikeres kijelentkezés!');
 
         setTimeout(() => {
-            window.location.href = '../login.html'; // Visszairányítás a bejelentkezéshez
-        }, 2000); // 2 másodperc után irányít át
+            window.location.href = '../login.html'; // Visszairányítás a bejelentkezési oldalra
+        }, 1000); // 1 másodperc után irányít át
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
@@ -84,57 +83,49 @@ async function logout() {
         } catch (jsonError) {
             console.error('Hibás szerver válasz:', jsonError);
         }
-        alert(errorMessage);
+        showErrorToast(errorMessage); // Hiba esetén is toast-ot mutatunk
     }
 }
 
-function showLogoutPrompt(message) {
-    // Prompt ablak készítése
-    const container = document.createElement('div');
-    container.style.position = 'fixed';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100vw';
-    container.style.height = '100vh';
-    container.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
-    container.style.display = 'flex';
-    container.style.justifyContent = 'center';
-    container.style.alignItems = 'center';
-    container.style.zIndex = '1000';
+// Success Toast
+function showSuccessToast(message) {
+    showToast(message, '#28a745'); // Zöld
+}
 
-    const box = document.createElement('div');
-    box.style.background = '#fff';
-    box.style.padding = '30px';
-    box.style.borderRadius = '12px';
-    box.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-    box.style.textAlign = 'center';
-    box.style.maxWidth = '400px';
-    box.style.width = '80%';
+// Error Toast
+function showErrorToast(message) {
+    showToast(message, '#dc3545'); // Piros
+}
 
-    const msg = document.createElement('p');
-    msg.textContent = message;
-    msg.style.fontSize = '18px';
-    msg.style.marginBottom = '20px';
+function showToast(message, bgColor) {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '30px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = bgColor;
+    toast.style.color = '#fff';
+    toast.style.padding = '14px 24px';
+    toast.style.borderRadius = '8px';
+    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    toast.style.fontSize = '16px';
+    toast.style.zIndex = '1000';
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.3s ease';
 
-    // Gomb, ami visszairányít a bejelentkezési oldalra
-    const button = document.createElement('button');
-    button.textContent = 'Újra bejelentkezés';
-    button.style.padding = '10px 20px';
-    button.style.backgroundColor = '#007BFF';
-    button.style.color = '#fff';
-    button.style.border = 'none';
-    button.style.borderRadius = '8px';
-    button.style.cursor = 'pointer';
-    button.style.fontSize = '16px';
+    document.body.appendChild(toast);
 
-    button.onclick = () => {
-        window.location.href = '../login.html'; // Átirányítás a bejelentkezési oldalra
-    };
+    // Fade in
+    setTimeout(() => {
+        toast.style.opacity = '1';
+    }, 10);
 
-    box.appendChild(msg);
-    box.appendChild(button);
-    container.appendChild(box);
-    document.body.appendChild(container);
+    // Remove after 2.5s
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 1000);
+    }, 2500);
 }
 
 

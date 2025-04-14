@@ -201,12 +201,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchButton = document.getElementById('searchButton');
   const searchInput = document.getElementById('searchQuery');
   const resultsDiv = document.getElementById('searchResults');
+  const allCards = document.querySelectorAll('.hír-kártya'); // Minden kártya összegyűjtése
 
   // Keresés indítása
   searchButton.addEventListener('click', function (e) {
     e.preventDefault();
     const query = searchInput.value.trim();
     resultsDiv.innerHTML = '';
+
+    // Elrejtjük az összes kártyát, amíg nem találunk találatot
+    allCards.forEach(card => {
+      card.style.display = 'none';
+    });
 
     if (!query) {
       resultsDiv.innerHTML = '<p class="text-danger mt-2">Adj meg egy keresési kifejezést!</p>';
@@ -218,12 +224,20 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
         if (data.results && data.results.length > 0) {
           data.results.forEach(item => {
+            // Hozzáadjuk a találatot a keresési eredményekhez
             const link = document.createElement('a');
             link.href = `home.html?highlight=${encodeURIComponent(item.news_title)}`;
             link.textContent = item.news_title;
             link.className = 'd-block mt-2 text-decoration-none';
             link.style.color = '#007bff';
             resultsDiv.appendChild(link);
+
+            // Megjelenítjük a hozzá tartozó kártyát
+            const card = document.querySelector(`[data-news-id="${item.news_id}"]`);
+            if (card) {
+              card.style.display = 'block'; // A keresett hír kártyáját megjelenítjük
+              card.style.backgroundColor = 'yellow'; // Kiemeljük sárgával
+            }
           });
         } else if (data.message) {
           resultsDiv.innerHTML = `<p class="text-warning mt-2">${data.message}</p>`;
@@ -236,18 +250,56 @@ document.addEventListener('DOMContentLoaded', function () {
         resultsDiv.innerHTML = '<p class="text-danger mt-2">Hiba történt a keresés során.</p>';
       });
   });
+});
 
-  // Kiemelés a home.html oldalon
-  const params = new URLSearchParams(window.location.search);
-  const highlightTitle = params.get('highlight');
 
-  if (highlightTitle) {
-    const newsTitles = document.querySelectorAll('.news-title');
-    newsTitles.forEach(el => {
-      if (el.textContent.trim() === highlightTitle.trim()) {
-        el.style.backgroundColor = 'yellow';
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  }
+
+
+// Kártyák készítése a hírekhez
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/api/news/getAllNews')
+    .then(res => res.json())
+    .then(newsList => {
+      newsList.forEach(news => {
+        const sectionSelector = categoryIdToSection[news.cat_id];
+        const section = document.querySelector(sectionSelector);
+
+        if (!section) {
+          console.error('Nem található a kategória szekció!', sectionSelector);
+          return;
+        }
+
+        let hirGrid;
+        if (news.cat_id === 5) {
+          hirGrid = section.querySelector('.kiemelt-szurke-grid');
+        } else {
+          hirGrid = section.querySelector('.hír-grid');
+        }
+
+        const newCard = document.createElement('div');
+        newCard.classList.add('hír-kártya');
+        newCard.setAttribute('data-news-id', news.news_id); // Hozzáadjuk az egyedi id-t
+
+        const img = document.createElement('img');
+        img.src = `https://nodejs315.dszcbaross.edu.hu/uploads/${news.index_pic}`;
+        img.alt = news.news_title;
+
+        const title = document.createElement('p');
+        title.textContent = news.news_title;
+
+        if (news.cat_id === 5) {
+          title.style.color = 'red';
+        }
+
+        newCard.addEventListener('click', () => {
+          window.location.href = `newsdetails.html?news_id=${news.news_id}`;
+        });
+
+        newCard.appendChild(img);
+        newCard.appendChild(title);
+
+        hirGrid.appendChild(newCard);
+      });
+    })
+    .catch(err => console.error('Hiba a hírek lekérésekor:', err));
 });

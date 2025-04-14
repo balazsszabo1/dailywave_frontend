@@ -68,21 +68,18 @@ async function logout() {
         method: 'POST',
         credentials: 'include', // Küldi a sütit a szervernek
     });
-    console.log(res);
 
     if (res.ok) {
-        // Sikeres kijelentkezés után prompt megjelenítése
+        // Sikeres kijelentkezés után a prompt
         showLogoutPrompt('Sikeres kijelentkezés!');
 
         setTimeout(() => {
-            window.location.href = '../login.html';
+            window.location.href = '../login.html'; // Visszairányítás a bejelentkezéshez
         }, 2000); // 2 másodperc után irányít át
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
             const data = await res.json();
-            console.log(data);
-
             errorMessage = data.error || errorMessage;
         } catch (jsonError) {
             console.error('Hibás szerver válasz:', jsonError);
@@ -91,7 +88,8 @@ async function logout() {
     }
 }
 
-function showLogoutPrompt(message = 'Sikeres kijelentkezés!') {
+function showLogoutPrompt(message) {
+    // Prompt ablak készítése
     const container = document.createElement('div');
     container.style.position = 'fixed';
     container.style.top = '0';
@@ -118,6 +116,7 @@ function showLogoutPrompt(message = 'Sikeres kijelentkezés!') {
     msg.style.fontSize = '18px';
     msg.style.marginBottom = '20px';
 
+    // Gomb, ami visszairányít a bejelentkezési oldalra
     const button = document.createElement('button');
     button.textContent = 'Újra bejelentkezés';
     button.style.padding = '10px 20px';
@@ -129,7 +128,7 @@ function showLogoutPrompt(message = 'Sikeres kijelentkezés!') {
     button.style.fontSize = '16px';
 
     button.onclick = () => {
-        window.location.href = '../login.html';
+        window.location.href = '../login.html'; // Átirányítás a bejelentkezési oldalra
     };
 
     box.appendChild(msg);

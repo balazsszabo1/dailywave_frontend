@@ -679,3 +679,23 @@ section h2 {
 
 
 
+/* A találatok dobozának stílusa */
+#searchResults {
+    margin-top: 10px;
+    width: 100%; /* Az input szélességével azonos */
+    position: absolute; /* Az input mezőtől függetlenül pozicionáljuk */
+    z-index: 100; /* Ha szükséges, hogy előtérben legyen */
+  }
+  
+  /* Az egyes találatok linkjei */
+  #searchResults a {
+    display: block;
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  #searchResults a:hover {
+    text-decoration: underline;
+  }
+  

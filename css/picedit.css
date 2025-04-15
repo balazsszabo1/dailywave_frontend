@@ -26,10 +26,9 @@ body {
     align-items: center;
 }
 
-/* Előnézeti kép konténer (kör alakú keret) */
 #preview-container {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -40,7 +39,6 @@ body {
     background-color: #f4f4f9;
 }
 
-/* Profilkép előnézeti stílus – a körhöz igazodva */
 .preview-img {
     width: 100%;
     height: 100%;

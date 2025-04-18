@@ -251,3 +251,48 @@ body {
 #chat-form button:hover {
     background-color: #253c6b;
 }
+
+.forum-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.forum-table th {
+    background-color: #31518f;
+    color: white;
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.forum-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.forum-table tr:nth-child(even) {
+    background-color: #f4f6fa;
+}
+
+.forum-table tr:hover {
+    background-color: #e3e8ff;
+    transition: background 0.2s ease;
+}
+
+.forum-table a {
+    text-decoration: none;
+    color: #31518f;
+    font-weight: 500;
+}
+
+.forum-table a:hover {
+    text-decoration: underline;
+    color: #1e2f5f;
+}

@@ -1,4 +1,4 @@
-/* Alapstílus */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -7,110 +7,89 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-/* Menü */
-.navbar-logo img {
+    }
+    .navbar-logo img {
     height: 80px;
     width: 80px;
     border-radius: 10px;
-}
-
-.navbar.bg-body-tertiary {
+    }
+    .navbar.bg-body-tertiary {
     background-color: rgba(49, 81, 143, 0.8) !important;
-}
-
-.navbar-nav {
+    }
+    .navbar-nav {
     display: flex;
     align-items: center;
     gap: 15px;
-}
-
-.navbar-nav .nav-item {
+    }
+    .navbar-nav .nav-item {
     margin-right: 0;
-}
-
-.navbar-nav .nav-link {
+    }
+    .navbar-nav .nav-link {
     color: white !important;
     line-height: 1.5;
     padding: 8px 10px;
     font-size: 16px;
     text-align: center;
-}
-
-.navbar-nav .nav-link.active {
+    }
+    .navbar-nav .nav-link.active {
     color: white !important;
-}
-
-.navbar-toggler-icon {
+    }
+    .navbar-toggler-icon {
     background-color: white !important;
-}
-
-/* Magyarország és zászló stílus */
-.navbar-magyarorszag {
+    }
+    .navbar-magyarorszag {
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-}
-
-.navbar-magyarorszag img {
+    }
+    .navbar-magyarorszag img {
     width: 24px;
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
     min-width: 24px;
     min-height: 24px;
-}
-
-.navbar-magyarorszag span {
+    }
+    .navbar-magyarorszag span {
     font-size: 16px;
     line-height: 1.5;
     color: white !important;
     min-width: 0;
-}
-
-.navbar-magyarorszag img {
+    }
+    .navbar-magyarorszag img {
     content: url('path/to/magyar.png');
-}
-
-/* Reszponzív stílusok navbarra */
-@media (max-width: 991px) {
+    }
+    @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     }
-
     .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 10px 15px;
-        text-align: center;
+    font-size: 14px;
+    padding: 10px 15px;
+    text-align: center;
     }
-}
-
-@media (max-width: 768px) {
+    }
+    @media (max-width: 768px) {
     .navbar {
-        padding: 10px;
+    padding: 10px;
     }
-
     .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 5px 10px;
-        line-height: 1.4;
+    font-size: 14px;
+    padding: 5px 10px;
+    line-height: 1.4;
     }
-}
-
-@media (max-width: 576px) {
+    }
+    @media (max-width: 576px) {
     .navbar-nav .nav-link {
-        font-size: 12px;
-        padding: 5px 8px;
-        line-height: 1.3;
+    font-size: 12px;
+    padding: 5px 8px;
+    line-height: 1.3;
     }
-}
-
-/* Forum header styling */
-.forum-header {
+    }
+    .forum-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -118,90 +97,71 @@ body {
     padding: 15px;
     border-radius: 10px;
     color: white;
-}
-
-.forum-header button {
+    }
+    .forum-header button {
     margin-right: 10px;
-}
-
-/* Pagination styling */
-.pagination .page-link {
+    }
+    .pagination .page-link {
     color: #31518fcc;
-}
-
-.pagination .page-link:hover {
+    }
+    .pagination .page-link:hover {
     background-color: #31518fcc;
     color: white;
-}
-
-/* Right sidebar styling */
-.card {
+    }
+    .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
+    }
+    .card-header {
     font-size: 1.25rem;
     font-weight: bold;
-}
-
-.list-group-item {
+    }
+    .list-group-item {
     font-size: 0.95rem;
-}
-
-/* Dropdown menu */
-.dropdown {
+    }
+    .dropdown {
     margin: 20px 0;
     border-radius: 10px;
     font-weight: bold;
-}
-
-.dropdown-menu a {
+    }
+    .dropdown-menu a {
     color: #31518fcc;
-}
-
-.dropdown:hover {
+    }
+    .dropdown:hover {
     color: #31518fcc;
-}
-
-.dropdown-menu a:hover {
+    }
+    .dropdown-menu a:hover {
     background-color: #31518fcc;
     color: white;
-}
-
-.forumgomb {
+    }
+    .forumgomb {
     user-select: none;
-}
-
-.temaLink {
+    }
+    .temaLink {
     text-decoration: none;
     color: black;
     font-size: large;
     font-weight: bold;
-}
-
-.profileImg:hover {
+    }
+    .profileImg:hover {
     scale: 1.1;
-}
-
-#chat-section {
+    }
+    #chat-section {
     background: white;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 20px;
     max-width: 700px;
-}
-
-#chat-title {
+    }
+    #chat-title {
     font-size: 1.5rem;
     color: #31518f;
     border-bottom: 2px solid #31518f;
     padding-bottom: 8px;
     margin-bottom: 15px;
-}
-
-#chat-messages {
+    }
+    #chat-messages {
     border: 1px solid #ddd;
     background: #f8f9fa;
     padding: 15px;
@@ -209,9 +169,8 @@ body {
     overflow-y: auto;
     border-radius: 5px;
     transition: all 0.3s ease;
-}
-
-.chat-message {
+    }
+    .chat-message {
     background: #e3e8ff;
     padding: 10px;
     border-radius: 10px;
@@ -219,40 +178,34 @@ body {
     display: inline-block;
     max-width: 80%;
     transition: transform 0.3s ease;
-}
-
-.chat-message:hover {
+    }
+    .chat-message:hover {
     transform: scale(1.05);
-}
-
-#chat-form {
+    }
+    #chat-form {
     display: flex;
     gap: 10px;
     margin-top: 10px;
-}
-
-#chat-input {
+    }
+    #chat-input {
     flex-grow: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-}
-
-#chat-form button {
+    }
+    #chat-form button {
     background-color: #31518f;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#chat-form button:hover {
+    }
+    #chat-form button:hover {
     background-color: #253c6b;
-}
-
-.forum-table {
+    }
+    .forum-table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
@@ -261,38 +214,32 @@ body {
     background-color: white;
     margin-top: 20px;
     font-size: 15px;
-}
-
-.forum-table th {
+    }
+    .forum-table th {
     background-color: #31518f;
     color: white;
     padding: 14px 12px;
     text-align: left;
     font-weight: bold;
-}
-
-.forum-table td {
+    }
+    .forum-table td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     color: #333;
-}
-
-.forum-table tr:nth-child(even) {
+    }
+    .forum-table tr:nth-child(even) {
     background-color: #f4f6fa;
-}
-
-.forum-table tr:hover {
+    }
+    .forum-table tr:hover {
     background-color: #e3e8ff;
     transition: background 0.2s ease;
-}
-
-.forum-table a {
+    }
+    .forum-table a {
     text-decoration: none;
     color: #31518f;
     font-weight: 500;
-}
-
-.forum-table a:hover {
+    }
+    .forum-table a:hover {
     text-decoration: underline;
     color: #1e2f5f;
-}
+    }

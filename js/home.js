@@ -97,9 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-
-
 const newsLetterButton = document.querySelector('.newsLetter');
 
 const modal = document.getElementById('newsletterModal');
@@ -191,11 +188,6 @@ function showToast(message, bgColor) {
     setTimeout(() => toast.remove(), 1000);
   }, 1000);
 }
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
   const searchButton = document.getElementById('searchButton');

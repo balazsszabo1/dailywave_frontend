@@ -8,10 +8,8 @@ body {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-}
-
-/* Taroló div */
-.tarolo {
+    }
+    .tarolo {
     margin: auto;
     background-color: #ffffff;
     border-radius: 10px;
@@ -24,27 +22,22 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-}
-
-
-.input {
+    }
+    .input {
     width: 100%;
-}
-
-input[type="file"] {
+    }
+    input[type="file"] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid rgba(64, 69, 80, 0.8);
     margin-bottom: 20px;
     font-size: 15px;
-}
-
-.login {
+    }
+    .login {
     width: 100%;
-}
-
-button#btnSavePic {
+    }
+    button#btnSavePic {
     width: 100%;
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
@@ -54,191 +47,129 @@ button#btnSavePic {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button#btnSavePic:hover {
+    }
+    button#btnSavePic:hover {
     background-color: #31518f;
-}
-
-.existing-account {
+    }
+    .existing-account {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
     color: rgba(49, 81, 143, 0.8);
-}
-
-.existing-account .login-link {
+    }
+    .existing-account .login-link {
     color: rgba(49, 81, 143, 0.8);
     text-decoration: underline;
     cursor: pointer;
     transition: color 0.3s ease;
-}
-
-.existing-account .login-link:hover {
+    }
+    .existing-account .login-link:hover {
     color: #31518f;
-}
-
-/* Mobilnézet */
-@media screen and (max-width: 480px) {
+    }
+    @media screen and (max-width: 480px) {
     .tarolo {
-        width: 90%;
-        padding: 15px;
+    width: 90%;
+    padding: 15px;
     }
-
     #preview-container {
-        width: 120px;
-        height: 120px;
+    width: 120px;
+    height: 120px;
     }
-
     .preview-img {
-        width: 120px;
-        height: 120px;
+    width: 120px;
+    height: 120px;
     }
-
     input[type="file"] {
-        font-size: 14px;
-        padding: 8px;
+    font-size: 14px;
+    padding: 8px;
     }
-
     button#btnSavePic {
-        font-size: 14px;
-        padding: 8px 15px;
+    font-size: 14px;
+    padding: 8px 15px;
     }
-}
-
-
-
-
-
-/* Menü */
-.navbar-logo img {
+    }
+    .navbar-logo img {
     height: 80px;
     width: 80px;
     border-radius: 10px;
-}
-
-.navbar.bg-body-tertiary {
+    }
+    .navbar.bg-body-tertiary {
     background-color: rgba(49, 81, 143, 0.8) !important;
-}
-
-.navbar-nav {
+    }
+    .navbar-nav {
     display: flex;
     align-items: center;
-    /* Középre igazítja a szövegeket és ikonokat függőlegesen */
     gap: 15px;
-    /* Távolság az elemek között */
-}
-
-.navbar-nav .nav-item {
+    }
+    .navbar-nav .nav-item {
     margin-right: 0;
-}
-
-.navbar-nav .nav-link {
+    }
+    .navbar-nav .nav-link {
     color: white !important;
     line-height: 1.5;
-    /* Egységes magasság */
     padding: 8px 10px;
-    /* Tér a szöveg körül */
     font-size: 16px;
-    /* Betűméret */
     text-align: center;
-}
-
-.navbar-nav .nav-link.active {
+    }
+    .navbar-nav .nav-link.active {
     color: white !important;
-}
-
-.navbar-toggler-icon {
+    }
+    .navbar-toggler-icon {
     background-color: white !important;
-}
-
-/* Magyarország és zászló stílus */
-.navbar-magyarorszag {
+    }
+    .navbar-magyarorszag {
     display: flex;
     align-items: center;
-    /* Függőleges középre igazítás */
     gap: 8px;
-    /* Távolság a zászló és szöveg között */
     white-space: nowrap;
-    /* Ne törjön el a sor */
-}
-
-.navbar-magyarorszag img {
+    }
+    .navbar-magyarorszag img {
     width: 24px;
-    /* Zászló mérete */
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
     min-width: 24px;
-    /* Minimum szélesség a zászló képének */
     min-height: 24px;
-    /* Minimum magasság */
-}
-
-.navbar-magyarorszag span {
+    }
+    .navbar-magyarorszag span {
     font-size: 16px;
-    /* Betűméret */
     line-height: 1.5;
-    /* Egységes magasság */
     color: white !important;
     min-width: 0;
-    /* Ne tartsa meg a helyet, ha nincs szöveg */
-}
-
-/* Ha a kép neve 'magyar.png', akkor hivatkozhatsz rá így: */
-.navbar-magyarorszag img {
+    }
+    .navbar-magyarorszag img {
     content: url('path/to/magyar.png');
-}
-
-/* Reszponzív stílusok navbarra*/
-/* Hamburger menüben a menüpontok vízszintes elrendezése */
-@media (max-width: 991px) {
+    }
+    @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: row;
-        /* Menüpontok vízszintesen */
-        justify-content: space-between;
-        /* Távolság a menüpontok között */
-        width: 100%;
-        /* Menüpontok kitöltik a teljes szélességet */
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     }
-
     .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 10px 15px;
-        /* Növeljük a paddingot, hogy szellősebb legyen */
-        text-align: center;
+    font-size: 14px;
+    padding: 10px 15px;
+    text-align: center;
     }
-}
-
-@media (max-width: 768px) {
+    }
+    @media (max-width: 768px) {
     .navbar {
-        padding: 10px;
+    padding: 10px;
     }
-
     .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 5px 10px;
-        line-height: 1.4;
+    font-size: 14px;
+    padding: 5px 10px;
+    line-height: 1.4;
     }
-}
-
-@media (max-width: 576px) {
+    }
+    @media (max-width: 576px) {
     .navbar-nav .nav-link {
-        font-size: 12px;
-        padding: 5px 8px;
-        line-height: 1.3;
+    font-size: 12px;
+    padding: 5px 8px;
+    line-height: 1.3;
     }
-}
-
-
-
-
-
-
-
-
-/* Modal */
-#cropModal {
+    }
+    #cropModal {
     display: none;
     position: fixed;
     top: 0; left: 0;
@@ -247,23 +178,20 @@ button#btnSavePic:hover {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
-
-  #cropModal .modal-content {
+    }
+    #cropModal .modal-content {
     background: white;
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
     max-height: 90%;
     text-align: center;
-  }
-
-  #cropModal img {
+    }
+    #cropModal img {
     max-width: 100%;
     max-height: 300px;
-  }
-
-  #cropModal button {
+    }
+    #cropModal button {
     margin: 10px 5px 0;
     padding: 8px 15px;
     border: none;
@@ -271,4 +199,4 @@ button#btnSavePic:hover {
     background-color: rgba(49, 81, 143, 0.8);
     color: white;
     cursor: pointer;
-  }
+    }

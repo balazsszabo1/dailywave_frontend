@@ -66,15 +66,15 @@ async function getProfilPic() {
 async function logout() {
     const res = await fetch('/api/auth/logout', {
         method: 'POST',
-        credentials: 'include', // Küldi a sütit a szervernek
+        credentials: 'include',
     });
 
     if (res.ok) {
         showSuccessToast('Sikeres kijelentkezés!');
 
         setTimeout(() => {
-            window.location.href = '../login.html'; // Visszairányítás a bejelentkezési oldalra
-        }, 1000); // 1 másodperc után irányít át
+            window.location.href = '../login.html';
+        }, 1000);
     } else {
         let errorMessage = 'Hiba történt a kijelentkezés során.';
         try {
@@ -83,18 +83,16 @@ async function logout() {
         } catch (jsonError) {
             console.error('Hibás szerver válasz:', jsonError);
         }
-        showErrorToast(errorMessage); // Hiba esetén is toast-ot mutatunk
+        showErrorToast(errorMessage);
     }
 }
 
-// Success Toast
 function showSuccessToast(message) {
-    showToast(message, '#28a745'); // Zöld
+    showToast(message, '#28a745');
 }
 
-// Error Toast
 function showErrorToast(message) {
-    showToast(message, '#dc3545'); // Piros
+    showToast(message, '#dc3545');
 }
 
 function showToast(message, bgColor) {
@@ -116,12 +114,10 @@ function showToast(message, bgColor) {
 
     document.body.appendChild(toast);
 
-    // Fade in
     setTimeout(() => {
         toast.style.opacity = '1';
     }, 10);
 
-    // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 1000);

@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -7,89 +6,106 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    }
-    .navbar-logo img {
+}
+
+.navbar-logo img {
     height: 80px;
     width: 80px;
     border-radius: 10px;
-    }
-    .navbar.bg-body-tertiary {
+}
+
+.navbar.bg-body-tertiary {
     background-color: rgba(49, 81, 143, 0.8) !important;
-    }
-    .navbar-nav {
+}
+
+.navbar-nav {
     display: flex;
     align-items: center;
     gap: 15px;
-    }
-    .navbar-nav .nav-item {
+}
+
+.navbar-nav .nav-item {
     margin-right: 0;
-    }
-    .navbar-nav .nav-link {
+}
+
+.navbar-nav .nav-link {
     color: white !important;
     line-height: 1.5;
     padding: 8px 10px;
     font-size: 16px;
     text-align: center;
-    }
-    .navbar-nav .nav-link.active {
+}
+
+.navbar-nav .nav-link.active {
     color: white !important;
-    }
-    .navbar-toggler-icon {
+}
+
+.navbar-toggler-icon {
     background-color: white !important;
-    }
-    .navbar-magyarorszag {
+}
+
+.navbar-magyarorszag {
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-    }
-    .navbar-magyarorszag img {
+}
+
+.navbar-magyarorszag img {
     width: 24px;
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
     min-width: 24px;
     min-height: 24px;
-    }
-    .navbar-magyarorszag span {
+}
+
+.navbar-magyarorszag span {
     font-size: 16px;
     line-height: 1.5;
     color: white !important;
     min-width: 0;
-    }
-    .navbar-magyarorszag img {
+}
+
+.navbar-magyarorszag img {
     content: url('path/to/magyar.png');
-    }
-    @media (max-width: 991px) {
+}
+
+@media (max-width: 991px) {
     .navbar-nav {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
     }
+
     .navbar-nav .nav-link {
-    font-size: 14px;
-    padding: 10px 15px;
-    text-align: center;
+        font-size: 14px;
+        padding: 10px 15px;
+        text-align: center;
     }
-    }
-    @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .navbar {
-    padding: 10px;
+        padding: 10px;
     }
+
     .navbar-nav .nav-link {
-    font-size: 14px;
-    padding: 5px 10px;
-    line-height: 1.4;
+        font-size: 14px;
+        padding: 5px 10px;
+        line-height: 1.4;
     }
-    }
-    @media (max-width: 576px) {
+}
+
+@media (max-width: 576px) {
     .navbar-nav .nav-link {
-    font-size: 12px;
-    padding: 5px 8px;
-    line-height: 1.3;
+        font-size: 12px;
+        padding: 5px 8px;
+        line-height: 1.3;
     }
-    }
-    .tarolo {
+}
+
+.tarolo {
     margin: auto;
     background-color: #ffffff;
     border-radius: 10px;
@@ -102,11 +118,13 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    }
-    .input {
+}
+
+.input {
     width: 100%;
-    }
-    .input input {
+}
+
+.input input {
     width: 100%;
     padding: 10px;
     border: 2px solid rgba(49, 81, 143, 0.8);
@@ -114,15 +132,18 @@ body {
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s, background-color 0.3s;
-    }
-    .input input:focus {
+}
+
+.input input:focus {
     border-color: #31518f;
     background-color: rgba(49, 81, 143, 0.1);
-    }
-    .login {
+}
+
+.login {
     width: 100%;
-    }
-    .login button {
+}
+
+.login button {
     width: 100%;
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
@@ -132,37 +153,44 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    }
-    .login button:hover {
+}
+
+.login button:hover {
     background-color: #31518f;
-    }
-    form i img {
+}
+
+form i img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    }
-    .login-title {
+}
+
+.login-title {
     font-size: 30px;
     color: rgba(49, 81, 143, 0.8);
     text-align: center;
     margin-bottom: 20px;
     font-weight: bold;
-    }
-    .existing-account {
+}
+
+.existing-account {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
     color: rgba(49, 81, 143, 0.8);
-    }
-    .existing-account .login-link {
+}
+
+.existing-account .login-link {
     color: rgba(49, 81, 143, 0.8);
     text-decoration: underline;
     cursor: pointer;
     transition: color 0.3s ease;
-    }
-    .existing-account .login-link:hover {
+}
+
+.existing-account .login-link:hover {
     color: #31518f;
-    }
-    .profileImg:hover {
+}
+
+.profileImg:hover {
     scale: 1.1;
-    }
+}

@@ -1,11 +1,8 @@
 const btnLogin = document.getElementById('btnLogin');
-
 btnLogin.addEventListener('click', login);
-
 async function login() {
     const email = document.getElementById('email').value;
     const psw = document.getElementById('psw').value;
-
     try {
         const res = await fetch('/api/auth/login', {
             method: 'POST',
@@ -14,9 +11,7 @@ async function login() {
             },
             body: JSON.stringify({ email, password: psw }),
         });
-
         const data = await res.json();
-
         if (res.ok) {
             resetInputs();
             showSuccessToast(data.message || 'Sikeres bejelentkezés!');
@@ -37,19 +32,15 @@ async function login() {
         showErrorToast('Hiba történt a szerverrel való kommunikáció során. Próbáld újra később.');
     }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     const profileLink = document.getElementById('profileLink');
-
     profileLink.addEventListener('click', async (event) => {
         event.preventDefault();
-
         try {
             const res = await fetch('/api/auth/checkAuth', {
                 method: 'GET',
                 credentials: 'include',
             });
-
             if (res.ok) {
                 window.location.href = 'profile.html';
             } else {
@@ -61,22 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
 function resetInputs() {
     document.getElementById('email').value = '';
     document.getElementById('psw').value = '';
 }
-
-// Success Toast
 function showSuccessToast(message) {
-    showToast(message, '#28a745'); // Zöld
+    showToast(message, '#28a745');
 }
-
-// Error Toast
 function showErrorToast(message) {
-    showToast(message, '#dc3545'); // Piros
+    showToast(message, '#dc3545');
 }
-
 function showToast(message, bgColor) {
     const toast = document.createElement('div');
     toast.textContent = message;
@@ -93,15 +78,10 @@ function showToast(message, bgColor) {
     toast.style.zIndex = '1000';
     toast.style.opacity = '0';
     toast.style.transition = 'opacity 0.3s ease';
-
     document.body.appendChild(toast);
-
-    // Fade in
     setTimeout(() => {
         toast.style.opacity = '1';
     }, 10);
-
-    // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 1000);

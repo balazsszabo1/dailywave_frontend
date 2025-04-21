@@ -47,11 +47,11 @@ const btnChangeName = document.getElementById('btnChangeName');
 btnChangeName.addEventListener('click', editProfileName);
 
 function showSuccessToast(message) {
-    showToast(message, '#28a745'); // zöld
+    showToast(message, '#28a745');
 }
 
 function showErrorToast(message) {
-    showToast(message, '#dc3545'); // piros
+    showToast(message, '#dc3545');
 }
 
 function showToast(message, bgColor) {
@@ -73,12 +73,10 @@ function showToast(message, bgColor) {
 
     document.body.appendChild(toast);
 
-    // Fade in
     setTimeout(() => {
         toast.style.opacity = '1';
     }, 10);
 
-    // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 1000);

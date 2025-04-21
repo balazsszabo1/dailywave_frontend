@@ -5,17 +5,13 @@ function previewImage(event) {
         reader.onload = function () {
             const preview = document.getElementById("preview");
             preview.src = reader.result;
-
             preview.onload = function () {
                 const container = document.getElementById("preview-container");
-
                 const imgAspectRatio = preview.naturalWidth / preview.naturalHeight;
                 const containerAspectRatio = container.offsetWidth / container.offsetHeight;
-
                 preview.style.width = "356px";
                 preview.style.height = "190px";
                 preview.style.objectFit = "cover";
-
                 if (imgAspectRatio > containerAspectRatio) {
                     preview.style.width = "356px";
                     preview.style.height = "190px";
@@ -28,31 +24,23 @@ function previewImage(event) {
         reader.readAsDataURL(file);
     }
 }
-
 async function saveProfilePic() {
     const fileInput = document.getElementById('profilePicInput');
     const file = fileInput.files[0];
-
     if (!file) {
         return showErrorToast('Kérlek válassz ki egy képet!');
     }
-
     const formData = new FormData();
     formData.append('profilePic', file);
-
     document.getElementById('loading').style.display = 'block';
-
     try {
         const res = await fetch('/api/profile/editProfilePic', {
             method: 'PUT',
             body: formData,
             credentials: 'include'
         });
-
         document.getElementById('loading').style.display = 'none';
-
         const data = await res.json();
-
         if (res.ok) {
             const profilePicUrl = data.profilePicUrl;
             document.getElementById('preview').src = profilePicUrl;
@@ -68,17 +56,12 @@ async function saveProfilePic() {
         showErrorToast('Hiba történt a kapcsolatban. Kérlek próbáld újra!');
     }
 }
-
-// Success Toast
 function showSuccessToast(message) {
-    showToast(message, '#28a745'); // Zöld
+    showToast(message, '#28a745');
 }
-
-// Error Toast
 function showErrorToast(message) {
-    showToast(message, '#dc3545'); // Piros
+    showToast(message, '#dc3545');
 }
-
 function showToast(message, bgColor) {
     const toast = document.createElement('div');
     toast.textContent = message;
@@ -95,15 +78,10 @@ function showToast(message, bgColor) {
     toast.style.zIndex = '1000';
     toast.style.opacity = '0';
     toast.style.transition = 'opacity 0.3s ease';
-
     document.body.appendChild(toast);
-
-    // Fade in
     setTimeout(() => {
         toast.style.opacity = '1';
     }, 10);
-
-    // Remove after 2.5s
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 1000);

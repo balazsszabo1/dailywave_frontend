@@ -8,8 +8,9 @@ body {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    }
-    .tarolo {
+}
+
+.tarolo {
     margin: auto;
     background-color: #ffffff;
     border-radius: 10px;
@@ -22,22 +23,26 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    }
-    .input {
+}
+
+.input {
     width: 100%;
-    }
-    input[type="file"] {
+}
+
+input[type="file"] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid rgba(64, 69, 80, 0.8);
     margin-bottom: 20px;
     font-size: 15px;
-    }
-    .login {
+}
+
+.login {
     width: 100%;
-    }
-    button#btnSavePic {
+}
+
+button#btnSavePic {
     width: 100%;
     padding: 10px;
     background-color: rgba(49, 81, 143, 0.8);
@@ -47,151 +52,182 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    }
-    button#btnSavePic:hover {
+}
+
+button#btnSavePic:hover {
     background-color: #31518f;
-    }
-    .existing-account {
+}
+
+.existing-account {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
     color: rgba(49, 81, 143, 0.8);
-    }
-    .existing-account .login-link {
+}
+
+.existing-account .login-link {
     color: rgba(49, 81, 143, 0.8);
     text-decoration: underline;
     cursor: pointer;
     transition: color 0.3s ease;
-    }
-    .existing-account .login-link:hover {
+}
+
+.existing-account .login-link:hover {
     color: #31518f;
-    }
-    @media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 480px) {
     .tarolo {
-    width: 90%;
-    padding: 15px;
+        width: 90%;
+        padding: 15px;
     }
+
     #preview-container {
-    width: 120px;
-    height: 120px;
+        width: 120px;
+        height: 120px;
     }
+
     .preview-img {
-    width: 120px;
-    height: 120px;
+        width: 120px;
+        height: 120px;
     }
+
     input[type="file"] {
-    font-size: 14px;
-    padding: 8px;
+        font-size: 14px;
+        padding: 8px;
     }
+
     button#btnSavePic {
-    font-size: 14px;
-    padding: 8px 15px;
+        font-size: 14px;
+        padding: 8px 15px;
     }
-    }
-    .navbar-logo img {
+}
+
+.navbar-logo img {
     height: 80px;
     width: 80px;
     border-radius: 10px;
-    }
-    .navbar.bg-body-tertiary {
+}
+
+.navbar.bg-body-tertiary {
     background-color: rgba(49, 81, 143, 0.8) !important;
-    }
-    .navbar-nav {
+}
+
+.navbar-nav {
     display: flex;
     align-items: center;
     gap: 15px;
-    }
-    .navbar-nav .nav-item {
+}
+
+.navbar-nav .nav-item {
     margin-right: 0;
-    }
-    .navbar-nav .nav-link {
+}
+
+.navbar-nav .nav-link {
     color: white !important;
     line-height: 1.5;
     padding: 8px 10px;
     font-size: 16px;
     text-align: center;
-    }
-    .navbar-nav .nav-link.active {
+}
+
+.navbar-nav .nav-link.active {
     color: white !important;
-    }
-    .navbar-toggler-icon {
+}
+
+.navbar-toggler-icon {
     background-color: white !important;
-    }
-    .navbar-magyarorszag {
+}
+
+.navbar-magyarorszag {
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-    }
-    .navbar-magyarorszag img {
+}
+
+.navbar-magyarorszag img {
     width: 24px;
     height: 24px;
     object-fit: cover;
     border-radius: 4px;
     min-width: 24px;
     min-height: 24px;
-    }
-    .navbar-magyarorszag span {
+}
+
+.navbar-magyarorszag span {
     font-size: 16px;
     line-height: 1.5;
     color: white !important;
     min-width: 0;
-    }
-    .navbar-magyarorszag img {
+}
+
+.navbar-magyarorszag img {
     content: url('path/to/magyar.png');
-    }
-    @media (max-width: 991px) {
+}
+
+@media (max-width: 991px) {
     .navbar-nav {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
     }
+
     .navbar-nav .nav-link {
-    font-size: 14px;
-    padding: 10px 15px;
-    text-align: center;
+        font-size: 14px;
+        padding: 10px 15px;
+        text-align: center;
     }
-    }
-    @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .navbar {
-    padding: 10px;
+        padding: 10px;
     }
+
     .navbar-nav .nav-link {
-    font-size: 14px;
-    padding: 5px 10px;
-    line-height: 1.4;
+        font-size: 14px;
+        padding: 5px 10px;
+        line-height: 1.4;
     }
-    }
-    @media (max-width: 576px) {
+}
+
+@media (max-width: 576px) {
     .navbar-nav .nav-link {
-    font-size: 12px;
-    padding: 5px 8px;
-    line-height: 1.3;
+        font-size: 12px;
+        padding: 5px 8px;
+        line-height: 1.3;
     }
-    }
-    #cropModal {
+}
+
+#cropModal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    }
-    #cropModal .modal-content {
+}
+
+#cropModal .modal-content {
     background: white;
     padding: 20px;
     border-radius: 10px;
     max-width: 90%;
     max-height: 90%;
     text-align: center;
-    }
-    #cropModal img {
+}
+
+#cropModal img {
     max-width: 100%;
     max-height: 300px;
-    }
-    #cropModal button {
+}
+
+#cropModal button {
     margin: 10px 5px 0;
     padding: 8px 15px;
     border: none;
@@ -199,4 +235,4 @@ body {
     background-color: rgba(49, 81, 143, 0.8);
     color: white;
     cursor: pointer;
-    }
+}

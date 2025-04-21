@@ -40,14 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Success Toast
     function showSuccessToast(message) {
-        showToast(message, '#28a745'); // Zöld
+        showToast(message, '#28a745');
     }
 
-    // Error Toast
     function showErrorToast(message) {
-        showToast(message, '#dc3545'); // Piros
+        showToast(message, '#dc3545');
     }
 
     function showToast(message, bgColor) {
@@ -69,12 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.appendChild(toast);
 
-        // Fade in
         setTimeout(() => {
             toast.style.opacity = '1';
         }, 10);
 
-        // Remove after 2.5s
         setTimeout(() => {
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 1000);

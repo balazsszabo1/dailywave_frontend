@@ -60,7 +60,7 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
         showErrorToast('Hiba: ' + data.error);
       } else {
         showSuccessToast('Sikeres feltöltés!');
-        
+
         titleInput.value = '';
         descriptionInput.value = '';
 
@@ -80,7 +80,6 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
 
         previewImage.src = 'img/hirkephozzaadas.png';
 
-        // Redirect to home.html after 2.5 seconds
         setTimeout(() => {
           window.location.href = 'home.html';
         }, 1000);
@@ -94,14 +93,12 @@ document.getElementById('mentesGomb').addEventListener('click', () => {
     });
 });
 
-// Success Toast
 function showSuccessToast(message) {
-  showToast(message, '#28a745'); // Zöld
+  showToast(message, '#28a745');
 }
 
-// Error Toast
 function showErrorToast(message) {
-  showToast(message, '#dc3545'); // Piros
+  showToast(message, '#dc3545');
 }
 
 function showToast(message, bgColor) {
@@ -123,12 +120,10 @@ function showToast(message, bgColor) {
 
   document.body.appendChild(toast);
 
-  // Fade in
   setTimeout(() => {
     toast.style.opacity = '1';
   }, 10);
 
-  // Remove after 2.5s
   setTimeout(() => {
     toast.style.opacity = '0';
     setTimeout(() => toast.remove(), 1000);

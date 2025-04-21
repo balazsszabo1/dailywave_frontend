@@ -1,60 +1,68 @@
+
 # 🌊 DailyWave – Vizsgamunka Frontend Dokumentáció
 
-👨‍💻 **Készítette:**  
+## 👨‍💻 Készítette
 - Schilling János Attila  
 - Szabó Balázs  
 
-🗓️ **Projekt típusa:** Szoftverfejlesztő vizsgamunka  
-🎯 **Téma:** Hírportál rendszer saját fórumrendszerrel és admin kezeléssel  
-🌐 **Frontend nyelvek:** HTML, CSS, JavaScript  
-🔗 **Backend REST API URL:** `https://nodejs.dszcbaross.edu.hu/server/7b76faf3`
+## 🗓️ Projekt típusa
+Szoftverfejlesztő vizsgamunka  
+
+## 🎯 Téma
+Hírportál rendszer saját fórumrendszerrel és admin kezeléssel  
+
+## 🌐 Frontend nyelvek
+HTML, CSS, JavaScript  
+
+## 🔗 Backend REST API URL
+`https://nodejs.dszcbaross.edu.hu/server/7b76faf3`
 
 ---
 
 ## 📁 Fájlstruktúra
 
 ### 🧾 HTML Oldalak
-- `home.html` – Főoldal (összes hír listázása)
-- `login.html` – Bejelentkezés
-- `registartion.html` – Regisztráció
-- `addnews.html` – Új hír feltöltése (admin)
-- `newsdetail.html` – Hír részletes megtekintése
-- `forum.html` – Fórum bejelentkezett felhasználóknak
-- `forumnotlogin.html` – Fórum vendégként
-- `profile.html` – Felhasználói profil
-- `nameedit.html` – Profilnév módosítása
-- `pswedit.html` – Jelszó módosítása
-- `picedit.html` – Profilkép szerkesztés
+- `home.html` – Főoldal (összes hír listázása)  
+- `login.html` – Bejelentkezés  
+- `registartion.html` – Regisztráció  
+- `addnews.html` – Új hír feltöltése (admin)  
+- `newsdetail.html` – Hír részletes megtekintése  
+- `forum.html` – Fórum bejelentkezett felhasználóknak  
+- `forumnotlogin.html` – Fórum vendégként  
+- `profile.html` – Felhasználói profil  
+- `nameedit.html` – Profilnév módosítása  
+- `pswedit.html` – Jelszó módosítása  
+- `picedit.html` – Profilkép szerkesztés  
 
 ### 🎨 CSS Fájlok
-- `home.css`, `login.css`, `registartion.css`
-- `addnews.css`, `newsdetails.css`
-- `forum.css`, `forumnotlogin.css`
+- `home.css`, `login.css`, `registartion.css`  
+- `addnews.css`, `newsdetails.css`  
+- `forum.css`, `forumnotlogin.css`  
 - `profile.css`, `adminprofile.css`, `nameedit.css`, `pswedit.css`, `picedit.css`
 
 ### ⚙️ JavaScript Fájlok
-- `home.js` – Hírek megjelenítése
-- `login.js` – Bejelentkezési folyamat
-- `registartion.js` – Regisztrációs logika
-- `addnews.js` – Hírfeltöltés admin által
-- `newsdetail.js` – Egyedi hír betöltése
-- `forum.js` – Fórum topikok és hozzászólások kezelése
-- `profile.js` – Profil adatainak betöltése
-- `profileName.js` – Név módosítása
-- `pswedit.js` – Jelszó szerkesztés
-- `picedit.js` – Profilkép frissítése
+- `home.js` – Hírek megjelenítése  
+- `login.js` – Bejelentkezési folyamat  
+- `registartion.js` – Regisztrációs logika  
+- `addnews.js` – Hírfeltöltés admin által  
+- `newsdetail.js` – Egyedi hír betöltése  
+- `forum.js` – Fórum topikok és hozzászólások kezelése  
+- `profile.js` – Profil adatainak betöltése  
+- `profileName.js` – Név módosítása  
+- `pswedit.js` – Jelszó szerkesztés  
+- `picedit.js` – Profilkép frissítése  
 
 ---
 
 ## 💡 Funkciók
 
-- ✅ **Regisztráció & Bejelentkezés**
-- 📰 **Hírek böngészése és megtekintése**
-- ✍️ **Hírek hozzáadása (admin joggal)**
-- 💬 **Saját fórum rendszer**
-- 👤 **Felhasználói profil szerkesztése**
-- 📷 **Profilkép feltöltése**
-- 🔒 **Jelszó módosítás**
+- ✅ Regisztráció & Bejelentkezés  
+- 📰 Hírek böngészése és megtekintése  
+- ✍️ Hírek hozzáadása (admin joggal)  
+- 💬 Saját fórum rendszer  
+- 👤 Felhasználói profil szerkesztése  
+- 📷 Profilkép feltöltése  
+- 🔒 Jelszó módosítás  
 
 ---
 
@@ -70,7 +78,7 @@
 
 ---
 
-## 🔗 Backend API kommunikáció
+## 🔗 Backend API Kommunikáció
 
 A frontend `fetch()` használatával éri el a backend végpontokat:
 
@@ -80,15 +88,22 @@ fetch('https://nodejs.dszcbaross.edu.hu/server/7b76faf3/api/news/getAllNews')
   .then(data => megjelenites(data));
 ```
 
-🔐 **A kérés során szükség esetén automatikusan csatolódik a token (cookie alapú autentikáció).**
+### 🔄 Főbb végpontok
+
+- 🔑 **Bejelentkezés / Regisztráció**: `POST /api/auth/login`, `POST /api/auth/register`  
+- 👤 **Profiladatok**: `GET /api/profile/getProfileName`, `POST /api/profile/editProfileName`, stb.  
+- 📰 **Hírek**: `GET /api/news/getAllNews`, `GET /api/news/getNewsById`, `POST /api/news/uploadNews`  
+- 💬 **Fórum**: `POST /api/topic/getAlltopics`, `POST /api/topic/getComments`, `POST /api/topic/addComment`  
+
+A kérésekhez automatikusan csatolódik a hitelesítési token (cookie alapú JWT), ezáltal biztonságos a kommunikáció.
 
 ---
 
 ## 🚀 Indítás
 
-1. Nyisd meg a projekt mappában a `home.html` fájlt böngészőben  
+1. Nyisd meg a projektet a [DailyWave](https://dailywave.netlify.app/) linkre kattintva  
 2. ✅ **Használatra kész** – automatikusan csatlakozik a backendhez  
-3. 🛠️ *Nem igényel külön frontend szerver beállítást*
+3. 🛠️ *Nem igényel külön frontend szervert*
 
 ---
 
@@ -96,23 +111,23 @@ fetch('https://nodejs.dszcbaross.edu.hu/server/7b76faf3/api/news/getAllNews')
 
 ✔️ Ellenőrzött funkciók:
 
-- [x] **Regisztrációs és bejelentkezési folyamat**
-- [x] **Jogosultság nélküli hozzáféréskor megfelelő tiltás**
-- [x] **Profiladatok szerkesztése működik**
-- [x] **Fórum topik létrehozás és hozzászólás**
-- [x] **Admin-only felület rejtése nem admin számára**
+- [x] **Regisztrációs és bejelentkezési folyamat**  
+- [x] **Jogosultság nélküli hozzáféréskor megfelelő tiltás**  
+- [x] **Profiladatok szerkesztése működik**  
+- [x] **Fórum topik létrehozás és hozzászólás**  
+- [x] **Admin-only felület rejtése nem admin számára**  
 - [x] **Mobil nézet / reszponzivitás**
 
 ---
 
 ## 🧰 Használt fejlesztői eszközök
 
-- 📝 **Visual Studio Code**
-- 🌐 **Live Server** *(VS Code plugin)*
-- 📬 **Postman** *(API teszteléshez)*
-- 🔍 **Chrome DevTools**
-- 🧠 **ChatGPT** *(dokumentáció, ötletek)*
-- 🧭 **DrawSQL** *(adatbázis-terv)*
+- 📝 **Visual Studio Code**  
+- 🌐 **Live Server** *(VS Code plugin)*  
+- 📬 **Postman** *(API teszteléshez)*  
+- 🔍 **Chrome DevTools**  
+- 🧠 **ChatGPT** *(dokumentáció, ötletek)*  
+- 🧭 **DrawSQL** *(adatbázis-terv)*  
 - 🐙 **GitHub** *(verziókezelés)*
 
 ---

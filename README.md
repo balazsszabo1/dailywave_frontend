@@ -78,3 +78,51 @@ A frontend `fetch()` használatával éri el a backend végpontokat:
 fetch('https://nodejs.dszcbaross.edu.hu/server/7b76faf3/api/news/getAllNews')
   .then(res => res.json())
   .then(data => megjelenites(data));
+```
+
+🔐 **A kérés során szükség esetén automatikusan csatolódik a token (cookie alapú autentikáció).**
+
+---
+
+## 🚀 Indítás
+
+1. Nyisd meg a projekt mappában a `home.html` fájlt böngészőben  
+2. ✅ **Használatra kész** – automatikusan csatlakozik a backendhez  
+3. 🛠️ *Nem igényel külön frontend szerver beállítást*
+
+---
+
+## 🧪 Tesztelés
+
+✔️ Ellenőrzött funkciók:
+
+- [x] **Regisztrációs és bejelentkezési folyamat**
+- [x] **Jogosultság nélküli hozzáféréskor megfelelő tiltás**
+- [x] **Profiladatok szerkesztése működik**
+- [x] **Fórum topik létrehozás és hozzászólás**
+- [x] **Admin-only felület rejtése nem admin számára**
+- [x] **Mobil nézet / reszponzivitás**
+
+---
+
+## 🧰 Használt fejlesztői eszközök
+
+- 📝 **Visual Studio Code**
+- 🌐 **Live Server** *(VS Code plugin)*
+- 📬 **Postman** *(API teszteléshez)*
+- 🔍 **Chrome DevTools**
+- 🧠 **ChatGPT** *(dokumentáció, ötletek)*
+- 🧭 **DrawSQL** *(adatbázis-terv)*
+- 🐙 **GitHub** *(verziókezelés)*
+
+---
+
+## 🏁 Összegzés
+
+Ez a projekt egy **teljesen működőképes frontend felületet biztosít** egy híroldal rendszerhez, amely képes a felhasználók kezelésére, tartalom létrehozására és fórumozásra is.  
+A backendgel való **szoros integráció**, valamint a **külön adminfunkciók** révén **alkalmas vizsgamunkának vagy portfólió bemutatónak is**.
+
+---
+
+📩 **Kérdésed van?**  
+Írj bátran a készítőkhöz, vagy nézd meg a backend README-jét is a teljes rendszeráttekintéshez!

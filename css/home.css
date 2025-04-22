@@ -72,7 +72,7 @@
     font-size: 14px;
     border-bottom: 1px solid #eee;
     transition: background-color 0.3s ease;
-    max-width: 250px; /* Korlátozzuk a keresési eredmény szélességét */
+    max-width: 100px; /* Korlátozzuk a keresési eredmény szélességét */
     overflow: hidden;
     text-overflow: ellipsis; /* Ha túl hosszú a szöveg, "..." lesz */
     white-space: nowrap; /* Ne törjön meg a szöveg */
@@ -83,7 +83,7 @@
   }
   
 
-  
+
   
   /* Responsive megjelenés a keresési inputhoz */
   @media (max-width: 768px) {

@@ -61,6 +61,97 @@
     content: url('path/to/magyar.png');
 }
 
+
+
+
+
+
+/* Navbar keresés input és keresési eredmények */
+form.d-flex {
+    position: relative;
+    flex: 1;
+  }
+  
+  #searchQuery {
+    width: 250px; /* Szélesség a keresési mezőnek */
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  #searchQuery:focus {
+    border-color: #3179c2; /* Kék szín a fókuszáláskor */
+    box-shadow: 0 0 5px rgba(49, 81, 143, 0.5); /* Lágy árnyék */
+  }
+  
+  #searchResults {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+  }
+  
+  #searchResults div {
+    padding: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+  }
+  
+  #searchResults div:hover {
+    background-color: #f5f5f5;
+  }
+  
+  #searchResults div:last-child {
+    border-bottom: none; /* Utolsó találat szegély eltávolítása */
+  }
+  
+  /* Keresési ikon */
+  .bi-search {
+    font-size: 20px;
+    color: #3179c2; /* Kék ikon szín */
+  }
+  
+  .bi-search img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  /* Social media ikonok */
+  .bi-person-circle {
+    font-size: 25px;
+  }
+  
+  .bi-person-circle img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  /* Responsive megjelenés a keresési inputhoz */
+  @media (max-width: 768px) {
+    #searchQuery {
+      width: 150px; /* Mobilon kisebb szélesség */
+    }
+  
+    #searchResults {
+      top: 35px;
+    }
+  }
+  
+
 @media (max-width: 991px) {
     .navbar-nav {
         flex-direction: row;

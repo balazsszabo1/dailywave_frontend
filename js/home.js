@@ -183,3 +183,65 @@ function showToast(message, bgColor) {
     setTimeout(() => toast.remove(), 1000);
   }, 1000);
 }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchQuery');
+  const resultsContainer = document.getElementById('searchResults');
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim();
+
+    if (query.length === 0) {
+      resultsContainer.innerHTML = '';
+      resultsContainer.style.display = 'none';
+      return;
+    }
+
+    fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Nincs találat');
+        }
+        return res.json();
+      })
+      .then(data => {
+        const results = data.results;
+
+        resultsContainer.innerHTML = '';
+        resultsContainer.style.display = 'block';
+
+        results.forEach(item => {
+          const resultItem = document.createElement('div');
+          resultItem.textContent = item.news_title;
+          resultItem.style.padding = '10px';
+          resultItem.style.cursor = 'pointer';
+          resultItem.style.borderBottom = '1px solid #eee';
+
+          resultItem.addEventListener('click', () => {
+            window.location.href = `newsdetails.html?news_id=${item.news_id}`;
+          });
+
+          resultsContainer.appendChild(resultItem);
+        });
+      })
+      .catch(err => {
+        resultsContainer.innerHTML = '<div style="padding: 10px; color: red;">Nincs találat</div>';
+        resultsContainer.style.display = 'block';
+      });
+  });
+
+  // Ha elveszti a fókuszt, elrejti az eredményeket
+  searchInput.addEventListener('blur', () => {
+    setTimeout(() => {
+      resultsContainer.style.display = 'none';
+    }, 200); // kis delay, hogy a kattintást még engedje
+  });
+
+  searchInput.addEventListener('focus', () => {
+    if (resultsContainer.innerHTML.trim() !== '') {
+      resultsContainer.style.display = 'block';
+    }
+  });
+});

@@ -40,8 +40,11 @@
           <i class="bi bi-search me-2" style="display: inline-flex; align-items: center;">
             <img src="img/keresés.png" alt="KeresésIkon" style="width: 25px; height: 25px;">
           </i>
-          <div id="searchResults" style="position: absolute; background: white; border: 1px solid #ccc; z-index: 1000; width: 100%; display: none;"></div>
-          <input class="form-control me-2" type="text" placeholder="Keresés" aria-label="Keresés" id="searchQuery"
+          <div class="search-container" style="position: relative;">
+            <input class="form-control" type="text" placeholder="Keresés" aria-label="Keresés" id="searchQuery">
+            <div id="searchResults"></div> <!-- Keresési eredmények listája -->
+            <i class="bi bi-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 20px;"></i> <!-- Keresési ikon -->
+          </div>          
             style="display: inline-flex; align-items: center;">
           <i class="bi bi-person-circle ms-2"
             style="font-size: 25px; display: inline-flex; align-items: center; margin-top: 5px;">

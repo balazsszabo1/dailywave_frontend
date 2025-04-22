@@ -97,17 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
         modalContent.style.textAlign = "center";
         modalContent.style.maxWidth = "400px";
         modalContent.style.fontSize = "18px";
+
         modalContent.innerHTML = `
-            <p>${message}</p>
-            <button id="closeModalBtn" style="
-                margin-top: 20px;
-                padding: 10px 20px;
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-            ">Bezárás</button>
+            <p style="margin-bottom: 20px;">${message}</p>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <button id="loginBtn" style="
+                    padding: 10px 20px;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                ">Bejelentkezés</button>
+                <button id="closeModalBtn" style="
+                    padding: 10px 20px;
+                    background-color: #6c757d;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                ">Bezárás</button>
+            </div>
         `;
 
         modal.appendChild(modalContent);
@@ -115,6 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("closeModalBtn").addEventListener("click", () => {
             modal.remove();
+        });
+
+        document.getElementById("loginBtn").addEventListener("click", () => {
+            window.location.href = "login.html";
         });
     }
 

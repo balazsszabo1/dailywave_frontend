@@ -200,15 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Nincs találat');
-        }
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         const results = data.results;
-
         resultsContainer.innerHTML = '';
         resultsContainer.style.display = 'block';
 

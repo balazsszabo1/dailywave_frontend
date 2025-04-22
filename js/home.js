@@ -213,9 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
           resultItem.style.cursor = 'pointer';
           resultItem.style.borderBottom = '1px solid #eee';
 
-          // Kattintáskor átirányít a hír részletes oldalára
+          // Kattintáskor átirányít a newsdetails.html oldalra
           resultItem.addEventListener('click', () => {
-            // Itt cseréljük ki az URL-t a Netlify-ra
+            // Az átirányítás az ID alapján történik
             window.location.href = `https://dailywave.netlify.app/newsdetails.html?news_id=${item.news_id}`;
           });
 
@@ -228,11 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
-  // Ha elveszti a fókuszt, elrejti az eredményeket
   searchInput.addEventListener('blur', () => {
     setTimeout(() => {
       resultsContainer.style.display = 'none';
-    }, 200); // kis delay, hogy a kattintást még engedje
+    }, 200);
   });
 
   searchInput.addEventListener('focus', () => {

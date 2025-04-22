@@ -213,8 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
           resultItem.style.cursor = 'pointer';
           resultItem.style.borderBottom = '1px solid #eee';
 
+          // Kattintáskor átirányít a hír részletes oldalára
           resultItem.addEventListener('click', () => {
-            window.location.href = `newsdetails.html?news_id=${item.news_id}`;
+            // Itt cseréljük ki az URL-t a Netlify-ra
+            window.location.href = `https://dailywave.netlify.app/newsdetails.html?news_id=${item.news_id}`;
           });
 
           resultsContainer.appendChild(resultItem);

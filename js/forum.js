@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(modal);
 
         document.getElementById("closeModalBtn").addEventListener("click", () => {
-            modal.remove();
+            window.location.href = "home.html";
         });
 
         document.getElementById("loginBtn").addEventListener("click", () => {

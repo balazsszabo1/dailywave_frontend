@@ -381,7 +381,7 @@ section h2 {
 
 .kapcsolat-section {
     background-color: #F9F9F9;
-    font-size: 14px;
+    font-size: 13px;
     padding: 40px 20px;
     margin-top: 20px;
     border-top: 1px solid #ddd;
@@ -389,16 +389,16 @@ section h2 {
 
 .kapcsolat-section h2 {
     text-align: center;
-    font-size: 26px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 15px;
     color: #333;
 }
 
 .kapcsolat-section p {
     text-align: center;
     color: #666;
-    margin-bottom: 20px;
-    font-size: 16px;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
 .kapcsolat-section .row {
@@ -416,15 +416,15 @@ section h2 {
 }
 
 .kapcsolat-section h4 {
-    font-size: 20px;
+    font-size: 16px;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .kapcsolat-section a {
     color: #007BFF;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     display: block;
     margin: 5px 0;
 }
@@ -434,16 +434,54 @@ section h2 {
 }
 
 .kapcsolat-section p.phone {
-    font-size: 16px;
+    font-size: 14px;
     color: #007BFF;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .kapcsolat-section p.info {
-    font-size: 12px;
+    font-size: 11px;
     color: #777;
     margin-top: 5px;
 }
+
+/* Responszív dizájn */
+@media (max-width: 768px) {
+    .kapcsolat-section {
+        padding: 30px 15px;
+    }
+
+    .kapcsolat-section h2 {
+        font-size: 18px;
+    }
+
+    .kapcsolat-section .col-12 {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .kapcsolat-section {
+        padding: 20px 10px;
+    }
+
+    .kapcsolat-section h2 {
+        font-size: 16px;
+    }
+
+    .kapcsolat-section h4 {
+        font-size: 14px;
+    }
+
+    .kapcsolat-section p {
+        font-size: 12px;
+    }
+
+    .kapcsolat-section .col-12 {
+        max-width: 100%;
+    }
+}
+
 
 /* Responszív dizájn */
 @media (max-width: 768px) {

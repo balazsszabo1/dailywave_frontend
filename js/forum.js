@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!Array.isArray(topics)) {
                 throw new Error('Érvénytelen válaszformátum: tömböt vártunk.');
             }
-            console.log(topics);
 
             topicsList.innerHTML = topics.map(topic => `
                 <tr>
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join('');
         } catch (error) {
             console.error('Error fetching topics:', error.message);
-            showErrorToast('Hiba történt a témák betöltésekor. Kérlek próbáld újra!');
+            showErrorModal('A fórum használatához jelentkezz be!');
         }
     }
 
@@ -75,6 +74,48 @@ document.addEventListener("DOMContentLoaded", () => {
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 1000);
         }, 2500);
+    }
+
+    function showErrorModal(message) {
+        const modal = document.createElement("div");
+        modal.style.position = "fixed";
+        modal.style.top = "0";
+        modal.style.left = "0";
+        modal.style.width = "100vw";
+        modal.style.height = "100vh";
+        modal.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        modal.style.display = "flex";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+        modal.style.zIndex = "2000";
+
+        const modalContent = document.createElement("div");
+        modalContent.style.backgroundColor = "#fff";
+        modalContent.style.padding = "30px";
+        modalContent.style.borderRadius = "12px";
+        modalContent.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3)";
+        modalContent.style.textAlign = "center";
+        modalContent.style.maxWidth = "400px";
+        modalContent.style.fontSize = "18px";
+        modalContent.innerHTML = `
+            <p>${message}</p>
+            <button id="closeModalBtn" style="
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            ">Bezárás</button>
+        `;
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+
+        document.getElementById("closeModalBtn").addEventListener("click", () => {
+            modal.remove();
+        });
     }
 
     addTopicBtn.addEventListener("click", async () => {

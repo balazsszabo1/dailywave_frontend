@@ -173,7 +173,10 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.2s;
     user-select: none;
+    white-space: nowrap;
+    min-width: fit-content;
 }
+
 
 .kategoriavalaszto:hover {
     background-color: rgba(49, 81, 143, 0.5);
@@ -186,6 +189,10 @@
     color: white;
     font-weight: bold;
     transform: scale(1.1);
+}
+
+.kategoriavalaszto.aktiv[data-kategoria="5"] {
+    color: white !important;
 }
 
 @media (max-width: 768px) {

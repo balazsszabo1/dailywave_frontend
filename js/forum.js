@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td><a href="#" data-id="${topic.topic_id}" class="topic-link">${topic.topic_title}</a></td>
                     <td>${topic.username}</td>
-                    <td>${topic.last_comment || "Nincsenek még hozzászólások."}</td>
+                    <td>${topic.last_comment_date ? new Date(topic.last_comment_date).toLocaleString('hu-HU') : "Nincsenek még hozzászólások."}</td>
                 </tr>
             `).join('');
         } catch (error) {

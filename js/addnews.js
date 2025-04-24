@@ -6,10 +6,10 @@ const previewImage = document.getElementById('hirkephozzaadas');
 categoryElements.forEach(elem => {
   elem.addEventListener('click', () => {
     if (selectedCategory) {
-      selectedCategory.classList.remove('kivalasztva');
+      selectedCategory.classList.remove('aktiv');
     }
 
-    elem.classList.add('kivalasztva');
+    elem.classList.add('aktiv');
     selectedCategory = elem;
     console.log('Kiválasztott kategória:', selectedCategory.getAttribute('data-kategoria'));
   });

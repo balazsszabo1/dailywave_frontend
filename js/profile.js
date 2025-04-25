@@ -177,3 +177,60 @@ function showLoginPrompt(message = 'A profil megtekintéséhez jelentkezz be.') 
     container.appendChild(box);
     document.body.appendChild(container);
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchQuery');
+    const resultsContainer = document.getElementById('searchResults');
+  
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim();
+  
+      if (query.length === 0) {
+        resultsContainer.innerHTML = '';
+        resultsContainer.style.display = 'none';
+        return;
+      }
+  
+      fetch(`https://nodejs315.dszcbaross.edu.hu/api/news/search?query=${encodeURIComponent(query)}`)
+        .then(res => res.json())
+        .then(data => {
+          const results = data.results;
+          resultsContainer.innerHTML = '';
+          resultsContainer.style.display = 'block';
+  
+          results.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.textContent = item.news_title;
+            resultItem.style.padding = '10px';
+            resultItem.style.cursor = 'pointer';
+            resultItem.style.borderBottom = '1px solid #eee';
+  
+            // Kattintáskor átirányít a newsdetails.html oldalra
+            resultItem.addEventListener('click', () => {
+              // Az átirányítás az ID alapján történik
+              window.location.href = `https://dailywave.netlify.app/newsdetails.html?news_id=${item.news_id}`;
+            });
+  
+            resultsContainer.appendChild(resultItem);
+          });
+        })
+        .catch(err => {
+          resultsContainer.innerHTML = '<div style="padding: 10px; color: red;">Nincs találat</div>';
+          resultsContainer.style.display = 'block';
+        });
+    });
+  
+    searchInput.addEventListener('blur', () => {
+      setTimeout(() => {
+        resultsContainer.style.display = 'none';
+      }, 200);
+    });
+  
+    searchInput.addEventListener('focus', () => {
+      if (resultsContainer.innerHTML.trim() !== '') {
+        resultsContainer.style.display = 'block';
+      }
+    });
+  });
+  

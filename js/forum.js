@@ -138,8 +138,69 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    addTopicBtn.addEventListener("click", async () => {
-        const title = prompt("Írd be a téma címét");
+    // Felugró ablak létrehozása
+function createTopicModal() {
+    // Ha már létezik, ne hozzuk létre újra
+    if (document.getElementById('topicModal')) return;
+
+    const modal = document.createElement('div');
+    modal.id = 'topicModal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.style.zIndex = '9999';
+
+    modal.innerHTML = `
+        <div style="
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        ">
+            <h2 style="margin-bottom: 15px;">Új téma hozzáadása</h2>
+            <input type="text" id="topicInput" placeholder="Téma címe" style="
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            ">
+            <div style="display: flex; justify-content: space-between;">
+                <button id="cancelTopicBtn" style="
+                    padding: 8px 12px;
+                    background: #ccc;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                ">Mégse</button>
+                <button id="submitTopicBtn" style="
+                    padding: 8px 12px;
+                    background: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                ">Hozzáadás</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById('cancelTopicBtn').addEventListener('click', () => {
+        modal.remove();
+    });
+
+    document.getElementById('submitTopicBtn').addEventListener('click', async () => {
+        const title = document.getElementById('topicInput').value.trim();
         if (title) {
             try {
                 const response = await fetch('/api/topics/uploadTopic', {
@@ -156,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.ok) {
                     showSuccessToast("Téma sikeresen hozzáadva!");
                     fetchTopics();
+                    modal.remove();
                 } else {
                     showErrorToast(`Hiba történt a téma hozzáadása közben: ${data.error || "Ismeretlen hiba"}`);
                 }
@@ -163,8 +225,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error adding topic:", error);
                 showErrorToast("Hiba történt a téma hozzáadása közben: Kérlek, próbáld újra később!");
             }
+        } else {
+            showErrorToast("A téma címe nem lehet üres!");
         }
     });
+}
+
+// Gomb esemény módosítása
+addTopicBtn.addEventListener("click", () => {
+    createTopicModal();
+});
+
 
     topicsList.addEventListener("click", async (event) => {
         if (event.target.classList.contains("topic-link")) {

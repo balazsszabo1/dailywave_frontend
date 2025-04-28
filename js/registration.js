@@ -63,33 +63,37 @@ function showErrorToast(message) {
 }
 
 function showToast(message, bgColor) {
-    const toast = document.createElement('div');
-    toast.textContent = message;
-    toast.style.position = 'fixed';
-    toast.style.bottom = '30px';
-    toast.style.left = '50%';
-    toast.style.transform = 'translateX(-50%)';
-    toast.style.backgroundColor = bgColor;
-    toast.style.color = '#fff';
-    toast.style.padding = '14px 24px';
-    toast.style.borderRadius = '8px';
-    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-    toast.style.fontSize = '16px';
-    toast.style.zIndex = '1000';
-    toast.style.opacity = '0';
-    toast.style.transition = 'opacity 0.3s ease';
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '30px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.backgroundColor = bgColor;
+  toast.style.color = '#fff';
+  toast.style.padding = '14px 24px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+  toast.style.fontSize = '16px';
+  toast.style.zIndex = '1000';
+  toast.style.opacity = '0';
+  toast.style.transition = 'opacity 0.4s ease';
 
-    document.body.appendChild(toast);
+  document.body.appendChild(toast);
 
-    setTimeout(() => {
-        toast.style.opacity = '1';
-    }, 1000);
+  // Fade in
+  setTimeout(() => {
+      toast.style.opacity = '1';
+  }, 10);
 
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 1000);
-    }, 1000);
+  // Látszódjon kb. 2.5 másodpercig
+  setTimeout(() => {
+      toast.style.opacity = '0'; // Fade out
+      setTimeout(() => toast.remove(), 400); // Eltávolítás fade után
+  }, 2500);
 }
+
+
 
 
 

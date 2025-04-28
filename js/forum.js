@@ -140,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Felugró ablak létrehozása
 function createTopicModal() {
-    // Ha már létezik, ne hozzuk létre újra
     if (document.getElementById('topicModal')) return;
 
     const modal = document.createElement('div');
@@ -183,7 +182,7 @@ function createTopicModal() {
                 ">Mégse</button>
                 <button id="submitTopicBtn" style="
                     padding: 8px 12px;
-                    background: #4CAF50;
+                    background: #007BFF;
                     color: white;
                     border: none;
                     border-radius: 4px;
@@ -235,6 +234,7 @@ function createTopicModal() {
 addTopicBtn.addEventListener("click", () => {
     createTopicModal();
 });
+
 
 
     topicsList.addEventListener("click", async (event) => {
